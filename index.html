@@ -305,17 +305,17 @@ Do note that this repository is provided as is, will not be actively updated and
 <ul>
 <li>Updated the camera, Echo and (GPU)LiDAR sensors to be able to uncouple from the vehicle and be placed as external world sensors.</li>
 <li>Added more camera sensor distortion features such as chromatic aberration, motion blur and lens distortion. </li>
-<li>Updated Python <a href="docs/ros.md">ROS implementation</a> with completely new implementation and feature set. C++ version is deprecated.</li>
-<li>Added <a href="docs/echo.md">Echo sensor type</a> for simulation of sensors like sonar and radar.</li>
-<li>Added <a href="docs/instance_segmentation.md">Instance Segmentation</a>. </li>
-<li>Added <a href="docs/gpulidar.md">GPU LIDAR sensor type</a>: Uses GPU acceleration to simulate a LiDAR sensor. Can support much higher point density then normal LiDAR and behaves more authentic and has realistic intensity generation.</li>
-<li>Updated <a href="docs/image_apis.md#computer-vision-mode-1">ComputerVision mode</a>: Now has full API and Simulation just like other vehicle types. It mostly means it can now have sensors attached (outside of IMU). Improved handling and camera operation.</li>
-<li>Updated <a href="docs/lidar.md">LIDAR sensor type</a>: Fixed not tracing correctly, added ground truth (point labels) generation, added range-noise generation. Improved API pointcloud delivery to be full scan instead of being frame-rate dependent and partial.</li>
+<li>Updated Python <a href="ros/">ROS implementation</a> with completely new implementation and feature set. C++ version is deprecated.</li>
+<li>Added <a href="echo/">Echo sensor type</a> for simulation of sensors like sonar and radar.</li>
+<li>Added <a href="instance_segmentation/">Instance Segmentation</a>. </li>
+<li>Added <a href="gpulidar/">GPU LIDAR sensor type</a>: Uses GPU acceleration to simulate a LiDAR sensor. Can support much higher point density then normal LiDAR and behaves more authentic and has realistic intensity generation.</li>
+<li>Updated <a href="image_apis/#computer-vision-mode-1">ComputerVision mode</a>: Now has full API and Simulation just like other vehicle types. It mostly means it can now have sensors attached (outside of IMU). Improved handling and camera operation.</li>
+<li>Updated <a href="lidar/">LIDAR sensor type</a>: Fixed not tracing correctly, added ground truth (point labels) generation, added range-noise generation. Improved API pointcloud delivery to be full scan instead of being frame-rate dependent and partial.</li>
 <li>Added option to hot-reload plugin through Unreal Editor (faster development).</li>
-<li>Added <a href="docs/skid_steer_vehicle.md">skid steering SimMode and vehicle type</a> based on NVIDIA tank PhysX vehicle model. ClearPath Husky and Pioneer P3DX implemented as vehicle types using this new vehicle model. </li>
+<li>Added <a href="skid_steer_vehicle/">skid steering SimMode and vehicle type</a> based on NVIDIA tank PhysX vehicle model. ClearPath Husky and Pioneer P3DX implemented as vehicle types using this new vehicle model. </li>
 <li>Added BoxCar vehicle model to the Car SimMode to have a smaller vehicle to use in indoor spaces.</li>
 <li>Updated standard camera render resolution target to 960x540. Updated standard uncompressed image format to RGB instead of BGR (this breaks OpenCV support but fixes ROS images). </li>
-<li>Added option to Cameras, EchoSensor and GPULiDAR to ignore certain objects with the <em>MarkedIgnore</em> Unreal tag and enabling the "IgnoreMarked" setting in <a href="docs/settings.md">the settings file</a>.</li>
+<li>Added option to Cameras, EchoSensor and GPULiDAR to ignore certain objects with the <em>MarkedIgnore</em> Unreal tag and enabling the "IgnoreMarked" setting in <a href="settings/">the settings file</a>.</li>
 <li>Updated Unreal to 4.24 (custom fork needed for instance segmentation: <a href="https://github.com/Cosys-Lab/UnrealEngine">https://github.com/Cosys-Lab/UnrealEngine</a>)</li>
 <li>Dropped support for Unity Environments.</li>
 </ul>
@@ -323,41 +323,41 @@ Do note that this repository is provided as is, will not be actively updated and
 <p>This branch uses a custom Unreal Engine version! Please read the documentation carefully. </p>
 <h3 id="windows">Windows</h3>
 <ul>
-<li><a href="docs/build_windows.md">Build it</a></li>
+<li><a href="build_windows/">Build it</a></li>
 </ul>
 <h3 id="linux">Linux</h3>
 <ul>
-<li><a href="docs/build_linux.md">Build it</a></li>
+<li><a href="build_linux/">Build it</a></li>
 </ul>
 <h2 id="how-to-use-it">How to Use It</h2>
 <h3 id="documentation">Documentation</h3>
 <p>View our <a href="docs">detailed documentation</a> on all aspects of AirSim.</p>
 <h3 id="manual-drive">Manual drive</h3>
 <p>If you have remote control (RC) as shown below, you can manually control the drone in the simulator. For cars, you can use arrow keys to drive manually.</p>
-<p><a href="docs/remote_control.md">More details</a></p>
-<p><img alt="record screenshot" src="docs/images/AirSimDroneManual.gif" /></p>
-<p><img alt="record screenshot" src="docs/images/AirSimCarManual.gif" /></p>
+<p><a href="remote_control/">More details</a></p>
+<p><img alt="record screenshot" src="images/AirSimDroneManual.gif" /></p>
+<p><img alt="record screenshot" src="images/AirSimCarManual.gif" /></p>
 <h3 id="programmatic-control">Programmatic control</h3>
 <p>AirSim exposes APIs so you can interact with the vehicle in the simulation programmatically. You can use these APIs to retrieve images, get state, control the vehicle and so on. The APIs are exposed through the RPC, and are accessible via a variety of languages, including C++, Python, C# and Java.</p>
 <p>These APIs are also available as part of a separate, independent cross-platform library, so you can deploy them on a companion computer on your vehicle. This way you can write and test your code in the simulator, and later execute it on the real vehicles. Transfer learning and related research is one of our focus areas.</p>
-<p>Note that you can use <a href="docs/settings.md">SimMode setting</a> to specify the default vehicle or the new <a href="docs/image_apis.md">ComputerVision mode</a> so you don't get prompted each time you start AirSim.</p>
-<p><a href="docs/apis.md">More details</a></p>
+<p>Note that you can use <a href="settings/">SimMode setting</a> to specify the default vehicle or the new <a href="image_apis/">ComputerVision mode</a> so you don't get prompted each time you start AirSim.</p>
+<p><a href="apis/">More details</a></p>
 <h3 id="gathering-training-data">Gathering training data</h3>
 <p>There are two ways you can generate training data from AirSim for deep learning. The easiest way is to simply press the record button in the lower right corner. This will start writing pose and images for each frame. The data logging code is pretty simple and you can modify it to your heart's content.</p>
-<p><img alt="record screenshot" src="docs/images/record_data.png" /></p>
+<p><img alt="record screenshot" src="images/record_data.png" /></p>
 <p>A better way to generate training data exactly the way you want is by accessing the APIs. This allows you to be in full control of how, what, where and when you want to log data. </p>
 <h3 id="computer-vision-mode">Computer Vision mode</h3>
 <p>Yet another way to use AirSim is the so-called "Computer Vision" mode. In this mode, you don't have vehicles or physics. You can use the keyboard to move around the scene, or use APIs to position available cameras in any arbitrary pose, and collect images such as depth, disparity, surface normals or object segmentation. </p>
-<p><a href="docs/image_apis.md">More details</a></p>
+<p><a href="image_apis/">More details</a></p>
 <h3 id="weather-effects">Weather Effects</h3>
-<p>Press F10 to see various options available for weather effects. You can also control the weather using <a href="docs/apis.md">APIs</a>. Press F1 to see other options available.</p>
-<p><img alt="record screenshot" src="docs/images/weather_menu.png" /></p>
+<p>Press F10 to see various options available for weather effects. You can also control the weather using <a href="apis/">APIs</a>. Press F1 to see other options available.</p>
+<p><img alt="record screenshot" src="images/weather_menu.png" /></p>
 <h2 id="tutorials">Tutorials</h2>
 <ul>
 <li><a href="https://youtu.be/1oY8Qu5maQQ">Video - Setting up AirSim with Pixhawk Tutorial</a> by Chris Lovett</li>
 <li><a href="https://youtu.be/HNWdYrtw3f0">Video - Using AirSim with Pixhawk Tutorial</a> by Chris Lovett</li>
 <li><a href="https://www.youtube.com/watch?v=y09VbdQWvQY">Video - Using off-the-self environments with AirSim</a> by Jim Piavis</li>
-<li><a href="docs/reinforcement_learning.md">Reinforcement Learning with AirSim</a> by Ashish Kapoor</li>
+<li><a href="reinforcement_learning/">Reinforcement Learning with AirSim</a> by Ashish Kapoor</li>
 <li><a href="https://aka.ms/AutonomousDrivingCookbook">The Autonomous Driving Cookbook</a> by Microsoft Deep Learning and Robotics Garage Chapter</li>
 <li><a href="https://github.com/simondlevy/AirSimTensorFlow">Using TensorFlow for simple collision avoidance</a> by Simon Levy and WLU team</li>
 </ul>

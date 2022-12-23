@@ -245,8 +245,8 @@
 <p>By default, at the start of the simulation, it will give a random color to each object. 
 Please see the <a href="../image_apis/#segmentation">Image API documentation</a> on how to manually set or get the color information.</p>
 <p>The easiest way to get the images from segmentation cameras, is through ros. See the <a href="../ros/">ROS documentation</a> for more information. </p>
-<p>For an example of the Instance Segmentation API, please see the script  <a href="../PythonClient/segmentation/segmentation_test.py">segmentation_test.py</a>.</p>
-<p>For a script that generates a full list of objects and their associated color, please see the script  <a href="../PythonClient/segmentation/segmentation_generate_list.py">segmentation_generate_list.py</a>.</p>
+<p>For an example of the Instance Segmentation API, please see the script  <a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient/segmentation/segmentation_test.py">segmentation_test.py</a>.</p>
+<p>For a script that generates a full list of objects and their associated color, please see the script  <a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient/segmentation/segmentation_generate_list.py">segmentation_generate_list.py</a>.</p>
 <p>When a new object is spawned in your environment by for example a c++ or blueprint extension you made,
 and you want it to work with the instance segmentation system, you can use the extended function <code>ASimModeBase::AddNewActorToSegmentation(AActor)</code> which is also available in blueprints. </p>
 <p>Make sure to provide human-readable names to your objects in your environment as the ground truth tables that the AirSim API can provide will use your object naming to create the table.</p>
