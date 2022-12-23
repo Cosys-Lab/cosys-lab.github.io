@@ -1,1 +1,0 @@
-This repo keeps our documentation online at Github Pages: https://cosys-lab.github.io/
