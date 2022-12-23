@@ -239,7 +239,7 @@
 <h4 id="disclaimer">Disclaimer</h4>
 <p>This is still in active development. What we share below is a framework that can be extended and tweaked to obtain better performance.</p>
 <h2 id="rl-with-car">RL with Car</h2>
-<p><a href="https://github.com/Microsoft/AirSim/tree/master/PythonClient//car/DQNcar.py">Source code</a></p>
+<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient//car/DQNcar.py">Source code</a></p>
 <p>This example works with AirSimNeighborhood environment available in <a href="https://github.com/Microsoft/AirSim/releases">releases</a>.</p>
 <p>First, we need to get the images from simulation and transform them appropriately. Below, we show how a depth image can be obtained from the ego camera and transformed to an 84X84 input to the network. (you can use other sensor modalities, and sensor inputs as well – of course you’ll have to modify the code accordingly).</p>
 <pre><code>responses = client.simGetImages([ImageRequest(0, AirSimImageType.DepthPerspective, True, False)])
@@ -312,7 +312,7 @@ time.sleep(1)
 <p>Note that the simulation needs to be up and running before you execute DQNcar.py. The video below shows first few episodes of DQN training.</p>
 <p><a href="https://youtu.be/fv-oFPAqSZ4"><img alt="Reinforcement Learning - Car" src="../images/dqn_car.png" /></a></p>
 <h2 id="rl-with-quadrotor">RL with Quadrotor</h2>
-<p><a href="https://github.com/Microsoft/AirSim/tree/master/PythonClient//multirotor/DQNdrone.py">Source code</a></p>
+<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient//multirotor/DQNdrone.py">Source code</a></p>
 <p>This example works with AirSimMountainLandscape environment available in <a href="https://github.com/Microsoft/AirSim/releases">releases</a>.</p>
 <p>We can similarly apply RL for various autonomous flight scenarios with quadrotors. Below is an example on how RL could be used to train quadrotors to follow high tension power lines (e.g. application for energy infrastructure inspection).
 There are seven actions here that correspond to different directions in which the quadrotor can move in (six directions + one hovering action).</p>

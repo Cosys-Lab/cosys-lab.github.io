@@ -352,7 +352,7 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
 </tbody>
 </table>
 <pre><code>{
-    &quot;SeeDocsAt&quot;: &quot;https://cosysgit.uantwerpen.be/sensorsimulation/airsim/-/blob/master/docs/settings.md&quot;,
+    &quot;SeeDocsAt&quot;: &quot;https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/docs/settings.md&quot;,
     &quot;SettingsVersion&quot;: 1.2,
 
     &quot;SimMode&quot;: &quot;SkidVehicle&quot;,
@@ -432,14 +432,13 @@ asphalt,0.1
     * rgb represents a float32 representation of the RGB8 value that is linked to the instance segmentation system. See the <a href="../image_apis/#segmentation">Image API documentation</a> and the <a href="../instance_segmentation/">instance segmentation documentation</a>.
       The float32 comes from binary concatenation of the RGB8 values :<code>rgb = value_segmentation.R &lt;&lt; 16 | value_segmentation.G &lt;&lt; 8 | value_segmentation.B</code>\
       It can be retrieved from the API and converted back to RGB8 with for example the following Python code:
-    <code>python 
-    LiDAR_data = client.getGPULidarData('LiDAR', 'vehicle')
-    points = np.array(LiDAR_data.point_cloud, dtype=np.dtype('f4'))
-    points = np.reshape(points, (int(points.shape[0] / 5), 5))
-    rgb_values = points[:, 3].astype(np.uint32)
-    rgb = np.zeros((np.shape(points)[0], 3))
-    xyz = points[:, 0:3]
-    for index, rgb_value in enumerate(rgb_values):
+    <code>LiDAR_data = client.getGPULidarData('LiDAR', 'vehicle')
+        points = np.array(LiDAR_data.point_cloud, dtype=np.dtype('f4'))
+        points = np.reshape(points, (int(points.shape[0] / 5), 5))
+        rgb_values = points[:, 3].astype(np.uint32)
+        rgb = np.zeros((np.shape(points)[0], 3))
+        xyz = points[:, 0:3]
+        for index, rgb_value in enumerate(rgb_values):
         rgb[index, 0] = (rgb_value &gt;&gt; 16) &amp; 0xFF
         rgb[index, 1] = (rgb_value &gt;&gt; 8) &amp; 0xFF
         rgb[index, 2] = rgb_value &amp; 0xFF</code>

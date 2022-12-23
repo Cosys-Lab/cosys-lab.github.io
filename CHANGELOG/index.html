@@ -252,37 +252,37 @@
 <ul>
 <li>Updated the camera, Echo and (GPU)LiDAR sensors to be uncoupled from the vehicle and be placed as external world sensors.</li>
 <li>Added more camera sensor distortion features such as chromatic aberration, motion blur and lens distortion. </li>
-<li>Updated Python <a href="docs/ros.md">ROS implementation</a> with completely new implementation and feature set. C++ version is not supported.</li>
-<li>Added <a href="docs/echo.md">Echo sensor type</a> for simulation of sensors like sonar and radar.</li>
-<li>Added <a href="docs/instance_segmentation.md">Instance Segmentation</a>. </li>
-<li>Added <a href="docs/gpulidar.md">GPU LIDAR sensor type</a>: Uses GPU acceleration to simulate a LiDAR sensor. Can support much higher point density then normal LiDAR and behaves more authentic and has realistic intensity generation.</li>
-<li>Updated <a href="docs/image_apis.md#computer-vision-mode-1">ComputerVision mode</a>: Now has full API and Simulation just like other vehicle types. It mostly means it can now have sensors attached (outside of IMU). Improved handling and camera operation.</li>
-<li>Updated <a href="docs/lidar.md">LIDAR sensor type</a>: Fixed not tracing correctly, added ground truth (point labels) generation, added range-noise generation. Improved API pointcloud delivery to be full scan instead of being frame-rate dependent and partial.</li>
+<li>Updated Python <a href="ros">ROS implementation</a> with completely new implementation and feature set. C++ version is not supported.</li>
+<li>Added <a href="echo">Echo sensor type</a> for simulation of sensors like sonar and radar.</li>
+<li>Added <a href="instance_segmentation">Instance Segmentation</a>. </li>
+<li>Added <a href="gpulidar">GPU LIDAR sensor type</a>: Uses GPU acceleration to simulate a LiDAR sensor. Can support much higher point density then normal LiDAR and behaves more authentic and has realistic intensity generation.</li>
+<li>Updated <a href="image_apis#computer-vision-mode-1">ComputerVision mode</a>: Now has full API and Simulation just like other vehicle types. It mostly means it can now have sensors attached (outside of IMU). Improved handling and camera operation.</li>
+<li>Updated <a href="lidar">LIDAR sensor type</a>: Fixed not tracing correctly, added ground truth (point labels) generation, added range-noise generation. Improved API pointcloud delivery to be full scan instead of being frame-rate dependent and partial.</li>
 <li>Added option to hot-reload plugin through Unreal Editor (faster development).</li>
-<li>Added <a href="docs/skid_steer_vehicle.md">skid steering SimMode and vehicle type</a> based on NVIDIA tank PhysX vehicle model. ClearPath Husky and Pioneer P3DX implemented as vehicle types using this new vehicle model. </li>
+<li>Added <a href="skid_steer_vehicle">skid steering SimMode and vehicle type</a> based on NVIDIA tank PhysX vehicle model. ClearPath Husky and Pioneer P3DX implemented as vehicle types using this new vehicle model. </li>
 <li>Added BoxCar vehicle model to the Car SimMode to have a smaller vehicle to use in indoor spaces.</li>
 <li>Updated standard camera render resolution target to 960x540. Updated standard uncompressed image format to RGB instead of BGR (this breaks OpenCV support but fixes ROS images). </li>
-<li>Added option to Cameras, EchoSensor and GPULiDAR to ignore certain objects with the <em>MarkedIgnore</em> Unreal tag and enabling the "IgnoreMarked" setting in <a href="docs/settings.md">the settings file</a>.</li>
+<li>Added option to Cameras, EchoSensor and GPULiDAR to ignore certain objects with the <em>MarkedIgnore</em> Unreal tag and enabling the "IgnoreMarked" setting in <a href="settings">the settings file</a>.</li>
 <li>Updated Unreal to 4.24 (custom fork: <a href="https://github.com/Cosys-Lab/UnrealEngine">https://github.com/Cosys-Lab/UnrealEngine</a>)</li>
 <li>Dropped support for Unity Environments.</li>
 </ul>
 <h2 id="default-airsim-changelog-up-to-november-2018">Default AirSim Changelog up to November 2018</h2>
 <h3 id="november-2018">November, 2018</h3>
 <ul>
-<li>Added Weather Effects and <a href="docs/apis.md#weather-apis">APIs</a></li>
-<li>Added <a href="docs/apis.md#time-of-day-api">Time of Day API</a></li>
-<li>An experimental integration of <a href="https://github.com/Microsoft/AirSim/tree/master/Unity">AirSim on Unity</a> is now available. Learn more in <a href="https://blogs.unity3d.com/2018/11/14/airsim-on-unity-experiment-with-autonomous-vehicle-simulation">Unity blog post</a>. </li>
+<li>Added Weather Effects and <a href="apis#weather-apis">APIs</a></li>
+<li>Added <a href="apis#time-of-day-api">Time of Day API</a></li>
+<li>An experimental integration of <a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/Unity">AirSim on Unity</a> is now available. Learn more in <a href="https://blogs.unity3d.com/2018/11/14/airsim-on-unity-experiment-with-autonomous-vehicle-simulation">Unity blog post</a>. </li>
 <li><a href="https://github.com/Microsoft/AirSim/releases/tag/v1.2.1">New environments</a>: Forest, Plains (windmill farm), TalkingHeads (human head simulation), TrapCam (animal detection via camera)</li>
-<li>Highly efficient <a href="https://cosysgit.uantwerpen.be/sensorsimulation/airsim/-/blob/master/docs/settings.md#viewmode">NoDisplay view mode</a> to turn off main screen rendering so you can capture images at high rate</li>
+<li>Highly efficient <a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/settings#viewmode">NoDisplay view mode</a> to turn off main screen rendering so you can capture images at high rate</li>
 <li><a href="https://github.com/Microsoft/AirSim/pull/1479">Enable/disable sensors</a> via settings</li>
-<li><a href="docs/lidar.md">LiDAR Sensor</a></li>
+<li><a href="lidar">LiDAR Sensor</a></li>
 <li><a href="https://github.com/Microsoft/AirSim/commit/474214364676b6631c01b3ed79d00c83ba5bccf5">Support for Flysky FS-SM100 RC</a> USB adapter</li>
 <li>Case Study: <a href="https://github.com/Microsoft/AirSim/wiki/technion">Formula Student Technion Driverless</a></li>
-<li><a href="docs/multi_vehicle.md">Multi-Vehicle Capability</a></li>
+<li><a href="multi_vehicle">Multi-Vehicle Capability</a></li>
 <li><a href="https://github.com/Microsoft/AirSim/pull/1181">Custom speed units</a></li>
 <li><a href="https://github.com/Microsoft/AirSim/pull/1135">ROS publisher</a></li>
 <li><a href="https://github.com/Microsoft/AirSim/pull/1161">simSetObjectPose API</a></li>
-<li><a href="https://cosysgit.uantwerpen.be/sensorsimulation/airsim/-/blob/master/PythonClient/airsim/client.py#L137">Character Control APIs</a> (works on TalkingHeads binaries in release)</li>
+<li><a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient/airsim/client.py#L137">Character Control APIs</a> (works on TalkingHeads binaries in release)</li>
 <li><a href="https://github.com/Microsoft/AirSim/pull/1387">Arducopter Solo Support</a></li>
 <li><a href="https://github.com/Microsoft/AirSim/pull/1434">Linux install without sudo access</a></li>
 <li><a href="https://github.com/Microsoft/AirSim/pull/1298">Kinect like ROS publisher</a></li>
@@ -360,20 +360,20 @@
 </ul>
 <h3 id="nov-2017">Nov 2017</h3>
 <ul>
-<li>We now have the <a href="docs/using_car.md">car model</a>.</li>
+<li>We now have the <a href="using_car">car model</a>.</li>
 <li>No need to build the code. Just download <a href="https://github.com/Microsoft/AirSim/releases">binaries</a> and you are good to go!</li>
-<li>The <a href="docs/reinforcement_learning.md">reinforcement learning example</a> with AirSim</li>
-<li>New built-in flight controller called <a href="docs/simple_flight.md">simple_flight</a> that "just works" without any additional setup. It is also now <em>default</em>. </li>
-<li>AirSim now also generates <a href="docs/image_apis.md">depth as well as disparity images</a> that is in camera plan. </li>
+<li>The <a href="reinforcement_learning">reinforcement learning example</a> with AirSim</li>
+<li>New built-in flight controller called <a href="simple_flight">simple_flight</a> that "just works" without any additional setup. It is also now <em>default</em>. </li>
+<li>AirSim now also generates <a href="image_apis">depth as well as disparity images</a> that is in camera plan. </li>
 <li>We also have official Linux build now!</li>
 </ul>
 <h2 id="sep-2017">Sep 2017</h2>
 <ul>
-<li>We have added <a href="docs/using_car.md">car model</a>!</li>
+<li>We have added <a href="using_car">car model</a>!</li>
 </ul>
 <h2 id="aug-2017">Aug 2017</h2>
 <ul>
-<li><a href="docs/simple_flight.md">simple_flight</a> is now default flight controller for drones. If you want to use PX4, you will need to modify settings.json as per <a href="docs/px4_setup.md">PX4 setup doc</a>.</li>
+<li><a href="simple_flight">simple_flight</a> is now default flight controller for drones. If you want to use PX4, you will need to modify settings.json as per <a href="px4_setup">PX4 setup doc</a>.</li>
 <li>Linux build is official and currently uses Unreal 4.17 due to various bug fixes required</li>
 <li>ImageType enum has breaking changes with several new additions and clarifying existing ones</li>
 <li>SubWindows are now configurable from settings.json</li>
