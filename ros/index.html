@@ -229,7 +229,7 @@
 <p>AirSim and ROS can be integrated using Python. Some example ROS node are provided demonstrating how to publish data from AirSim as ROS topics.</p>
 <h1 id="python">Python</h1>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>These instructions are for Ubuntu 18.04/20.04, ROS Melodic/Noetic, UE4 4.24.4 and latest AirSim release.
+<p>These instructions are for Ubuntu 20.04, ROS Noetic, UE4 4.24.4 and latest AirSim release.
 You should have these components installed and working before proceeding</p>
 <h2 id="implemented-nodes">Implemented nodes</h2>
 <ul>
@@ -246,7 +246,7 @@ You should have these components installed and working before proceeding</p>
 <p><a href="http://wiki.ros.org/ROS/Tutorials/CreatingPackage">Create a new ROS package</a> called AirSim or whatever you like.
 If you don't already have a catkin workspace, you should first work through the ROS beginner tutorials.</p>
 <p>In the ROS package directory you made, copy the ROS node scripts from the <em>AirSim/ros/python_ws/src/airsim</em> directory to your ROS package. Change the code below to match your AirSim and catkin workspace paths.</p>
-<pre><code>cp AirSim/ros/python_ws/src/airsim/scripts https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/catkin_ws/src/airsim
+<pre><code>cp AirSim/ros/python_ws/src/airsim/scripts ../catkin_ws/src/airsim
 </code></pre>
 <h4 id="option-b-use-provided-workspace">Option B: Use provided workspace</h4>
 <p><em>Airsim/ros/python_ws</em> itself is already a workspace which can be used out of the box after building. For building see below.</p>
@@ -254,7 +254,7 @@ If you don't already have a catkin workspace, you should first work through the 
 <p>Change directory to your top level catkin workspace folder i.e. <code>cd ~/catkin_ws</code>  and run <code>catkin_make</code>
 This will build the AirSim package.  Next, run <code>source devel/setup.bash</code> so ROS can find the new package.
 You can add this command to your <em>~/.bashrc</em> to load your catkin workspace automatically.</p>
-<p><strong>NOTE FOR NOETIC:</strong> If you use Python3, change the scripts to use <code>#!/usr/bin/env python3</code> at the top instead of <code>#!/usr/bin/env python</code></p>
+<p><strong>NOTE FOR OLDER ROS VERSIONS:</strong> If you use Python2, change the scripts to use <code>#!/usr/bin/env python</code> at the top instead of <code>#!/usr/bin/env python3</code></p>
 <h2 id="how-to-run-ros-airsim-nodes">How to run ROS AirSim nodes</h2>
 <p>First make sure UE4 is running an AirSim project and the simulations is playing.</p>
 <p>The implemented AirSim nodes can be run using <code>rosrun airsim scriptname.py</code>.</p>
