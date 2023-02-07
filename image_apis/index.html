@@ -388,10 +388,9 @@ airsim.write_png(os.path.normpath(filename + '.png'), img_rgb)
 <p>To move around the environment using APIs you can use <code>simSetVehiclePose</code> API. This API takes position and orientation and sets that on the invisible vehicle where the front-center camera is located. All rest of the cameras move along keeping the relative position. If you don't want to change position (or orientation) then just set components of position (or orientation) to floating point nan values. The <code>simGetVehiclePose</code> allows to retrieve the current pose. You can also use <code>simGetGroundTruthKinematics</code> to get the quantities kinematics quantities for the movement. Many other non-vehicle specific APIs are also available such as segmentation APIs, collision APIs and camera APIs.</p>
 <h2 id="camera-apis">Camera APIs</h2>
 <p>The <code>simGetCameraInfo</code> returns the FOV(in degrees), projection matrix of a camera as well as the pose which can be:
- - Default: The pose of the camera in the vehicle frame. 
- - External: If set to <code>External</code> the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.
- - 
-The <code>simSetCameraOrientation</code> sets the orientation for the specified camera as quaternion in NED frame. The handy <code>airsim.to_quaternion()</code> function allows to convert pitch, roll, yaw to quaternion. For example, to set camera-0 to 15-degree pitch, you can use:</p>
+ * Default: The pose of the camera in the vehicle frame. 
+ * External: If set to <code>External</code> the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.</p>
+<p>The <code>simSetCameraOrientation</code> sets the orientation for the specified camera as quaternion in NED frame. The handy <code>airsim.to_quaternion()</code> function allows to convert pitch, roll, yaw to quaternion. For example, to set camera-0 to 15-degree pitch, you can use:</p>
 <pre><code>client.simSetCameraOrientation(0, airsim.to_quaternion(0.261799, 0, 0)); #radians
 </code></pre>
 <h3 id="gimbal">Gimbal</h3>
