@@ -140,6 +140,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#localhostip-setting">LocalHostIp Setting</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#apiserverport">ApiServerPort</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#speedunitfactor">SpeedUnitFactor</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#speedunitlabel">SpeedUnitLabel</a>
@@ -322,6 +324,7 @@ Linux: <code>~/Documents/AirSim</code></p>
   &quot;ClockType&quot;: &quot;&quot;,
   &quot;ClockSpeed&quot;: 1,
   &quot;LocalHostIp&quot;: &quot;127.0.0.1&quot;,
+  &quot;ApiServerPort&quot;: 41451,
   &quot;RecordUIVisible&quot;: true,
   &quot;LogMessagesVisible&quot;: true,
   &quot;ViewMode&quot;: &quot;&quot;,
@@ -355,7 +358,7 @@ Linux: <code>~/Documents/AirSim</code></p>
         &quot;MotionBlurAmount&quot;: 1,
         &quot;MotionBlurMax&quot;: 10,
         &quot;ChromaticAberrationScale&quot;: 2,
-    &quot;IgnoreMarked&quot;: false
+        &quot;IgnoreMarked&quot;: false
       }
     ],
     &quot;NoiseSettings&quot;: [
@@ -633,6 +636,9 @@ over Ethernet or over Wi-Fi, or some other special virtual adapter or a VPN.  Yo
 be allowed to talk to each other, in which case the UDP messages from one network will not get through to the others.</p>
 <p>So the LocalHostIp allows you to configure how you are reaching those machines.  The default of 127.0.0.1 is not able to reach external machines, 
 this default is only used when everything you are talking to is contained on a single PC.</p>
+<h3 id="apiserverport">ApiServerPort</h3>
+<p>This setting determines the server port that used by airsim clients, default port is 41451. 
+By specifying different ports, the user can run multiple environments in parallel to accelerate data collection process.</p>
 <h3 id="speedunitfactor">SpeedUnitFactor</h3>
 <p>Unit conversion factor for speed related to <code>m/s</code>, default is 1. Used in conjunction with SpeedUnitLabel. This may be only used for display purposes for example on-display speed when car is being driven. For example, to get speed in <code>miles/hr</code> use factor 2.23694.</p>
 <h3 id="speedunitlabel">SpeedUnitLabel</h3>
