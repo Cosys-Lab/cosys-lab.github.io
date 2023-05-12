@@ -98,28 +98,34 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ROS: AirSim ROS Wrapper</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">ROS</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">ROS: AirSim ROS Wrapper</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#publish-node">Publish node</a>
+    <li class="toctree-l3"><a class="reference internal" href="#publish-node">Publish node</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#example-launch-files">Example launch files</a>
+    <li class="toctree-l3"><a class="reference internal" href="#example-launch-files">Example launch files</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+    <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setup-workspace-and-airsim-package">Setup workspace and Airsim package</a>
+    <li class="toctree-l3"><a class="reference internal" href="#setup-workspace-and-airsim-package">Setup workspace and Airsim package</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#option-a-create-a-new-ros-package-in-your-catkin-workspace-following-these-instructions">Option A: Create a new ROS package in your catkin workspace following these instructions.</a>
+    <li class="toctree-l4"><a class="reference internal" href="#option-a-create-a-new-ros-package-in-your-catkin-workspace-following-these-instructions">Option A: Create a new ROS package in your catkin workspace following these instructions.</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#option-b-use-provided-workspace">Option B: Use provided workspace</a>
+    <li class="toctree-l4"><a class="reference internal" href="#option-b-use-provided-workspace">Option B: Use provided workspace</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#build-ros-airsim-package">Build ROS AirSim package</a>
+    <li class="toctree-l3"><a class="reference internal" href="#build-ros-airsim-package">Build ROS AirSim package</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-run-ros-airsim-nodes">How to run ROS AirSim nodes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-run-ros-airsim-nodes">How to run ROS AirSim nodes</a>
     </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../playback/">Playing Logs</a>
@@ -235,6 +241,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Using AirSim &raquo;</li>
+          <li>ROS &raquo;</li>
       <li>ROS: AirSim ROS Wrapper</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/ros.md" class="icon icon-github"> Edit on GitHub</a>
@@ -278,12 +285,13 @@ You can add this command to your <em>~/.bashrc</em> to load your catkin workspac
 <p>First make sure you are running an AirSim project and that the simulation is playing.</p>
 <p>The implemented AirSim node can be run using <code>rosrun airsim airsim_publish.py</code>.</p>
 <p>Or alternatively you can use launch files such as the example ones that can be found in <em>AirSim/ros/python_ws/src/airsim/launch</em> like <code>rosrun airsim airsim_publish.launch</code>.</p>
+<p>You can also make use of WSL to run ROS nodes on Windows. See <a href="../ROS_on_Windows_with_WSL/">here</a> for more information.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../InfraredCamera/" class="btn btn-neutral float-left" title="Infrared Camera"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../playback/" class="btn btn-neutral float-right" title="Playing Logs">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ROS_on_Windows_with_WSL/" class="btn btn-neutral float-right" title="Using ROS on Windows with WSL">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -313,7 +321,7 @@ You can add this command to your <em>~/.bashrc</em> to load your catkin workspac
       <span><a href="../InfraredCamera/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../playback/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../ROS_on_Windows_with_WSL/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
