@@ -98,6 +98,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#echo-configuration">Echo configuration</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#passive-echo-beacons">Passive Echo Beacons</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#client-api">Client API</a>
     </li>
     </ul>
@@ -114,13 +116,13 @@
                 </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../matlab/">Matlab</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../playback/">Playing Logs</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../design/">Architecture</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
@@ -251,7 +253,7 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
              &quot;Enabled&quot; : true,
 </code></pre>
 <ul>
-<li>Multiple echo sensors can be enabled on a vehicle.</li>
+<li>Multiple echo sensors can be enabled on a vehicle .</li>
 </ul>
 <h2 id="echo-configuration">Echo configuration</h2>
 <p>The following parameters can be configured right now via settings json.</p>
@@ -264,16 +266,72 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
 </thead>
 <tbody>
 <tr>
-<td>NumberOfTraces</td>
-<td>Amount of traces (rays) being cast</td>
+<td>X Y Z</td>
+<td>Position of the echo sensor relative to the vehicle (in NED, in meters)</td>
 </tr>
 <tr>
-<td>SensorOpeningAngle</td>
-<td>The angle for receiving signals on the sensor</td>
+<td>Roll Pitch Yaw</td>
+<td>Orientation of the echo sensor relative to the vehicle  (in degrees, yaw-pitch-roll order to front vector +X)</td>
+</tr>
+<tr>
+<td>External</td>
+<td>Uncouple the sensor from the vehicle. If enabled, the position and orientation will be relative to Unreal world coordinates</td>
+</tr>
+<tr>
+<td>ExternalLocal</td>
+<td>When in external mode, if this is enabled the retrieved pose of the sensor will be in Local NED coordinates(from starting position from vehicle) and not converted Unreal NED coordinates which is default</td>
+</tr>
+<tr>
+<td>SenseActive</td>
+<td>Enable active sensing where the sensor will emit a signal and receive signals from the reflections</td>
+</tr>
+<tr>
+<td>SensePassive</td>
+<td>Enable passive sensing where the sensor will receive signals from other active sources in the world (Passive Echo Beacons, see details below)</td>
+</tr>
+<tr>
+<td>PassiveRadius</td>
+<td>The radius in meters in which the sensor will receive signals from passive sources if that mode is enabled</td>
+</tr>
+<tr>
+<td>NumberOfTraces</td>
+<td>Amount of traces (rays) being cast. If set to a negative value, it will only do 2D sensing in horizontal plane!</td>
+</tr>
+<tr>
+<td>SensorLowerAzimuthLimit</td>
+<td>The lower azimuth angle limit in degrees for receiving signals on the sensor (default = -90)</td>
+</tr>
+<tr>
+<td>SensorUpperAzimuthLimit</td>
+<td>The upper azimuth angle limit in degrees for receiving signals on the sensor (default = 90)</td>
+</tr>
+<tr>
+<td>SensorLowerElevationLimit</td>
+<td>The lower elevation angle limit in degrees for receiving signals on the sensor (default = -90)</td>
+</tr>
+<tr>
+<td>SensorUpperElevationLimit</td>
+<td>The upper elevation angle limit in degrees for receiving signals on the sensor (default = 90)</td>
+</tr>
+<tr>
+<td>MeasurementFrequency</td>
+<td>The frequency of the sensor (measurements/s)</td>
+</tr>
+<tr>
+<td>SensorDiameter</td>
+<td>The diameter of the sensor plane used to capture the reflecting traces (meter)</td>
 </tr>
 <tr>
 <td>ReflectionOpeningAngle</td>
-<td>Opening angle of reflections</td>
+<td>Opening angle of reflections (degrees)</td>
+</tr>
+<tr>
+<td>ReflectionLimit</td>
+<td>Maximum amount of reflections that can happen.</td>
+</tr>
+<tr>
+<td>ReflectionDistanceLimit</td>
+<td>Maximum distance between two reflections (meters)</td>
 </tr>
 <tr>
 <td>AttenuationPerDistance</td>
@@ -289,35 +347,15 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
 </tr>
 <tr>
 <td>DistanceLimit</td>
-<td>Maximum distance a reflection can travel</td>
-</tr>
-<tr>
-<td>ReflectionLimit</td>
-<td>Maximum amount of reflections that can happen</td>
-</tr>
-<tr>
-<td>ReflectionDistanceLimit</td>
-<td>Maximum distance between two reflections</td>
-</tr>
-<tr>
-<td>MeasurementFrequency</td>
-<td>The frequency of the sensor (measurements/s)</td>
-</tr>
-<tr>
-<td>SensorDiameter</td>
-<td>The diameter of the sensor plane used to capture the reflecting traces (meter)</td>
+<td>Maximum distance a reflection can travel (meters)</td>
 </tr>
 <tr>
 <td>PauseAfterMeasurement</td>
 <td>Pause the simulation after each measurement. Useful for API interaction to be synced</td>
 </tr>
 <tr>
-<td>X Y Z</td>
-<td>Position of the echo relative to the vehicle (in NED, in meters)</td>
-</tr>
-<tr>
-<td>Roll Pitch Yaw</td>
-<td>Orientation of the echo relative to the vehicle  (in degrees, yaw-pitch-roll order to front vector +X)</td>
+<td>IgnoreMarked</td>
+<td>Remove objects with the Unreal Tag <em>MarkedIgnore</em> from the sensor data</td>
 </tr>
 <tr>
 <td>DrawReflectedPoints</td>
@@ -344,20 +382,16 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
 <td>Draw lines of all bouncing reflections of the traces with their color depending on attenuation</td>
 </tr>
 <tr>
+<td>DrawPassiveSources</td>
+<td>Draw debug points and reflection lines for all detected passive echo sources (original sources and their reflection echos against objects)</td>
+</tr>
+<tr>
+<td>DrawPassiveLines</td>
+<td>Draw debug lines of the sensor to the passive echo sources that are detected with line of sight.</td>
+</tr>
+<tr>
 <td>DrawSensor</td>
 <td>Draw the physical sensor in the world on the vehicle with a 3D axes shown where the sensor is</td>
-</tr>
-<tr>
-<td>IgnoreMarked</td>
-<td>Remove objects with the Unreal Tag <em>MarkedIgnore</em> from the sensor data</td>
-</tr>
-<tr>
-<td>External</td>
-<td>Uncouple the sensor from the vehicle. If enabled, the position and orientation will be relative to Unreal world coordinates</td>
-</tr>
-<tr>
-<td>ExternalLocal</td>
-<td>When in external mode, if this is enabled the retrieved pose of the sensor will be in Local NED coordinates(from starting position from vehicle) and not converted Unreal NED coordinates which is default</td>
 </tr>
 <tr>
 <td>e.g.,</td>
@@ -383,38 +417,188 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
                       &quot;Roll&quot;: 0,
                       &quot;Pitch&quot;: 0,
                       &quot;Yaw&quot;: 0,
+                      &quot;SenseActive&quot;: true,
+                      &quot;SensePassive&quot;: false,
                       &quot;MeasurementFrequency&quot;: 5,
-                      &quot;NumberOfTraces&quot;: 30000,
-                      &quot;DistanceLimit&quot;: 5,
-                      &quot;SensorDiameter&quot;: 0.1,
-                      &quot;SensorOpeningAngle&quot;: 180,
-                      &quot;Wavelength&quot;: 0.01,
+                      &quot;NumberOfTraces&quot;: 10000,
+                      &quot;SensorDiameter&quot;: 0.5,
+                      &quot;SensorLowerAzimuthLimit&quot;: -90,
+                      &quot;SensorUpperAzimuthLimit&quot;: 90,
+                      &quot;SensorLowerElevationLimit&quot;: -90,
+                      &quot;SensorUpperElevationLimit&quot;: 90,
+                      &quot;AttenuationPerDistance&quot;: 0,
+                      &quot;AttenuationPerReflection&quot;: 0,
                       &quot;AttenuationLimit&quot;: -100,
-                      &quot;ReflectionDepth&quot;: 3,
-                      &quot;ReflectionDistanceLimit&quot;: 1,
+                      &quot;DistanceLimit&quot;: 10,
+                      &quot;ReflectionLimit&quot;: 3,
+                      &quot;ReflectionDistanceLimit&quot;: 0.4,
                       &quot;ReflectionOpeningAngle&quot;: 10,
-                      &quot;DrawInitialPoints&quot;: false,
-                      &quot;DrawBounceLines&quot;: false,
-                      &quot;DrawReflectedPoints&quot;: true,
-                      &quot;DrawReflectedLines&quot;: false,
-                      &quot;DrawReflectedPaths&quot;: false,
-                      &quot;DrawExternalPoints&quot;: false,
-                      &quot;DrawSensor&quot;: false
                 }   
             }
         }
     }
 }
 </code></pre>
+<h2 id="passive-echo-beacons">Passive Echo Beacons</h2>
+<p>While the default configuration of the echo sensor is to emit a signal and receive the reflections, it is also possible to have passive echo sources in the world.
+These are objects that emit a signal and the echo sensor will receive the reflections of these signals. This can be used to simulate other echo sources in the world that are not the echo sensor itself.</p>
+<p>One can define these from the Unreal Editor itself or through the AirSimSettings json file. 
+In the Editor, use the search function to look for <code>Passive Echo Beacon</code> and add it to the world. You can alter the settings from the Details panel. 
+In the AirSimSettings json file you can define new beacons under the <code>PassiveEchoBeacons</code> section. The beacons have the following settings: </p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X Y Z</td>
+<td>Position of the beacon relative to the Unreal World origin, so not in robot reference frame! (in NED, in meters)</td>
+</tr>
+<tr>
+<td>Roll Pitch Yaw</td>
+<td>Orientation of the beacon relative to the Unreal World origin, so not in robot reference frame! (in degrees, yaw-pitch-roll order to front vector +X)</td>
+</tr>
+<tr>
+<td>Enabe</td>
+<td>Toggle the beacon on or off.</td>
+</tr>
+<tr>
+<td>InitialDirections</td>
+<td>Amount of traces (rays) being cast. This defines the resolution of the resulting reflection point cloud.</td>
+</tr>
+<tr>
+<td>SensorLowerAzimuthLimit</td>
+<td>The lower azimuth angle limit in degrees for sending out the initial rays of the source. (default = -90)</td>
+</tr>
+<tr>
+<td>SensorUpperAzimuthLimit</td>
+<td>The upper azimuth angle limit in degrees for sending out the initial rays of the source. (default = 90)</td>
+</tr>
+<tr>
+<td>SensorLowerElevationLimit</td>
+<td>The lower elevation angle limit in degrees for sending out the initial rays of the source. (default = -90)</td>
+</tr>
+<tr>
+<td>SensorUpperElevationLimit</td>
+<td>The upper elevation angle limit in degrees for sending out the initial rays of the source. (default = 90)</td>
+</tr>
+<tr>
+<td>ReflectionLimit</td>
+<td>Maximum amount of reflections that can happen.</td>
+</tr>
+<tr>
+<td>ReflectionDistanceLimit</td>
+<td>Maximum distance between two reflections (meters)</td>
+</tr>
+<tr>
+<td>ReflectionOnlyFinal</td>
+<td>Only save the final reflection along a trace. This will ignore all other reflections that happen along the trace in the data</td>
+</tr>
+<tr>
+<td>AttenuationPerDistance</td>
+<td>Attenuation of signal wrt distance traveled (dB/m)</td>
+</tr>
+<tr>
+<td>AttenuationPerReflection</td>
+<td>Attenuation of signal wrt reflections (dB)</td>
+</tr>
+<tr>
+<td>AttenuationLimit</td>
+<td>Attenuation at which the signal is considered dissipated (dB)</td>
+</tr>
+<tr>
+<td>DistanceLimit</td>
+<td>Maximum distance a reflection can travel (meters)</td>
+</tr>
+<tr>
+<td>DrawDebugAllPoints</td>
+<td>Draw debug points in world where reflected points are happening due to this source. It will also show the reflection direction with a line</td>
+</tr>
+<tr>
+<td>DrawDebugAllLines</td>
+<td>Draw all lines that are being cast from the source to the reflections, not only the ones that are reflected</td>
+</tr>
+<tr>
+<td>DrawDebugLocation</td>
+<td>Draw a 3D axes shown where the source is</td>
+</tr>
+<tr>
+<td>DrawDebugDuration</td>
+<td>Duration in seconds that the debug points and lines will be shown in the world. -1 is infinite.</td>
+</tr>
+</tbody>
+</table>
+<p>In the settings file this can look like this example : </p>
+<pre><code>{
+  &quot;SeeDocsAt&quot;: &quot;settings_json.md&quot;,
+  &quot;SettingsVersion&quot;: 1.2,
+  &quot;SimMode&quot;: &quot;SkidVehicle&quot;,
+  &quot;ViewMode&quot;: &quot;&quot;,
+  &quot;Vehicles&quot;: {
+    &quot;airsimvehicle&quot;: {
+      &quot;VehicleType&quot;: &quot;CPHusky&quot;,
+      &quot;AutoCreate&quot;: true,
+      &quot;Sensors&quot;: {
+        ...
+        &quot;echo&quot;: {
+          &quot;SensorType&quot;: 7,
+          &quot;Enabled&quot;: true,
+          ...
+          &quot;DrawPassiveSources&quot;: false,
+          &quot;DrawPassiveLines&quot;: true,
+          &quot;DrawSensor&quot;: true,
+          &quot;SenseActive&quot;: false,
+          &quot;SensePassive&quot;: true,
+          &quot;PassiveRadius&quot; : 10
+        }
+      }   
+    }
+  },
+  &quot;PassiveEchoBeacons&quot;: {
+      &quot;passiveEchoBeacon1&quot;: {
+          &quot;X&quot;: 5,
+          &quot;Y&quot;: 5,
+          &quot;Z&quot;: -5,
+          &quot;Roll&quot;: 0,
+          &quot;Pitch&quot;: 0,
+          &quot;Yaw&quot;: 0,
+          &quot;Enable&quot; : true,
+          &quot;InitialDirections&quot;: 1000,
+          &quot;SensorLowerAzimuthLimit&quot;: -90,
+          &quot;SensorUpperAzimuthLimit&quot;: 90,
+          &quot;SensorLowerElevationLimit&quot;: -90,
+          &quot;SensorUpperElevationLimit&quot;: 90,
+          &quot;AttenuationPerDistance&quot;: 0,
+          &quot;AttenuationPerReflection&quot;: 0,
+          &quot;AttenuationLimit&quot;: -100,
+          &quot;DistanceLimit&quot;: 10,
+          &quot;ReflectionLimit&quot;: 3,      
+          &quot;DrawDebugAllPoints&quot;: true,
+          &quot;DrawDebugAllLines&quot;: false,
+          &quot;DrawDebugLocation&quot;: true,
+          &quot;DrawDebugDuration&quot;: -1
+      }
+  }
+}
+</code></pre>
 <h2 id="client-api">Client API</h2>
 <p>Use <code>getEchoData(sensor name, vehicle name)</code> API to retrieve the echo sensor data. 
-* The API returns a Point-Cloud as a flat array of floats, the final attenuation, total distance along with the timestamp of the capture and sensor pose.
-* Point-Cloud: 
-  * The floats represent [x, y, z, attenuation, total_distance] for each point hit within the range in the last scan. 
+* The API returns Point-Cloud(s) as a flat array of floats, the final attenuation, total distance and reflection count (+ reflection normal for passive beacon reflections) along with the timestamp of the capture and sensor pose.
 * Echo Pose:
     * Default: Echo sensor pose in the vehicle frame. 
-    * External: If set to <code>External</code>(see table) the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.</p>
-<p>Use <code>setEchoData(sensor name, vehicle name, echo data)</code> API to render an external pointcloud back to the simulation. It expects it to be [x,y,z] as a flat array of floats.</p>
+    * External: If set to <code>External</code>(see table) the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.
+* Active Point-Cloud: 
+  * The floats represent [x, y, z, attenuation, total_distance, reflection_count] for each point hit within the range in the last scan.
+* Active Groundtruth:
+    * For each point of the Active Point-Cloud a label string is kept that has the name of the object that the point belongs to.
+* Passive Point-Cloud: 
+  * The floats represent [x, y, z, attenuation, total_distance, reflection_count, reflection angle x, reflection angle y, reflection angle z] for each point hit within the range in the last scan. 
+* Passive Groundtruth:
+    * For each point two strings are kept of the Passive Point-Cloud. The first a label string representing the object of the reflection and second the name of the Passive Echo Beacon that was the source of this reflection. 
+Use <code>setEchoData(sensor name, vehicle name, echo data)</code> API to render an external pointcloud back to the simulation. It expects it to be [x,y,z] as a flat array of floats.</p>
               
             </div>
           </div><footer>

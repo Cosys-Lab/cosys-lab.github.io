@@ -92,11 +92,11 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">GPU LIDAR</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#enabling-gpu-lidar-on-a-vehicle">Enabling GPU LiDAR on a vehicle</a>
+    <li class="toctree-l3"><a class="reference internal" href="#enabling-gpu-lidar-on-a-vehicle">Enabling GPU lidar on a vehicle</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#ignoring-glass-and-other-material-types">Ignoring glass and other material types</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#gpu-lidar-configuration">GPU LiDAR configuration</a>
+    <li class="toctree-l3"><a class="reference internal" href="#gpu-lidar-configuration">GPU Lidar configuration</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#intensity-surface-material-map">Intensity Surface Material map</a>
     </li>
@@ -120,13 +120,13 @@
                 </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../matlab/">Matlab</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../playback/">Playing Logs</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../design/">Architecture</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
@@ -244,25 +244,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="how-to-use-gpu-lidar-in-airsim">How to Use GPU LiDAR in AirSim</h1>
-<p>AirSim supports a GPU accelerated LiDAR for multirotors and cars. It uses a depth camera that rotates around to simulate a LiDAR while exploiting the GPU to do most of the work. Should allow for a large increase in amount of points that can be simulated.</p>
-<p>The enablement of a GPU LiDAR and the other LiDAR settings can be configured via AirSimSettings json.
+                <h1 id="how-to-use-gpu-lidar-in-airsim">How to Use GPU Lidar in AirSim</h1>
+<p>AirSim supports a GPU accelerated Lidar for multirotors and cars. It uses a depth camera that rotates around to simulate a Lidar while exploiting the GPU to do most of the work. Should allow for a large increase in amount of points that can be simulated.</p>
+<p>The enablement of a GPU lidar and the other lidar settings can be configured via AirSimSettings json.
 Please see <a href="../sensors/">general sensors</a> for information on configuration of general/shared sensor settings.</p>
 <p>Note that this sensor type is currently not supported for Multirotor mode. It only works for Car and Computervision.</p>
-<h2 id="enabling-gpu-lidar-on-a-vehicle">Enabling GPU LiDAR on a vehicle</h2>
+<h2 id="enabling-gpu-lidar-on-a-vehicle">Enabling GPU lidar on a vehicle</h2>
 <ul>
-<li>By default, GPU LiDARs are not enabled. To enable the sensor, set the SensorType and Enabled attributes in settings json.</li>
+<li>By default, GPU lidars are not enabled. To enable the sensor, set the SensorType and Enabled attributes in settings json.</li>
 </ul>
 <pre><code>        &quot;GPULidar1&quot;: { 
              &quot;SensorType&quot;: 8,
              &quot;Enabled&quot; : true,
 </code></pre>
 <ul>
-<li>Multiple GPU LiDARs can be enabled on a vehicle. <em>But one has to turn off DrawDebugPoints!</em></li>
+<li>Multiple GPU lidars can be enabled on a vehicle. <em>But one has to turn off DrawDebugPoints!</em></li>
 </ul>
 <h2 id="ignoring-glass-and-other-material-types">Ignoring glass and other material types</h2>
 <p>One can set an object that should be invisible to LIDAR sensors (such as glass) by giving them an Unreal Tag called <em>LidarIgnore</em>. </p>
-<h2 id="gpu-lidar-configuration">GPU LiDAR configuration</h2>
+<h2 id="gpu-lidar-configuration">GPU Lidar configuration</h2>
 <p>The following parameters can be configured right now via settings json. For some more information check the publication on this topic <a href="">here</a>.</p>
 <table>
 <thead>
@@ -274,7 +274,7 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
 <tbody>
 <tr>
 <td>NumberOfChannels</td>
-<td>Number of channels/lasers of the LiDAR</td>
+<td>Number of channels/lasers of the lidar. When set to 1 it will act as a 2D horizontal LiDAR and will use the VerticalFOVUpper value as the vertical angle to scan.</td>
 </tr>
 <tr>
 <td>Range</td>
@@ -290,31 +290,31 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
 </tr>
 <tr>
 <td>Resolution</td>
-<td>Defines the resolution of the depth camera image that generates the LiDAR point cloud</td>
+<td>Defines the resolution of the depth camera image that generates the Lidar point cloud</td>
 </tr>
 <tr>
 <td>HorizontalFOVStart</td>
-<td>Horizontal FOV start for the LiDAR, in degrees</td>
+<td>Horizontal FOV start for the lidar, in degrees</td>
 </tr>
 <tr>
 <td>HorizontalFOVEnd</td>
-<td>Horizontal FOV end for the LiDAR, in degrees</td>
+<td>Horizontal FOV end for the lidar, in degrees</td>
 </tr>
 <tr>
 <td>VerticalFOVUpper</td>
-<td>Vertical FOV upper limit for the LiDAR, in degrees</td>
+<td>Vertical FOV upper limit for the lidar, in degrees</td>
 </tr>
 <tr>
 <td>VerticalFOVLower</td>
-<td>Vertical FOV lower limit for the LiDAR, in degrees</td>
+<td>Vertical FOV lower limit for the lidar, in degrees</td>
 </tr>
 <tr>
 <td>X Y Z</td>
-<td>Position of the LiDAR relative to the vehicle (in NED, in meters)</td>
+<td>Position of the lidar relative to the vehicle (in NED, in meters)</td>
 </tr>
 <tr>
 <td>Roll Pitch Yaw</td>
-<td>Orientation of the LiDAR relative to the vehicle  (in degrees, yaw-pitch-roll order to front vector +X)</td>
+<td>Orientation of the lidar relative to the vehicle  (in degrees, yaw-pitch-roll order to front vector +X)</td>
 </tr>
 <tr>
 <td>IgnoreMarked</td>
@@ -393,7 +393,7 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
                     &quot;rangeMaxLambertianPercentage&quot;: 80,
                     &quot;rainMaxIntensity&quot;: 70,
                     &quot;rainConstantA&quot;: 0.01,
-                    &quot;rainConstantB&quot;: 0.6
+                    &quot;rainConstantB&quot;: 0.6,
                 }
             }
         }
@@ -401,7 +401,7 @@ Please see <a href="../sensors/">general sensors</a> for information on configur
 }
 </code></pre>
 <h2 id="intensity-surface-material-map">Intensity Surface Material map</h2>
-<p>If 'GenerateIntensity' is enabled in the settings json, a surface material map is required. This map is used to calculate the intensity of the LiDAR points.
+<p>If 'GenerateIntensity' is enabled in the settings json, a surface material map is required. This map is used to calculate the intensity of the lidar points.
 e.g.:</p>
 <pre><code>wood,0.9
 alluminium,0.5
@@ -410,7 +410,7 @@ asphalt,0.1
 </code></pre>
 <p>This needs to be saved as 'materials.csv' in your documents folder where also your settings json file resides.</p>
 <h2 id="server-side-visualization-for-debugging">Server side visualization for debugging</h2>
-<p>By default, the LiDAR points are not drawn on the viewport. To enable the drawing of hit laser points on the viewport, please enable setting 'DrawDebugPoints' via settings json. <em>This is only for testing purposes and will affect the data slightly. It also needs to be disabled when using multiple LiDAR sensors to avoid artifacts!!</em></p>
+<p>By default, the lidar points are not drawn on the viewport. To enable the drawing of hit laser points on the viewport, please enable setting 'DrawDebugPoints' via settings json. <em>This is only for testing purposes and will affect the data slightly. It also needs to be disabled when using multiple Lidar sensors to avoid artifacts!!</em></p>
 <p>e.g.:</p>
 <pre><code>        &quot;Lidar1&quot;: { 
              ...
@@ -418,11 +418,11 @@ asphalt,0.1
         },
 </code></pre>
 <p>You can also tweak the variation of debugging with the 'DrawMode' parameter:
- * 0 = no coloring
- * 1 = instance segmentation
- * 2 = material
- * 3 = impact angle
- * 4 = intensity</p>
+ - 0 = no coloring
+ - 1 = instance segmentation
+ - 2 = material
+ - 3 = impact angle
+ - 4 = intensity</p>
 <p>e.g.:</p>
 <pre><code>        &quot;Lidar1&quot;: { 
              ...
@@ -431,30 +431,29 @@ asphalt,0.1
         },
 </code></pre>
 <h2 id="client-api">Client API</h2>
-<p>Use <code>getGPULidarData(sensor name, vehicle name)</code> API to retrieve the GPU LiDAR data. </p>
-<ul>
-<li>The API returns a Point-Cloud as a flat array of floats along with the timestamp of the capture and LiDAR pose.</li>
-<li>Point-Cloud: </li>
-<li>The floats represent [x,y,z, rgb, intensity] coordinate for each point hit within the range in the last scan.</li>
-<li>[x,y,z] represent the coordinates of each detected point in the local sensor frame. </li>
-<li>rgb represents a float32 representation of the RGB8 value that is linked to the instance segmentation system. See the <a href="../image_apis/#segmentation">Image API documentation</a> and the <a href="../instance_segmentation/">instance segmentation documentation</a>.
-        The float32 comes from binary concatenation of the RGB8 values :<code>rgb = value_segmentation.R &lt;&lt; 16 | value_segmentation.G &lt;&lt; 8 | value_segmentation.B</code>\
-        It can be retrieved from the API and converted back to RGB8 with for example the following Python code:
-      <code>LiDAR_data = client.getGPULidarData('LiDAR', 'vehicle')
-          points = np.array(LiDAR_data.point_cloud, dtype=np.dtype('f4'))
-          points = np.reshape(points, (int(points.shape[0] / 5), 5))
-          rgb_values = points[:, 3].astype(np.uint32)
-          rgb = np.zeros((np.shape(points)[0], 3))
-          xyz = points[:, 0:3]
-          for index, rgb_value in enumerate(rgb_values):
-          rgb[index, 0] = (rgb_value &gt;&gt; 16) &amp; 0xFF
-          rgb[index, 1] = (rgb_value &gt;&gt; 8) &amp; 0xFF
-          rgb[index, 2] = rgb_value &amp; 0xFF</code></li>
-<li>intensity represents the reflection strength as a float.</li>
-<li>Pose:</li>
-<li>Default: sensor pose in the vehicle frame. </li>
-<li>External: If set to <code>External</code>(see table) the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.</li>
-</ul>
+<p>Use <code>getGPULidarData(sensor name, vehicle name)</code> API to retrieve the GPU Lidar data. 
+* The API returns a Point-Cloud as a flat array of floats along with the timestamp of the capture and lidar pose.
+* Point-Cloud: 
+  * The floats represent [x,y,z, rgb, intensity] coordinate for each point hit within the range in the last scan.
+    * [x,y,z] represent the coordinates of each detected point in the local sensor frame. 
+    * rgb represents a float32 representation of the RGB8 value that is linked to the instance segmentation system. See the <a href="../image_apis/#segmentation">Image API documentation</a> and the <a href="../instance_segmentation/">instance segmentation documentation</a>.
+      The float32 comes from binary concatenation of the RGB8 values :<code>rgb = value_segmentation.R &lt;&lt; 16 | value_segmentation.G &lt;&lt; 8 | value_segmentation.B</code>\
+      It can be retrieved from the API and converted back to RGB8 with for example the following Python code:
+    <code>python 
+    lidar_data = client.getGPULidarData('lidar', 'vehicle')
+    points = np.array(lidar_data.point_cloud, dtype=np.dtype('f4'))
+    points = np.reshape(points, (int(points.shape[0] / 5), 5))
+    rgb_values = points[:, 3].astype(np.uint32)
+    rgb = np.zeros((np.shape(points)[0], 3))
+    xyz = points[:, 0:3]
+    for index, rgb_value in enumerate(rgb_values):
+        rgb[index, 0] = (rgb_value &gt;&gt; 16) &amp; 0xFF
+        rgb[index, 1] = (rgb_value &gt;&gt; 8) &amp; 0xFF
+        rgb[index, 2] = rgb_value &amp; 0xFF</code>
+    * intensity represents the reflection strength as a float.
+* Lidar Pose:
+    * Default: sensor pose in the vehicle frame. 
+    * External: If set to <code>External</code>(see table) the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.</p>
               
             </div>
           </div><footer>
