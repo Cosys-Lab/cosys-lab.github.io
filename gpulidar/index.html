@@ -431,29 +431,23 @@ asphalt,0.1
         },
 </code></pre>
 <h2 id="client-api">Client API</h2>
-<p>Use <code>getGPULidarData(sensor name, vehicle name)</code> API to retrieve the GPU Lidar data. 
-* The API returns a Point-Cloud as a flat array of floats along with the timestamp of the capture and lidar pose.
-* Point-Cloud: 
-  * The floats represent [x,y,z, rgb, intensity] coordinate for each point hit within the range in the last scan.
-    * [x,y,z] represent the coordinates of each detected point in the local sensor frame. 
-    * rgb represents a float32 representation of the RGB8 value that is linked to the instance segmentation system. See the <a href="../image_apis/#segmentation">Image API documentation</a> and the <a href="../instance_segmentation/">instance segmentation documentation</a>.
-      The float32 comes from binary concatenation of the RGB8 values :<code>rgb = value_segmentation.R &lt;&lt; 16 | value_segmentation.G &lt;&lt; 8 | value_segmentation.B</code>\
-      It can be retrieved from the API and converted back to RGB8 with for example the following Python code:
-    <code>python 
-    lidar_data = client.getGPULidarData('lidar', 'vehicle')
-    points = np.array(lidar_data.point_cloud, dtype=np.dtype('f4'))
-    points = np.reshape(points, (int(points.shape[0] / 5), 5))
-    rgb_values = points[:, 3].astype(np.uint32)
-    rgb = np.zeros((np.shape(points)[0], 3))
-    xyz = points[:, 0:3]
-    for index, rgb_value in enumerate(rgb_values):
-        rgb[index, 0] = (rgb_value &gt;&gt; 16) &amp; 0xFF
-        rgb[index, 1] = (rgb_value &gt;&gt; 8) &amp; 0xFF
-        rgb[index, 2] = rgb_value &amp; 0xFF</code>
-    * intensity represents the reflection strength as a float.
-* Lidar Pose:
-    * Default: sensor pose in the vehicle frame. 
-    * External: If set to <code>External</code>(see table) the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.</p>
+<p>Use <code>getGPULidarData(sensor name, vehicle name)</code> API to retrieve the GPU Lidar data. The API returns a Point-Cloud as a flat array of floats along with the timestamp of the capture and lidar pose.
+* <strong>Point-Cloud:</strong> The floats represent [x,y,z, rgb, intensity] coordinate for each point hit within the range in the last scan.
+* <strong>Lidar Pose:</strong> Default: sensor pose in the vehicle frame / External: If set to <code>External</code>(see table) the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.</p>
+<p>Rgb represents a float32 representation of the RGB8 value that is linked to the instance segmentation system. See the <a href="../image_apis/#segmentation">Image API documentation</a> and the <a href="../instance_segmentation/">instance segmentation documentation</a>.
+The float32 comes from binary concatenation of the RGB8 values :<code>rgb = value_segmentation.R &lt;&lt; 16 | value_segmentation.G &lt;&lt; 8 | value_segmentation.B</code>\
+It can be retrieved from the API and converted back to RGB8 with for example the following Python code:</p>
+<pre><code class="language-python">lidar_data = client.getGPULidarData('lidar', 'vehicle')
+points = np.array(lidar_data.point_cloud, dtype=np.dtype('f4'))
+points = np.reshape(points, (int(points.shape[0] / 5), 5))
+rgb_values = points[:, 3].astype(np.uint32)
+rgb = np.zeros((np.shape(points)[0], 3))
+xyz = points[:, 0:3]
+for index, rgb_value in enumerate(rgb_values):
+  rgb[index, 0] = (rgb_value &gt;&gt; 16) &amp; 0xFF
+  rgb[index, 1] = (rgb_value &gt;&gt; 8) &amp; 0xFF
+  rgb[index, 2] = rgb_value &amp; 0xFF
+</code></pre>
               
             </div>
           </div><footer>
