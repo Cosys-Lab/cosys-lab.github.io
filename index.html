@@ -83,9 +83,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="build_windows.md">Build on Windows</a>
+                  <li class="toctree-l1"><a class="reference internal" href="install_windows/">Install on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="build_linux.md">Build on Linux</a>
+                  <li class="toctree-l1"><a class="reference internal" href="install_linux/">Install on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -96,9 +96,11 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="image_apis/">Image APIs</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="apis_cpp/">C++ APIs</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="dev_workflow.md">Development Workflow</a>
+                  <li class="toctree-l1"><a class="reference internal" href="annotation/">Annotation</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="settings/">Settings</a>
                   </li>
@@ -116,6 +118,12 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="skid_steer_vehicle/">Skid Steer Vehicles</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="gazebo_drone/">Import Gazebo models</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="retexturing/">Domain Randomization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="meshes/">Mesh Vertex Buffers</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Sensors</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="sensors/">Sensors</a>
@@ -128,13 +136,15 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="InfraredCamera/">Infrared Camera</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="distance_sensor/">Distance Sensor</a>
+                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="" href="ros.md">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="reference internal" href="ros_python/">ROS: AirSim ROS Python Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="reference internal" href="ros_cplusplus/">ROS2: AirSim ROS C++ Wrapper</a>
                 </li>
     </ul>
                   </li>
@@ -142,16 +152,18 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="playback/">Playing Logs</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="voxel_grid/">Voxel Grid Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="event_sim/">Event camera</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="code_structure.md">Code Structure</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="coding_guidelines.md">Coding Guidelines</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="flight_controller/">Flight Controller</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="adding_new_apis/">Adding new APIs</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="simple_flight/">Simple Flight</a>
                   </li>
@@ -163,6 +175,12 @@
                 <li class="toctree-l2"><a class="reference internal" href="px4_setup/">PX4 Setup for AirSim</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="px4_sitl/">PX4 in SITL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="px4_sitl_wsl2/">PX4 SITL with WSL 2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="px4_lockstep/">PX4 Lockstep</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="px4_multi_vehicle/">PX4 Multi-vehicle in SITL</a>
                 </li>
                 <li class="toctree-l2"><a class="" href="https://youtu.be/1oY8Qu5maQQ">AirSim with Pixhawk</a>
                 </li>
@@ -180,6 +198,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="log_viewer/">MavLink LogViewer</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="mavlinkcom/">MavLinkCom</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="mavlinkcom_mocap/">MavLink MoCap</a>
+                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ArduPilot</a>
@@ -193,8 +215,6 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="reinforcement_learning.md">Reinforcement Learning</a>
-                  </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://github.com/simondlevy/AirSimTensorFlow">Simple Collision Avoidance</a>
@@ -206,6 +226,8 @@
                   <li class="toctree-l1"><a class="" href="https://github.com/Microsoft/AirSim/wiki/moveOnPath-demo">Moving on Path Demo</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://youtu.be/Bp86WiLUC80">Importing a custom multirotor mesh</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="object_detection/">Object Detection</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://youtu.be/ZonkdMcwXH4">AirSim with MAVROS and PX4</a>
                   </li>
@@ -268,12 +290,10 @@ Our goal is to develop Cosys-AirSim as a platform for AI research to experiment 
 <h2 id="cosys-lab-modifications">Cosys-Lab Modifications</h2>
 <p>Cosys-Lab made extensive modifications to the AirSim platform to support multiple projects and research goals. 
 Please contact a Cosys-Lab researcher to get more in depth information on our work or if you wish to collaborate. 
-The <a href="LICENSE">original AirSim MIT license</a> applies to all native AirSim source files. 
-Please note that we use that same <a href="LICENSE">MIT license</a> as which applies to all changes made by Cosys-Lab in case you plan to do anything within this repository.
+The <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/LICENSE">original AirSim MIT license</a> applies to all native AirSim source files. 
+Please note that we use that same <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/LICENSE">MIT license</a> as which applies to all changes made by Cosys-Lab in case you plan to do anything within this repository.
 Do note that this repository is provided as is, will not be actively updated and comes without warranty or support. 
-Please contact a Cosys-Lab researcher to get more in depth information on which branch or version is best for your work.
-The biggest difference is that this requires custom Unreal Engine! See <a href="./#how-to-get-it">documentation</a> below. </p>
-<p>A manually maintained fork of this repository is available to the public: https://github.com/Cosys-Lab/Cosys-AirSim</p>
+Please contact a Cosys-Lab researcher to get more in depth information on which branch or version is best for your work.</p>
 <h3 id="associated-publications">Associated publications</h3>
 <ul>
 <li><a href="https://arxiv.org/abs/2303.13381">Cosys-AirSim: A Real-Time Simulation Framework Expanded for Complex Industrial Applications</a></li>
@@ -319,38 +339,38 @@ The biggest difference is that this requires custom Unreal Engine! See <a href="
 </code></pre>
 <h2 id="cosys-lab-modifications_1">Cosys-Lab Modifications</h2>
 <ul>
-<li>Added support for Unreal up to 5.4.2 (<a href="docs/unreal_custenv.md#unreal-5354-scene-camera-bug">Note that Unreal 5.3/5.4 breaks camera scene rendering by default in custom environments</a>)</li>
-<li>Added <a href="docs/annotation.md">multi-layer annotation</a> for groundtruth label generation with RGB, greyscale and texture options. Extensive API integration and available for camera and GPU-LiDAR sensors.</li>
-<li>Added <a href="docs/instance_segmentation.md">Instance Segmentation</a>. </li>
-<li>Added <a href="docs/echo.md">Echo sensor type</a> for simulation of sensors like sonar and radar.</li>
-<li>Added <a href="docs/gpulidar.md">GPU LIDAR sensor type</a>: Uses GPU acceleration to simulate a LiDAR sensor. Can support much higher point density then normal LiDAR and behaves more authentic and has realistic intensity generation.</li>
-<li>Added <a href="docs/skid_steer_vehicle.md">skid steering SimMode and vehicle type</a>. ClearPath Husky and Pioneer P3DX implemented as vehicle types using this new vehicle model. </li>
-<li>Added <a href="docs/matlab.md">Matlab API Client</a> implementation as an easy to install Matlab toolbox.</li>
-<li>Added various <a href="docs/dynamic_objects.md">random but deterministic dynamic object types and world configuration options</a>.</li>
+<li>Added support for Unreal up to 5.4.2 (<a href="https://cosys-lab.github.io/unreal_custenv.md#unreal-5354-scene-camera-bug">Note that Unreal 5.3/5.4 breaks camera scene rendering by default in custom environments</a>)</li>
+<li>Added <a href="https://cosys-lab.github.io/annotation.md">multi-layer annotation</a> for groundtruth label generation with RGB, greyscale and texture options. Extensive API integration and available for camera and GPU-LiDAR sensors.</li>
+<li>Added <a href="https://cosys-lab.github.io/instance_segmentation.md">Instance Segmentation</a>. </li>
+<li>Added <a href="https://cosys-lab.github.io/echo.md">Echo sensor type</a> for simulation of sensors like sonar and radar.</li>
+<li>Added <a href="https://cosys-lab.github.io/gpulidar.md">GPU LIDAR sensor type</a>: Uses GPU acceleration to simulate a LiDAR sensor. Can support much higher point density then normal LiDAR and behaves more authentic and has realistic intensity generation.</li>
+<li>Added <a href="https://cosys-lab.github.io/skid_steer_vehicle.md">skid steering SimMode and vehicle type</a>. ClearPath Husky and Pioneer P3DX implemented as vehicle types using this new vehicle model. </li>
+<li>Added <a href="https://cosys-lab.github.io/matlab.md">Matlab API Client</a> implementation as an easy to install Matlab toolbox.</li>
+<li>Added various <a href="https://cosys-lab.github.io/dynamic_objects.md">random but deterministic dynamic object types and world configuration options</a>.</li>
 <li>Added BoxCar vehicle model to the Car SimMode to have a smaller vehicle to use in indoor spaces.</li>
-<li>Updated <a href="docs/image_apis.md#computer-vision-mode-1">ComputerVision mode</a>: Now has full API and Simulation just like other vehicle types. It mostly means it can now have sensors attached (outside of IMU). Improved handling and camera operation.</li>
-<li>Updated <a href="docs/lidar.md">LIDAR sensor type</a>: Fixed not tracing correctly, added ground truth (point labels) generation, added range-noise generation. Improved API pointcloud delivery to be full scan instead of being frame-rate dependent and partial.</li>
+<li>Updated <a href="https://cosys-lab.github.io/image_apis.md#computer-vision-mode-1">ComputerVision mode</a>: Now has full API and Simulation just like other vehicle types. It mostly means it can now have sensors attached (outside of IMU). Improved handling and camera operation.</li>
+<li>Updated <a href="https://cosys-lab.github.io/lidar.md">LIDAR sensor type</a>: Fixed not tracing correctly, added ground truth (point labels) generation, added range-noise generation. Improved API pointcloud delivery to be full scan instead of being frame-rate dependent and partial.</li>
 <li>Updated the camera, Echo and (GPU-)LiDAR sensors to be uncoupled from the vehicle and be placed as external world sensors.</li>
-<li>Updated sensors like cameras, Echo sensor and GPU-LiDAR to ignore certain objects with the <em>MarkedIgnore</em> Unreal tag and enabling the "IgnoreMarked" setting in <a href="docs/settings.md">the settings file</a>.</li>
+<li>Updated sensors like cameras, Echo sensor and GPU-LiDAR to ignore certain objects with the <em>MarkedIgnore</em> Unreal tag and enabling the "IgnoreMarked" setting in <a href="https://cosys-lab.github.io/settings.md">the settings file</a>.</li>
 <li>Updated cameras sensor with more distortion features such as chromatic aberration, motion blur and lens distortion. </li>
-<li>Updated Python <a href="docs/ros.md">ROS implementation</a> with completely new implementation and feature set.</li>
-<li>Updated C++ <a href="docs/ros.md">ROS2 implementation</a> to support custom Cosys-AirSim features.</li>
+<li>Updated Python <a href="https://cosys-lab.github.io/ros.md">ROS implementation</a> with completely new implementation and feature set.</li>
+<li>Updated C++ <a href="https://cosys-lab.github.io/ros.md">ROS2 implementation</a> to support custom Cosys-AirSim features.</li>
 <li>Dropped support for Unity Environments.</li>
 </ul>
-<p>Some more details on our changes can be found in the <a href="CHANGELOG.md">changelog</a>.</p>
+<p>Some more details on our changes can be found in the <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/CHANGELOG.md">changelog</a>.</p>
 <h2 id="how-to-get-it">How to Get It</h2>
 <p>This branch uses a custom Unreal Engine version! Please read the documentation carefully. </p>
 <h3 id="windows">Windows</h3>
 <ul>
-<li><a href="docs/install_windows.md">Install/Build it</a></li>
+<li><a href="https://cosys-lab.github.io/install_windows.md">Install/Build it</a></li>
 </ul>
 <h3 id="linux">Linux</h3>
 <ul>
-<li><a href="docs/install_linux.md">Install/Build it</a></li>
+<li><a href="https://cosys-lab.github.io/install_linux.md">Install/Build it</a></li>
 </ul>
 <h2 id="how-to-use-it">How to Use It</h2>
 <h3 id="documentation">Documentation</h3>
-<p>View our <a href="docs">detailed documentation</a> on all aspects of Cosys-AirSim.</p>
+<p>View our <a href="https://cosys-lab.github.io/">detailed documentation</a> on all aspects of Cosys-AirSim.</p>
 <h2 id="participate">Participate</h2>
 <h3 id="original-airsim-paper">Original AirSim Paper</h3>
 <p>More technical details are available in <a href="https://arxiv.org/abs/1705.05065">AirSim paper (FSR 2017 Conference)</a>. Please cite this as:</p>
@@ -364,12 +384,12 @@ The biggest difference is that this requires custom Unreal Engine! See <a href="
 }
 </code></pre>
 <h2 id="license">License</h2>
-<p>This project is released under the MIT License. Please review the <a href="LICENSE">License file</a> for more details.</p>
+<p>This project is released under the MIT License. Please review the <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/LICENSE">License file</a> for more details.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="unreal_custenv/" class="btn btn-neutral float-right" title="Custom Unreal Environment">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="install_windows/" class="btn btn-neutral float-right" title="Install on Windows">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -397,7 +417,7 @@ The biggest difference is that this requires custom Unreal Engine! See <a href="
     
     
     
-      <span><a href="unreal_custenv/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="install_windows/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

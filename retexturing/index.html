@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Runtime Texture Swapping - Cosys-AirSim</title>
+    <title>Domain Randomization - Cosys-AirSim</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Runtime Texture Swapping";
+        var mkdocs_page_name = "Domain Randomization";
         var mkdocs_page_input_path = "retexturing.md";
         var mkdocs_page_url = null;
       </script>
@@ -51,22 +51,24 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Using AirSim</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../apis/">Core APIs</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../image_apis/">Image APIs</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../apis_cpp/">C++ APIs</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../annotation/">Annotation</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -84,6 +86,20 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../skid_steer_vehicle/">Skid Steer Vehicles</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gazebo_drone/">Import Gazebo models</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Domain Randomization</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-make-an-actor-retexturable">How to Make An Actor Retexturable</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-define-the-sets-of-textures-to-choose-from">How to Define the Set(s) of Textures to Choose From</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-swap-textures-from-the-api">How to Swap Textures from the API</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../meshes/">Mesh Vertex Buffers</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Sensors</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../sensors/">Sensors</a>
@@ -96,13 +112,15 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../InfraredCamera/">Infrared Camera</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../distance_sensor/">Distance Sensor</a>
+                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="reference internal" href="../ros_python/">ROS: AirSim ROS Python Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="reference internal" href="../ros_cplusplus/">ROS2: AirSim ROS C++ Wrapper</a>
                 </li>
     </ul>
                   </li>
@@ -110,16 +128,18 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../playback/">Playing Logs</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../voxel_grid/">Voxel Grid Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../event_sim/">Event camera</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../flight_controller/">Flight Controller</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adding_new_apis/">Adding new APIs</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../simple_flight/">Simple Flight</a>
                   </li>
@@ -131,6 +151,12 @@
                 <li class="toctree-l2"><a class="reference internal" href="../px4_setup/">PX4 Setup for AirSim</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../px4_sitl/">PX4 in SITL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../px4_sitl_wsl2/">PX4 SITL with WSL 2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../px4_lockstep/">PX4 Lockstep</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../px4_multi_vehicle/">PX4 Multi-vehicle in SITL</a>
                 </li>
                 <li class="toctree-l2"><a class="" href="https://youtu.be/1oY8Qu5maQQ">AirSim with Pixhawk</a>
                 </li>
@@ -148,6 +174,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../log_viewer/">MavLink LogViewer</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mavlinkcom/">MavLinkCom</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mavlinkcom_mocap/">MavLink MoCap</a>
+                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ArduPilot</a>
@@ -161,8 +191,6 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
-                  </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://github.com/simondlevy/AirSimTensorFlow">Simple Collision Avoidance</a>
@@ -174,6 +202,8 @@
                   <li class="toctree-l1"><a class="" href="https://github.com/Microsoft/AirSim/wiki/moveOnPath-demo">Moving on Path Demo</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://youtu.be/Bp86WiLUC80">Importing a custom multirotor mesh</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../object_detection/">Object Detection</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://youtu.be/ZonkdMcwXH4">AirSim with MAVROS and PX4</a>
                   </li>
@@ -218,7 +248,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Runtime Texture Swapping</li>
+          <li>Using AirSim &raquo;</li>
+      <li>Domain Randomization</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/retexturing.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
@@ -278,6 +309,10 @@ print(c.simSwapTextures(&quot;chair, right&quot;, 0))
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../gazebo_drone/" class="btn btn-neutral float-left" title="Import Gazebo models"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../meshes/" class="btn btn-neutral float-right" title="Mesh Vertex Buffers">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -303,6 +338,10 @@ print(c.simSwapTextures(&quot;chair, right&quot;, 0))
         </span>
     
     
+      <span><a href="../gazebo_drone/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../meshes/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
