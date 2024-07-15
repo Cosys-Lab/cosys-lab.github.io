@@ -49,21 +49,27 @@
                 <li class="toctree-l1"><a class="" href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/CHANGELOG.md">Changelog</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Building AirSim</span></p>
+              <p class="caption"><span class="caption-text">Installing AirSim</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install on Windows</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_precompiled/">Download and install from precompiled plugin</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install on Linux</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install from Source on Windows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install from Source on Linux</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Custom Unreal Environment</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#note-for-linux-users">Note for Linux Users</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#step-by-step-instructions">Step by Step Instructions</a>
+    <li class="toctree-l2"><a class="reference internal" href="#step-by-step-instructions-when-using-cosys-airsim-from-precompiled-binaries">Step-by-Step Instructions when using Cosys-AirSim from Precompiled Binaries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-by-step-instructions-when-using-cosys-airsim-from-source-build">Step-by-Step Instructions when using Cosys-AirSim from Source Build</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#updating-your-environment-to-latest-version-of-airsim">Updating Your Environment to Latest Version of AirSim</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#choosing-your-vehicle-car-or-multirotor">Choosing Your Vehicle: Car or Multirotor</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#updating-your-environment-to-latest-version-of-airsim">Updating Your Environment to Latest Version of AirSim</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#unreal-5354-scene-camera-bug">Unreal 5.3/5.4 Scene camera bug</a>
     </li>
@@ -268,7 +274,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Building AirSim &raquo;</li>
+          <li>Installing AirSim &raquo;</li>
       <li>Custom Unreal Environment</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/unreal_custenv.md" class="icon icon-github"> Edit on GitHub</a>
@@ -280,15 +286,76 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="creating-and-setting-up-unreal-environment">Creating and Setting Up Unreal Environment</h1>
-<p>This page contains the complete instructions start to finish for setting up Unreal environment with AirSim. The Unreal Marketplace has <a href="https://www.unrealengine.com/marketplace/content-cat/assets/environments">several environment</a> available that you can start using in just few minutes. It is also possible to use environments available on websites such as <a href="https://www.turbosquid.com/">turbosquid.com</a> or <a href="https://www.cgtrader.com/">cgitrader.com</a> with bit more effort (here's <a href="https://www.youtube.com/watch?v=y09VbdQWvQY&amp;feature">tutorial video</a>). In addition there also several <a href="https://github.com/Microsoft/AirSim/issues/424">free environments</a> available.</p>
+<p>This page contains the complete instructions start to finish for setting up Unreal environment with AirSim. The Unreal Marketplace has <a href="https://www.unrealengine.com/marketplace/content-cat/assets/environments">several environment</a> available that you can start using in just few minutes. It is also possible to use environments available on websites such as <a href="https://www.turbosquid.com/">turbosquid.com</a> or <a href="https://www.cgtrader.com/">cgtrader.com</a> with bit more effort (here's <a href="https://www.youtube.com/watch?v=y09VbdQWvQY&amp;feature">tutorial video</a>). In addition, there also several <a href="https://github.com/Microsoft/AirSim/issues/424">free environments</a> available.</p>
 <p>Below we will use a freely downloadable environment from Unreal Marketplace called Landscape Mountain but the steps are same for any other environments.</p>
 <h2 id="note-for-linux-users">Note for Linux Users</h2>
 <p>There is no <code>Epic Games Launcher</code> for Linux which means that if you need to create custom environment, you will need Windows machine to do that. Once you have Unreal project folder, just copy it over to your Linux machine.</p>
-<h2 id="step-by-step-instructions">Step by Step Instructions</h2>
+<h2 id="step-by-step-instructions-when-using-cosys-airsim-from-precompiled-binaries">Step-by-Step Instructions when using Cosys-AirSim from Precompiled Binaries</h2>
 <ol>
-<li>Make sure AirSim is built and Unreal 5.4.2 is installed as described in <a href="../install_windows/">the install instructions</a>.</li>
+<li>It is assumed you downloaded the right precompiled Cosys-AirSim plugin from the <a href="https://github.com/Cosys-Lab/Cosys-AirSim/releases">GitHub releases page</a> for the right Unreal version.</li>
 <li>
-<p>In <code>Epic Games Launcher</code> click the Learn tab then scroll down and find <code>Landscape Mountains</code>. Click the <code>Create Project</code> and download this content (~2GB download).</p>
+<p>In <code>Epic Games Launcher</code> click the Samples tab then scroll down and find <code>Landscape Mountains</code>. Click the <code>Create Project</code> and download this content (~2GB download). </p>
+<p><img alt="current version" src="../images/landscape_mountains.png" /></p>
+</li>
+<li>
+<p>Open <code>LandscapeMountains.uproject</code>, it should launch the Unreal Editor.</p>
+<p><img alt="unreal editor" src="../images/unreal_editor.png" /></p>
+<p>!!!note</p>
+<pre><code>The Landscape Mountains project is supported up to Unreal Engine version 4.24. If you do not have 4.24 installed, you should see a dialog titled `Select Unreal Engine Version` with a dropdown to select from installed versions. Select 5.4.2 to migrate the project to a supported engine version. If you have 4.24 installed, you can manually migrate the project by navigating to the corresponding .uproject file in Windows Explorer, right-clicking it, and selecting the `Switch Unreal Engine version...` option.
+</code></pre>
+</li>
+<li>
+<p>Go to the <code>LandscapeMountains</code> project folder and create a new subfolder called <code>Plugins</code>. Now copy the precompiled AirSim Plugin folder into this newly created folder. This way now your own Unreal project has AirSim plugin.</p>
+</li>
+<li>
+<p>Edit the <code>LandscapeMountains.uproject</code> so that you add the AirSim plugin to the list of plugins to load.</p>
+<p><code>json
+{
+    ...
+    "Plugins": [
+        {
+            "Name": "AirSim",
+            "Enabled": true
+        }
+    ]
+    ...
+}</code></p>
+</li>
+<li>
+<p>Edit the <code>Config\DefaultGame.ini</code> to add the following lines at the end:</p>
+<p><code>+MapsToCook=(FilePath="/AirSim/AirSimAssets")
++DirectoriesToAlwaysCook=(Path="/AirSim/HUDAssets")
++DirectoriesToAlwaysCook=(Path="/AirSim/Beacons")
++DirectoriesToAlwaysCook=(Path="/AirSim/Blueprints")
++DirectoriesToAlwaysCook=(Path="/AirSim/Models")
++DirectoriesToAlwaysCook=(Path="/AirSim/Sensors")
++DirectoriesToAlwaysCook=(Path="/AirSim/StarterContent")
++DirectoriesToAlwaysCook=(Path="/AirSim/VehicleAdv")
++DirectoriesToAlwaysCook=(Path="/AirSim/Weather")</code></p>
+<p>Doing this forces Unreal to include all necessary AirSim content in packaged builds of your project.</p>
+</li>
+<li>
+<p>If using Unreal Engine 5.3/5.4 check <a href="#unreal-5354-scene-camera-bug">here</a> for a fix to the camera scene rendering bug in these engine versions!</p>
+</li>
+<li>
+<p>Close the <code>Unreal Editor</code> and restart it by opening the uproject file again.</p>
+</li>
+<li>
+<p>In <code>Window/World Settings</code> as shown below, set the <code>GameMode Override</code> to <code>AirSimGameMode</code>:</p>
+<p><img alt="sim_game_mode.png" src="../images/sim_game_mode.png" /></p>
+</li>
+<li>
+<p>Go to 'Edit-&gt;Editor Preferences' in Unreal Editor, in the 'Search' box type 'CPU' and ensure that the 'Use Less CPU when in Background' is unchecked. If you don't do this then UE will be slowed down dramatically when UE window loses focus.</p>
+</li>
+<li>
+<p>Be sure to <code>Save</code> these edits. Hit the Play button in the Unreal Editor. See the other documentation pages for how to use it.</p>
+</li>
+</ol>
+<h2 id="step-by-step-instructions-when-using-cosys-airsim-from-source-build">Step-by-Step Instructions when using Cosys-AirSim from Source Build</h2>
+<ol>
+<li>Make sure AirSim is built and Unreal 5.4.2 is installed as described in <a href="../install_windows/">the installation instructions</a>.</li>
+<li>
+<p>In <code>Epic Games Launcher</code> click the Samples tab then scroll down and find <code>Landscape Mountains</code>. Click the <code>Create Project</code> and download this content (~2GB download). </p>
 <p><img alt="current version" src="../images/landscape_mountains.png" /></p>
 </li>
 <li>
@@ -351,7 +418,10 @@
 <p>Doing this forces Unreal to include all necessary AirSim content in packaged builds of your project.</p>
 </li>
 <li>
-<p>Close Visual Studio and the  <code>Unreal Editor</code> and right click the LandscapeMountains.uproject in Windows Explorer and select <code>Generate Visual Studio Project Files</code>.  This step detects all plugins and source files in your Unreal project and generates <code>.sln</code> file for Visual Studio.</p>
+<p>If using Unreal Engine 5.3/5.4 check <a href="#unreal-5354-scene-camera-bug">here</a> for a fix to the camera scene rendering bug in these engine versions!</p>
+</li>
+<li>
+<p>Close Visual Studio and the  <code>Unreal Editor</code> and right-click the LandscapeMountains.uproject in Windows Explorer and select <code>Generate Visual Studio Project Files</code>.  This step detects all plugins and source files in your Unreal project and generates <code>.sln</code> file for Visual Studio.</p>
 <p><img alt="regen" src="../images/regen_sln.png" /></p>
 <p>!!!tip</p>
 <pre><code>If the `Generate Visual Studio Project Files` option is missing you may need to reboot your machine for the Unreal Shell extensions to take effect.  If it is still missing then open the LandscapeMountains.uproject in the Unreal Editor and select `Refresh Visual Studio Project` from the `File` menu.
@@ -362,7 +432,7 @@
 <p><img alt="build config" src="../images/vsbuild_config.png" /></p>
 </li>
 <li>
-<p>Press <code>F5</code> to <code>run</code>. This will start the Unreal Editor. The Unreal Editor allows you to edit the environment, assets and other game related settings. First thing you want to do in your environment is set up <code>PlayerStart</code> object. In Landscape Mountains environment, <code>PlayerStart</code> object already exist and you can find it in the <code>World Outliner</code>. Make sure its location is setup as shown. This is where AirSim plugin will create and place the vehicle. If its too high up then vehicle will fall down as soon as you press play giving potentially random behavior</p>
+<p>Press <code>F5</code> to <code>run</code>. This will start the Unreal Editor. The Unreal Editor allows you to edit the environment, assets and other game related settings. First thing you want to do in your environment is set up <code>PlayerStart</code> object. In Landscape Mountains environment, <code>PlayerStart</code> object already exist, and you can find it in the <code>World Outliner</code>. Make sure its location is set up as shown. This is where AirSim plugin will create and place the vehicle. If its too high up then vehicle will fall down as soon as you press play giving potentially random behavior</p>
 <p><img alt="lm_player_start_pos.png" src="../images/lm_player_start_pos.png" /></p>
 </li>
 <li>
@@ -377,16 +447,16 @@
 </li>
 </ol>
 <p>Congratulations! You are now running AirSim in your own Unreal environment.</p>
-<h2 id="choosing-your-vehicle-car-or-multirotor">Choosing Your Vehicle: Car or Multirotor</h2>
-<p>By default AirSim prompts user for which vehicle to use. You can easily change this by setting <a href="../settings/#SimMode">SimMode</a>. Please see <a href="../using_car/">using car</a> guide.</p>
-<h2 id="updating-your-environment-to-latest-version-of-airsim">Updating Your Environment to Latest Version of AirSim</h2>
+<h4 id="updating-your-environment-to-latest-version-of-airsim">Updating Your Environment to Latest Version of AirSim</h4>
 <p>Once you have your environment using above instructions, you should frequently update your local AirSim code to latest version from GitHub. Below are the instructions to do this:</p>
 <ol>
 <li>First put <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/Unreal/Environments/Blocks/clean.bat">clean.bat</a> (or <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/Unreal/Environments/Blocks/clean.sh">clean.sh</a> for Linux users) in the root folder of your environment. Run this file to clean up all intermediate files in your Unreal project.</li>
 <li>Do <code>git pull</code> in your AirSim repo followed by <code>build.cmd</code> (or <code>./build.sh</code> for Linux users).</li>
 <li>Replace [your project]/Plugins folder with AirSim/Unreal/Plugins folder.</li>
-<li>Right click on your .uproject file and chose "Generate Visual Studio project files" option. This is not required for Linux.</li>
+<li>Right-click on your .uproject file and chose "Generate Visual Studio project files" option. This is not required for Linux.</li>
 </ol>
+<h2 id="choosing-your-vehicle-car-or-multirotor">Choosing Your Vehicle: Car or Multirotor</h2>
+<p>By default, AirSim prompts user for which vehicle to use. You can easily change this by setting <a href="../settings/#SimMode">SimMode</a>. Please see <a href="../using_car/">using car</a> guide.</p>
 <h2 id="unreal-5354-scene-camera-bug">Unreal 5.3/5.4 Scene camera bug</h2>
 <p>Note that Unreal 5.3 and 5.4 breaks camera scene rendering when Effects is not set to the Epic scalability preset. You can use the console command r.DetailMode 2 to fix this at runtime!
 For the Blocks and other available environments we have made a fix for this. By placing a DefaultScalability.ini file in the Config folder of your Unreal project, you can set the scalability settings to custom values for each one (low, medium, high, epic, cine).
@@ -408,12 +478,12 @@ r.DetailMode=2
 </code></pre>
 <h2 id="faq">FAQ</h2>
 <h4 id="what-are-other-cool-environments">What are other cool environments?</h4>
-<p><a href="https://www.unrealengine.com/marketplace">Unreal Marketplace</a> has dozens of prebuilt extra-ordinarily detailed <a href="https://www.unrealengine.com/marketplace/content-cat/assets/environments">environments</a> ranging from Moon to Mars and everything in between. The one we have used for testing is called <a href="https://www.unrealengine.com/marketplace/modular-neighborhood-pack">Modular Neighborhood Pack</a>
-but you can use any environment. Another free environment is <a href="https://www.unrealengine.com/marketplace/infinity-blade-plain-lands">Infinity Blade series</a>. Alternatively, if you look under the Learn tab in Epic Game Launcher, you will find many free samples that you can use. One of our favorites is "A Boy and His Kite" which is a 100 square miles of highly detailed environment (caution: you will need <em>very</em> beefy PC to run it!).</p>
+<p><a href="https://www.unrealengine.com/marketplace">Unreal Marketplace</a> has dozens of prebuilt extraordinarily detailed <a href="https://www.unrealengine.com/marketplace/content-cat/assets/environments">environments</a> ranging from Moon to Mars and everything in between. The one we have used for testing is called <a href="https://www.unrealengine.com/marketplace/modular-neighborhood-pack">Modular Neighborhood Pack</a>
+but you can use any environment. Another free environment is <a href="https://www.unrealengine.com/marketplace/infinity-blade-plain-lands">Infinity Blade series</a>. Alternatively, if you look under the Learn tab in Epic Game Launcher, you will find many free samples that you can use. One of our favorites is "A Boy and His Kite" which is 100 square miles of highly detailed environment (caution: you will need <em>very</em> beefy PC to run it!).</p>
 <h4 id="when-i-press-play-button-some-kind-of-video-starts-instead-of-my-vehicle">When I press Play button some kind of video starts instead of my vehicle.</h4>
 <p>If the environment comes with MatineeActor, delete it to avoid any startup demo sequences. There might be other ways to remove it as well, for example, click on Blueprints button, then Level Blueprint and then look at Begin Play event in Event Graph. You might want to disconnect any connections that may be starting "matinee".</p>
 <h4 id="is-there-easy-way-to-sync-code-in-my-unreal-project-with-code-in-airsim-repo">Is there easy way to sync code in my Unreal project with code in AirSim repo?</h4>
-<p>Sure, there is! You can find bunch of <code>.bat</code> files (for linux, <code>.sh</code>) in <code>AirSim\Unreal\Environments\Blocks</code>. Just copy them over to your own Unreal project. Most of these are quite simple and self explanatory.</p>
+<p>Sure, there is! You can find a bunch of <code>.bat</code> files (for linux, <code>.sh</code>) in <code>AirSim\Unreal\Environments\Blocks</code>. Just copy them over to your own Unreal project. Most of these are quite simple and self-explanatory.</p>
 <h4 id="i-get-some-error-about-map">I get some error about map.</h4>
 <p>You might have to set default map for your project. For example, if you are using Modular Neighborhood Pack, set the Editor Starter Map as well as Game Default Map to Demo_Map in Project Settings &gt; Maps &amp; Modes.</p>
 <h4 id="i-see-add-to-project-option-for-environment-but-not-create-project-option">I see "Add to project" option for environment but not "Create project" option.</h4>
@@ -437,7 +507,7 @@ as we showed in the <code>LandscapeMountains.uproject</code> above.</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../install_linux/" class="btn btn-neutral float-left" title="Install on Linux"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../install_linux/" class="btn btn-neutral float-left" title="Install from Source on Linux"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../apis/" class="btn btn-neutral float-right" title="Core APIs">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 

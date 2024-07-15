@@ -49,11 +49,13 @@
                 <li class="toctree-l1"><a class="" href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/CHANGELOG.md">Changelog</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Building AirSim</span></p>
+              <p class="caption"><span class="caption-text">Installing AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install on Windows</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_precompiled/">Download and install from precompiled plugin</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install on Linux</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install from Source on Windows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install from Source on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -214,23 +216,23 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Blocks Environment</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a>
+    <li class="toctree-l2"><a class="reference internal" href="#windows-from-source">Windows from Source</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#changing-code-and-rebuilding">Changing Code and Rebuilding</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a>
+    <li class="toctree-l2"><a class="reference internal" href="#linux-from-source">Linux from Source</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#changing-code-and-rebuilding_1">Changing Code and Rebuilding</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#chosing-your-vehicle-car-or-multirotor">Chosing Your Vehicle: Car or Multirotor</a>
+    <li class="toctree-l2"><a class="reference internal" href="#choosing-your-vehicle-car-or-multirotor">Choosing Your Vehicle: Car or Multirotor</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#faq">FAQ</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#i-see-warnings-about-like-_buitdata-file-is-missing">I see warnings about like "_BuitData" file is missing.</a>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-warnings-about-like-_builtdata-file-is-missing">I see warnings about like "_BuiltData" file is missing.</a>
     </li>
         </ul>
     </li>
@@ -274,36 +276,35 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="setup-blocks-environment-for-airsim">Setup Blocks Environment for AirSim</h1>
-<p>Blocks environment is available in repo in folder <code>Unreal/Environments/Blocks</code> and is designed to be lightweight in size. That means its very basic but fast.</p>
+<p>Blocks environment is available in repo in folder <code>Unreal/Environments/Blocks</code> and is designed to be lightweight in size. That means it is very basic but fast.</p>
 <p>Here are quick steps to get Blocks environment up and running:</p>
-<h2 id="windows">Windows</h2>
+<h2 id="windows-from-source">Windows from Source</h2>
 <ol>
 <li>Make sure you have <a href="../install_windows/">built or installed Unreal and built AirSim</a>.</li>
 <li>Navigate to folder <code>AirSim\Unreal\Environments\Blocks</code> and run <code>update_from_git.bat</code>.</li>
 <li>Double click on generated .sln file to open in Visual Studio.</li>
-<li>Make sure <code>Blocks</code> project is the startup project, build configuration is set to <code>DebugGame_Editor</code> and <code>Win64</code>. Hit F5 to run.</li>
-<li>Press the Play button in Unreal Editor and you will see something like in below video. Also see the other documentation for how to use it. </li>
+<li>Make sure <code>Blocks</code> project is the startup project, build configuration is set to <code>DevelopmentEditor_Editor</code> and <code>Win64</code>. Hit F5 to run.</li>
+<li>Press the Play button in Unreal Editor. Also see the other documentation for how to use it. </li>
 </ol>
 <h3 id="changing-code-and-rebuilding">Changing Code and Rebuilding</h3>
 <p>For Windows, you can just change the code in Visual Studio, press F5 and re-run. There are few batch files available in folder <code>AirSim\Unreal\Environments\Blocks</code> that lets you sync code, clean etc.</p>
-<h2 id="linux">Linux</h2>
+<h2 id="linux-from-source">Linux from Source</h2>
 <ol>
 <li>Make sure you have <a href="../install_linux/">built or installed the Unreal Engine and AirSim</a>.</li>
 <li>Navigate to folder <code>AirSim\Unreal\Environments\Blocks</code> and run <code>update_from_git.sh</code>.</li>
 <li>Navigate to your UnrealEngine repo folder and run <code>Engine/Binaries/Linux/UE4Editor</code> which will start Unreal Editor.</li>
 <li>On first start you might not see any projects in UE4 editor. Click on Projects tab, Browse button and then navigate to <code>AirSim/Unreal/Environments/Blocks/Blocks.uproject</code>. </li>
-<li>If you get prompted for incompatible version and conversion, select In-place conversion which is usually under "More" options. If you get prompted for missing modules, make sure to select No so you don't exit. </li>
+<li>If you get prompted for incompatible version and conversion, select In-place conversion which is usually under "More" options. If you get prompted for missing modules, make sure to select <em>No</em>, so you don't exit. </li>
 <li>Finally, when prompted with building AirSim, select Yes. Now it might take a while so go get some coffee :).</li>
-<li>Press the Play button in Unreal Editor and you will see something like in below video. Also see the other documentation for how to use it. </li>
+<li>Press the Play button in Unreal Editor. Also see the other documentation for how to use it.</li>
 </ol>
-<p><a href="https://www.youtube.com/watch?v=-r_QGaxMT4A"><img alt="Blocks Demo Video" src="../images/blocks_video.png" /></a></p>
 <h3 id="changing-code-and-rebuilding_1">Changing Code and Rebuilding</h3>
 <p>For Linux, make code changes in AirLib or Unreal/Plugins folder and then run <code>./build.sh</code> to rebuild. This step also copies the build output to Blocks sample project. You can then follow above steps again to re-run.</p>
-<h2 id="chosing-your-vehicle-car-or-multirotor">Chosing Your Vehicle: Car or Multirotor</h2>
-<p>By default AirSim spawns multirotor. You can easily change this to car and use all of AirSim goodies. Please see <a href="../using_car/">using car</a> guide.</p>
+<h2 id="choosing-your-vehicle-car-or-multirotor">Choosing Your Vehicle: Car or Multirotor</h2>
+<p>By default, AirSim spawns multirotor. You can easily change this to car and use all of AirSim goodies. Please see <a href="../using_car/">using car</a> guide.</p>
 <h2 id="faq">FAQ</h2>
-<h4 id="i-see-warnings-about-like-_buitdata-file-is-missing">I see warnings about like "_BuitData" file is missing.</h4>
-<p>These are intermediate files and you can safely ignore it.</p>
+<h4 id="i-see-warnings-about-like-_builtdata-file-is-missing">I see warnings about like "_BuiltData" file is missing.</h4>
+<p>These are intermediate files and, you can safely ignore it.</p>
               
             </div>
           </div><footer>

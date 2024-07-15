@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Object Detection - Cosys-AirSim</title>
+    <title>Download and install from precompiled plugin - Cosys-AirSim</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Object Detection";
-        var mkdocs_page_input_path = "object_detection.md";
+        var mkdocs_page_name = "Download and install from precompiled plugin";
+        var mkdocs_page_input_path = "install_precompiled.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -50,8 +50,10 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Installing AirSim</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../install_precompiled/">Download and install from precompiled plugin</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Download and install from precompiled plugin</a>
+    <ul class="current">
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install from Source on Windows</a>
                   </li>
@@ -184,7 +186,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://github.com/simondlevy/AirSimTensorFlow">Simple Collision Avoidance</a>
@@ -197,15 +199,7 @@
                   </li>
                   <li class="toctree-l1"><a class="" href="https://youtu.be/Bp86WiLUC80">Importing a custom multirotor mesh</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Object Detection</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#about">About</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#api">API</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#usage-example">Usage example</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../object_detection/">Object Detection</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://youtu.be/ZonkdMcwXH4">AirSim with MAVROS and PX4</a>
                   </li>
@@ -250,10 +244,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Contributed Tutorials &raquo;</li>
-      <li>Object Detection</li>
+          <li>Installing AirSim &raquo;</li>
+      <li>Download and install from precompiled plugin</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/object_detection.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/install_precompiled.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -261,85 +255,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="object-detection">Object Detection</h1>
-<h2 id="about">About</h2>
-<p>This feature lets you generate object detection using existing cameras in Cosys-AirSim, similar to detection DNN. <br />
-Using the API you can control which object to detect by name and radius from camera. <br />
-One can control these settings for each camera, image type and vehicle combination separately.</p>
-<h2 id="api">API</h2>
-<ul>
-<li>
-<p>Set mesh name to detect in wildcard format <br />
-<code>simAddDetectionFilterMeshName(camera_name, image_type, mesh_name, vehicle_name = '')</code>   </p>
-</li>
-<li>
-<p>Clear all mesh names previously added <br />
-<code>simClearDetectionMeshNames(camera_name, image_type, vehicle_name = '')</code>   </p>
-</li>
-<li>
-<p>Set detection radius in cm <br />
-<code>simSetDetectionFilterRadius(camera_name, image_type, radius_cm, vehicle_name = '')</code>   </p>
-</li>
-<li>
-<p>Get detections <br />
-<code>simGetDetections(camera_name, image_type, vehicle_name = '')</code></p>
-</li>
-</ul>
-<p>Note that if using Annotation camera one has to also give the <code>annotation_name</code> argument to choose the right annotation camera.
-For example: <code>simGetDetections(camera_name, image_type, vehicle_name = '', annotation_name="mygreyscaleannotation")</code></p>
-<p>The return value of <code>simGetDetections</code> is a <code>DetectionInfo</code> array:</p>
-<pre><code class="language-python">DetectionInfo
-    name = ''
-    geo_point = GeoPoint()
-    box2D = Box2D()
-    box3D = Box3D()
-    relative_pose = Pose()
-</code></pre>
-<h2 id="usage-example">Usage example</h2>
-<p>Python script <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/PythonClient/detection/detection.py">detection.py</a> shows how to set detection parameters and shows the result in OpenCV capture.</p>
-<p>A minimal example using API with Blocks environment to detect Cylinder objects:</p>
-<pre><code class="language-python">camera_name = &quot;0&quot;
-image_type = airsim.ImageType.Scene
-
-client = airsim.MultirotorClient()
-client.confirmConnection()
-
-client.simSetDetectionFilterRadius(camera_name, image_type, 80 * 100) # in [cm]
-client.simAddDetectionFilterMeshName(camera_name, image_type, &quot;Cylinder_*&quot;) 
-client.simGetDetections(camera_name, image_type)
-detections = client.simClearDetectionMeshNames(camera_name, image_type)
-</code></pre>
-<p>Output result:</p>
-<pre><code class="language-python">Cylinder: &lt;DetectionInfo&gt; {   'box2D': &lt;Box2D&gt; {   'max': &lt;Vector2r&gt; {   'x_val': 617.025634765625,
-    'y_val': 583.5487060546875},
-    'min': &lt;Vector2r&gt; {   'x_val': 485.74359130859375,
-    'y_val': 438.33465576171875}},
-    'box3D': &lt;Box3D&gt; {   'max': &lt;Vector3r&gt; {   'x_val': 4.900000095367432,
-    'y_val': 0.7999999523162842,
-    'z_val': 0.5199999809265137},
-    'min': &lt;Vector3r&gt; {   'x_val': 3.8999998569488525,
-    'y_val': -0.19999998807907104,
-    'z_val': 1.5199999809265137}},
-    'geo_point': &lt;GeoPoint&gt; {   'altitude': 16.979999542236328,
-    'latitude': 32.28772183970703,
-    'longitude': 34.864785008379876},
-    'name': 'Cylinder9_2',
-    'relative_pose': &lt;Pose&gt; {   'orientation': &lt;Quaternionr&gt; {   'w_val': 0.9929741621017456,
-    'x_val': 0.0038591264747083187,
-    'y_val': -0.11333247274160385,
-    'z_val': 0.03381215035915375},
-    'position': &lt;Vector3r&gt; {   'x_val': 4.400000095367432,
-    'y_val': 0.29999998211860657,
-    'z_val': 1.0199999809265137}}}
-</code></pre>
-<p><img alt="image" src="../images/detection_ue4.png" />
-<img alt="image" src="../images/detection_python.png" /></p>
+                <h1 id="download-and-install-precompiled-plugin">Download and install precompiled Plugin</h1>
+<p>If you wish to not build the plugin from source, you can download the precompiled plugin from the <a href="https://github.com/Cosys-Lab/Cosys-AirSim/releases">releases page</a> for the right version of Unreal you are using. 
+It does not come with a environment so you will need to create your own Unreal project. Follow this <a href="../unreal_custenv/">step-by-step guide</a>.</p>
+<p>The releases page also comes with additional downloads and links to the several API implementations for ROS(2) and the Python and Matlab API clients for that specific version of the Cosys-AirSim plugin. </p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../mavlinkcom_mocap/" class="btn btn-neutral float-left" title="MavLink MoCap"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../custom_drone/" class="btn btn-neutral float-right" title="AirSim on Real Drones">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../install_windows/" class="btn btn-neutral float-right" title="Install from Source on Windows">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -366,10 +291,10 @@ detections = client.simClearDetectionMeshNames(camera_name, image_type)
         </span>
     
     
-      <span><a href="../mavlinkcom_mocap/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../custom_drone/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../install_windows/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
