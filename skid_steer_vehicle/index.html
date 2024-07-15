@@ -42,7 +42,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Home</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                  <li class="toctree-l1"><a class="" href="../README.md">Home</a>
                   </li>
               </ul>
               <ul>
@@ -51,9 +51,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_windows/">Build on Windows</a>
+                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_linux/">Build on Linux</a>
+                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../dev_workflow/">Development Workflow</a>
+                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -106,9 +106,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../ros/">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
                 </li>
     </ul>
                   </li>
@@ -119,11 +119,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
+                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
+                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../flight_controller/">Flight Controller</a>
                   </li>
@@ -167,7 +167,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../reinforcement_learning/">Reinforcement Learning</a>
+                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
@@ -190,7 +190,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hard_drive/">Tips for Busy HDD</a>
+                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
@@ -198,7 +198,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../who_is_using/">Who is Using AirSim</a>
+                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
@@ -207,7 +207,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Support</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -237,23 +237,21 @@
               
                 <h1 id="unreal-skid-steering-vehicle-model">Unreal Skid Steering Vehicle Model</h1>
 <p>For vehicles that can't use the normal WheeledVehicle setup with normal steering wheels and non-steering wheels, but that use the skid-steering/differential  steering (like a tank) an alternative vehicle model was created.
-It is build using the NVIDIA PhysX Tank vehicle model. It is setup the same way as a WheeledVehicle and so can be easily be customized.</p>
+It is build using the Chaos engine of Unreal which does not support this vehicle type natively, as such, it can behave unrealistic at times.</p>
 <p><img alt="SkidSteerModel" src="http://www.robotplatform.com/knowledge/Classification_of_Robots/skid_steer_drive.png" /></p>
 <p><sub><sup>http://www.robotplatform.com/knowledge/Classification_of_Robots/wheel_control_theory.html</sup></sub></p>
 <h2 id="creating-a-new-skid-steer-vehicle">Creating a new skid steer vehicle</h2>
-<p>The steps to setup the vehicle are largely the same as a WheeledVehicle with some slight adjustments.
-1. Follow <a href="https://docs.unrealengine.com/en-US/Engine/Physics/Vehicles/VehicleUserGuide/index.html">this guide</a> to create the skeletal mesh, physics asset, wheel blueprint(s) and tire config data asset(s).
-2. The animation blueprint is the exact same as in that tutorial however as class one should use the <em>SkidVehicleAnimInstance</em> sub-class.
-3. For the vehicle blueprint to create the pawn it is also largely the same as in that tutorial however as class one should use the <em>SkidVehicle</em> sub-class. The vehicle setup parameters are more simplified.
-4. For input relies on setting an X and Y(<code>SetXJoy()</code> and <code>SetYJoy()</code> functions, blueprint accessible!) value for a joystick. Hence it's always ideal to use a controller to steer the vehicle.
-   The steering model is based on <a href="https://www.impulseadventure.com/elec/robot-differential-steering.html">this guide</a> with the following image as steering translation. Hence a X/Y input model is required.</p>
-<p><img alt="ControllerModel" src="https://www.impulseadventure.com/elec/images/robot-diff-drive-joystick2.png" /></p>
-<p><sub><sup>https://www.impulseadventure.com/elec/robot-differential-steering.html</sup></sub></p>
+<p>The steps to setup the vehicle are largely the same as a WheeledVehiclePawn with some slight adjustments.
+1. Follow <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/how-to-set-up-vehicles-in-unreal-engine?application_version=5.3">this guide</a> to create the skeletal mesh and physics asset.
+2. For the wheels setup, the vehicle should have 4 wheels, 2 for the left side and 2 for the right side. Please use SkidWheel as the wheel class.
+3. For the vehicle blueprint to create the pawn it is also largely the same as in that tutorial however as class one should use the <em>SkidVehiclePawn</em> sub-class. The vehicle setup parameters are more simplified. 
+4. To have animated wheels, proper physics and correct steering behavior, please take a look at how the CPHusky is configured in the AirSim plugin. The Husky is a skid steer vehicle and can be used as a reference.</p>
 <h2 id="skid-steer-model-within-airsim">Skid steer model within AirSim</h2>
 <p>The skid steer model is a separate SimMode within AirSim. It is fully implemented in similar fashion as the normal Car SimMode.
 There are already two vehicle types implemented, the ClearPath Husky and Pioneer P3DX robots. To configure the SimMode and vehicle type see the <a href="../settings/">settings.json file documentation</a>.</p>
 <p>If you create a new vehicle using the Unreal skid steering vehicle model as described above, one can use the <code>PawnPaths</code> setting in the <a href="../settings/#common-vehicle-setting">Common Vehicle Settings in the settings.json file</a> to link the custom vehicle pawn.</p>
 <p><img alt="Flamewheel" src="../images/skidsteer_vehicles.png" /></p>
+<p>Note that due to a bug in the ChaosVehicles and setting raw YawInput values when rotating on its axis to the left will cause a small forward movement as well. </p>
               
             </div>
           </div><footer>

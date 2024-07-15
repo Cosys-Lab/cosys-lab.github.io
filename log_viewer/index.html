@@ -42,7 +42,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Home</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                  <li class="toctree-l1"><a class="" href="../README.md">Home</a>
                   </li>
               </ul>
               <ul>
@@ -51,9 +51,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_windows/">Build on Windows</a>
+                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_linux/">Build on Linux</a>
+                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../dev_workflow/">Development Workflow</a>
+                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -100,9 +100,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../ros/">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
                 </li>
     </ul>
                   </li>
@@ -113,11 +113,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
+                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
+                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../flight_controller/">Flight Controller</a>
                   </li>
@@ -150,9 +150,13 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#realtime">Realtime</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#debugging">Debugging</a>
     </li>
     </ul>
                 </li>
@@ -169,7 +173,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../reinforcement_learning/">Reinforcement Learning</a>
+                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
@@ -192,7 +196,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hard_drive/">Tips for Busy HDD</a>
+                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
@@ -200,7 +204,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../who_is_using/">Who is Using AirSim</a>
+                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
@@ -209,7 +213,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Support</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -241,26 +245,61 @@
                 <h1 id="log-viewer">Log Viewer</h1>
 <p>The LogViewer is a Windows WPF app that presents the MavLink streams that it is getting from the
 Unreal Simulator.  You can use this to monitor what is happening on the drone while it is flying.
-For example, the picture below shows  a real time graph of the x, y an z gyro sensor information being generated by the simulator.</p>
+For example, the picture below shows  a real time graph of the x, y an z gyro sensor information
+being generated by the simulator.</p>
 <h3 id="usage">Usage</h3>
-<p>To use this LogViewer, connect the simulator <code>before</code> you run the simulation.  Simply press the blue connector
-button on the top right corner of the window, select the Socket <code>tab</code>, enter the port number 14388, and
-your <code>localhost</code> network.  Then press the record button (triangle on the right hand side of the toolbar).
-Now start the simulator, pick some mavlink items to graph,  you  should see something like this:</p>
+<p>You can open a log file, it supports .mavlink and PX4 *.ulg files, then you will see the contents of
+the log in a tree view on the left, whatever metrics you select will be added to the right the right
+side.  You can close each individual chart with the little close box in the top right of each chart
+and you can group charts so they share the same vertical axis using the group charts button on the
+top toolbar.</p>
 <p><img alt="Log Viewer" src="../images/log_viewer.png" /></p>
-<p>The drone view here is the actual estimated position coming from the PX4, so that is a great way to check
-whether the PX4 is in sync with the simulator.  Sometimes you can see some drift here as the attitude
-estimation catches up with reality, this is more visible after a bad crash.</p>
+<p>There is also a map option which will plot the GPS path the drone took.  You can also load multiple
+log files so you can compare the data from each.</p>
+<h3 id="realtime">Realtime</h3>
+<p>You can also get a realtime view if you connect the LogViewer <code>before</code> you run the simulation.</p>
+<p><img alt="connect" src="../images/log_viewer_connect.png" /></p>
+<p>For this to work you need to configure the <code>settings.json</code> with the following settings:</p>
+<pre><code>{
+    &quot;SettingsVersion&quot;: 2.0,
+    &quot;SimMode&quot;: &quot;Multirotor&quot;,
+    &quot;Vehicles&quot;: {
+        &quot;PX4&quot;: {
+            ...,
+            &quot;LogViewerHostIp&quot;: &quot;127.0.0.1&quot;,
+            &quot;LogViewerPort&quot;: 14388,
+        }
+    }
+}
+</code></pre>
+<p>Note: do not use the "Logs" setting when you want realtime LogViewer logging.  Logging to
+a file using "Logs" is mutually exclusive with LogViewer logging.</p>
+<p>Simply press the blue connector button on the top right corner of the window, select the Socket
+<code>tab</code>, enter the port number <code>14388</code>, and your <code>localhost</code> network.  If you are using WSL 2 on
+Windows then select <code>vEthernet (WSL)</code>.</p>
+<p>If you do choose <code>vEthernet (WSL)</code> then make sure you also set <code>LocalHostIp</code> and
+<code>LogViewerHostIp</code> to the matching WSL ethernet address, something like <code>172.31.64.1</code>.</p>
+<p>Then press the record button (triangle on the right hand side of the toolbar). Now start the
+simulator, and the data will start streaming into LogViewer.</p>
+<p>The drone view in Log Viewer shows the actual estimated position coming from the PX4, so that is a
+great way to check whether the PX4 is in sync with the simulator.  Sometimes you can see some drift
+here as the attitude estimation catches up with reality, this can become more visible after a bad
+crash.</p>
 <h3 id="installation">Installation</h3>
-<p>If you can't build the LogViewer.sln, there is also a <a href="http://www.lovettsoftware.com/LovettSoftware/Downloads/Px4LogViewer/Px4LogViewer.application">click once installer</a>.</p>
+<p>If you can't build the LogViewer.sln, there is also a <a href="https://lovettsoftwarestorage.blob.core.windows.net/downloads/Px4LogViewer/Px4LogViewer.application">click once
+installer</a>.</p>
 <h3 id="configuration">Configuration</h3>
-<p>The magic port number 14388 can be configured in the simulator by editing the <a href="../settings/">settings.json file</a>.</p>
+<p>The magic port number 14388 can be configured in the simulator by editing the <a href="../settings/">settings.json
+file</a>.  If you change the port number in LogViewer connection dialog then be sure
+to make the matching changes in your <code>settings.json</code> file.</p>
+<h3 id="debugging">Debugging</h3>
+<p>See <a href="../px4_logging/">PX4 Logging</a> for more information on how to use the LogViewer to debug situations you are setting.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../px4_logging/" class="btn btn-neutral float-left" title="PX4/MavLink Logging"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../reinforcement_learning/" class="btn btn-neutral float-right" title="Reinforcement Learning">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../custom_drone/" class="btn btn-neutral float-right" title="AirSim on Real Drones">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -290,7 +329,7 @@ estimation catches up with reality, this is more visible after a bad crash.</p>
       <span><a href="../px4_logging/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../reinforcement_learning/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../custom_drone/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

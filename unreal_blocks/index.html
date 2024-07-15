@@ -42,7 +42,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Home</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                  <li class="toctree-l1"><a class="" href="../README.md">Home</a>
                   </li>
               </ul>
               <ul>
@@ -51,9 +51,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_windows/">Build on Windows</a>
+                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_linux/">Build on Linux</a>
+                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../dev_workflow/">Development Workflow</a>
+                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -100,9 +100,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../ros/">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
                 </li>
     </ul>
                   </li>
@@ -113,11 +113,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
+                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
+                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../flight_controller/">Flight Controller</a>
                   </li>
@@ -161,7 +161,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../reinforcement_learning/">Reinforcement Learning</a>
+                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
@@ -184,7 +184,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hard_drive/">Tips for Busy HDD</a>
+                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
@@ -214,7 +214,7 @@
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../who_is_using/">Who is Using AirSim</a>
+                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
@@ -223,7 +223,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Support</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -256,22 +256,23 @@
 <p>Here are quick steps to get Blocks environment up and running:</p>
 <h2 id="windows">Windows</h2>
 <ol>
-<li>Make sure you have <a href="../build_windows/">installed Unreal and built AirSim</a>.</li>
+<li>Make sure you have <a href="../install_windows/">built or installed Unreal and built AirSim</a>.</li>
 <li>Navigate to folder <code>AirSim\Unreal\Environments\Blocks</code> and run <code>update_from_git.bat</code>.</li>
 <li>Double click on generated .sln file to open in Visual Studio.</li>
 <li>Make sure <code>Blocks</code> project is the startup project, build configuration is set to <code>DebugGame_Editor</code> and <code>Win64</code>. Hit F5 to run.</li>
-<li>Press the Play button in Unreal Editor and you will see something like in below video. Also see <a href="https://github.com/Microsoft/AirSim/#how-to-use-it">how to use AirSim</a>.</li>
+<li>Press the Play button in Unreal Editor and you will see something like in below video. Also see the other documentation for how to use it. </li>
 </ol>
 <h3 id="changing-code-and-rebuilding">Changing Code and Rebuilding</h3>
 <p>For Windows, you can just change the code in Visual Studio, press F5 and re-run. There are few batch files available in folder <code>AirSim\Unreal\Environments\Blocks</code> that lets you sync code, clean etc.</p>
 <h2 id="linux">Linux</h2>
 <ol>
-<li>Make sure you have <a href="../build_linux/">built the Unreal Engine and AirSim</a>.</li>
+<li>Make sure you have <a href="../install_linux/">built or installed the Unreal Engine and AirSim</a>.</li>
+<li>Navigate to folder <code>AirSim\Unreal\Environments\Blocks</code> and run <code>update_from_git.sh</code>.</li>
 <li>Navigate to your UnrealEngine repo folder and run <code>Engine/Binaries/Linux/UE4Editor</code> which will start Unreal Editor.</li>
 <li>On first start you might not see any projects in UE4 editor. Click on Projects tab, Browse button and then navigate to <code>AirSim/Unreal/Environments/Blocks/Blocks.uproject</code>. </li>
 <li>If you get prompted for incompatible version and conversion, select In-place conversion which is usually under "More" options. If you get prompted for missing modules, make sure to select No so you don't exit. </li>
 <li>Finally, when prompted with building AirSim, select Yes. Now it might take a while so go get some coffee :).</li>
-<li>Press the Play button in Unreal Editor and you will see something like in below video. Also see <a href="/#how-to-use-it">how to use AirSim</a>.</li>
+<li>Press the Play button in Unreal Editor and you will see something like in below video. Also see the other documentation for how to use it. </li>
 </ol>
 <p><a href="https://www.youtube.com/watch?v=-r_QGaxMT4A"><img alt="Blocks Demo Video" src="../images/blocks_video.png" /></a></p>
 <h3 id="changing-code-and-rebuilding_1">Changing Code and Rebuilding</h3>
@@ -286,7 +287,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../unreal_proj/" class="btn btn-neutral float-left" title="Setting up Unreal Environment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../who_is_using/" class="btn btn-neutral float-right" title="Who is Using AirSim">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../working_with_plugin_contents/" class="btn btn-neutral float-right" title="Working with UE Plugin Contents">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -316,7 +317,7 @@
       <span><a href="../unreal_proj/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../who_is_using/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../working_with_plugin_contents/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

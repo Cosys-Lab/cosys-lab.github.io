@@ -42,7 +42,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Home</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                  <li class="toctree-l1"><a class="" href="../README.md">Home</a>
                   </li>
               </ul>
               <ul>
@@ -51,9 +51,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_windows/">Build on Windows</a>
+                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_linux/">Build on Linux</a>
+                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../dev_workflow/">Development Workflow</a>
+                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -112,9 +112,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../ros/">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
                 </li>
     </ul>
                   </li>
@@ -125,11 +125,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
+                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
+                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../flight_controller/">Flight Controller</a>
                   </li>
@@ -173,7 +173,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../reinforcement_learning/">Reinforcement Learning</a>
+                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
@@ -196,7 +196,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hard_drive/">Tips for Busy HDD</a>
+                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
@@ -204,7 +204,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../who_is_using/">Who is Using AirSim</a>
+                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
@@ -213,7 +213,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Support</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -250,9 +250,10 @@ Please see <a href="../sensors/">general sensors</a> for information on configru
 <ul>
 <li>By default, lidars are not enabled. To enable lidar, set the SensorType and Enabled attributes in settings json.</li>
 </ul>
-<pre><code>        &quot;Lidar1&quot;: { 
-             &quot;SensorType&quot;: 6,
-             &quot;Enabled&quot; : true,
+<pre><code class="language-json">    &quot;Lidar1&quot;: {
+         &quot;SensorType&quot;: 6,
+         &quot;Enabled&quot; : true,
+    }
 </code></pre>
 <ul>
 <li>Multiple lidars can be enabled on a vehicle.</li>
@@ -344,8 +345,8 @@ Please see <a href="../sensors/">general sensors</a> for information on configru
 </tbody>
 </table>
 <pre><code>{
-    &quot;SeeDocsAt&quot;: &quot;https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/docs/settings.md&quot;,
-    &quot;SettingsVersion&quot;: 1.2,
+    &quot;SeeDocsAt&quot;: &quot;https://cosys-lab.github.io/settings/&quot;,
+    &quot;SettingsVersion&quot;: 2.0,
 
     &quot;SimMode&quot;: &quot;Multirotor&quot;,
 
@@ -386,17 +387,16 @@ Please see <a href="../sensors/">general sensors</a> for information on configru
 }
 </code></pre>
 <h2 id="server-side-visualization-for-debugging">Server side visualization for debugging</h2>
-<p>Be default, the lidar points are not drawn on the viewport. To enable the drawing of hit laser points on the viewport, please enable setting 'DrawDebugPoints' via settings json.
-e.g.,</p>
-<pre><code>        &quot;Lidar1&quot;: { 
-             ...
-             &quot;DrawDebugPoints&quot;: true
-        },
+<p>By default, the lidar points are not drawn on the viewport. To enable the drawing of hit laser points on the viewport, please enable setting <code>DrawDebugPoints</code> via settings json.</p>
+<pre><code class="language-json">    &quot;Lidar1&quot;: {
+         ...
+         &quot;DrawDebugPoints&quot;: true
+    },
 </code></pre>
 <h2 id="client-api">Client API</h2>
 <p>Use <code>getLidarData(sensor name, vehicle name)</code> API to retrieve the Lidar data. The API returns a full scan Point-Cloud as a flat array of floats along with the timestamp of the capture and lidar pose.</p>
 <ul>
-<li><strong>Point-Cloud:</strong> The floats represent [x,y,z] coordinate for each point hit within the range in the last scan. It will be [0,0,0] for a laser that didn't get any reflection (out of range).</li>
+<li><strong>Point-Cloud:</strong> The floats represent [x,y,z] coordinate for each point hit within the range in the last scan in NED format. It will be [0,0,0] for a laser that didn't get any reflection (out of range).</li>
 <li><strong>Pose:</strong> Default: Sensor pose in the vehicle frame / External: If set to <code>External</code>(see table) the coordinates will be in either Unreal NED when <code>ExternalLocal</code> is <code>false</code> or Local NED (from starting position from vehicle) when <code>ExternalLocal</code> is <code>true</code>.</li>
 <li><strong>Groundtruth:</strong> For each point of the Point-Cloud a label string is kept that has the name of the object that the point belongs to a laser that didn't reflect anything will have label <em>out_of_range</em>.</li>
 </ul>

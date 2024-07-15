@@ -42,7 +42,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Home</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                  <li class="toctree-l1"><a class="" href="../README.md">Home</a>
                   </li>
               </ul>
               <ul>
@@ -51,9 +51,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_windows/">Build on Windows</a>
+                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_linux/">Build on Linux</a>
+                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../dev_workflow/">Development Workflow</a>
+                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -94,6 +94,8 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#demo">Demo</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-vehicles-at-runtime-through-api">Creating vehicles at runtime through API</a>
+    </li>
         </ul>
     </li>
     </ul>
@@ -116,9 +118,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../ros/">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
                 </li>
     </ul>
                   </li>
@@ -129,11 +131,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
+                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
+                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../flight_controller/">Flight Controller</a>
                   </li>
@@ -177,7 +179,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../reinforcement_learning/">Reinforcement Learning</a>
+                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
@@ -200,7 +202,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hard_drive/">Tips for Busy HDD</a>
+                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
@@ -208,7 +210,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../who_is_using/">Who is Using AirSim</a>
+                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
@@ -217,7 +219,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Support</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -251,7 +253,7 @@
 <p>It's as easy as specifying them in <a href="../settings/">settings.json</a>. The <code>Vehicles</code> element allows you to specify list of vehicles you want to create along with their initial positions and orientations. The positions are specified in NED coordinates in SI units with origin set at Player Start component in Unreal environment. The orientation is specified as Yaw, Pitch and Roll in degrees.</p>
 <h3 id="creating-multiple-cars">Creating Multiple Cars</h3>
 <pre><code class="language-json">{
-    &quot;SettingsVersion&quot;: 1.2,
+    &quot;SettingsVersion&quot;: 2.0,
     &quot;SimMode&quot;: &quot;Car&quot;,
 
     &quot;Vehicles&quot;: {
@@ -269,7 +271,7 @@
 </code></pre>
 <h3 id="creating-multiple-drones">Creating Multiple Drones</h3>
 <pre><code class="language-json">{
-    &quot;SettingsVersion&quot;: 1.2,
+    &quot;SettingsVersion&quot;: 2.0,
     &quot;SimMode&quot;: &quot;Multirotor&quot;,
 
     &quot;Vehicles&quot;: {
@@ -287,11 +289,31 @@
 }
 </code></pre>
 <h2 id="using-apis-for-multiple-vehicles">Using APIs for Multiple Vehicles</h2>
-<p>The new APIs since AirSim 1.2 allows you to specify <code>vehicle_name</code>. This name corresponds to keys in json settings (for example, Car1 or Drone2 above). </p>
-<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient//car/multi_agent_car.py">Example code for cars</a></p>
-<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient//multirotor/multi_agent_drone.py">Example code for multirotors</a></p>
+<p>The new APIs since AirSim 1.2 allows you to specify <code>vehicle_name</code>. This name corresponds to keys in json settings (for example, Car1 or Drone2 above).</p>
+<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/PythonClient/car/multi_agent_car.py">Example code for cars</a></p>
+<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/PythonClient/multirotor/multi_agent_drone.py">Example code for multirotors</a></p>
+<p>Using APIs for multi-vehicles requires specifying the <code>vehicle_name</code>, which needs to be hardcoded in the script or requires parsing of the settings file. There's also a simple API <code>listVehicles()</code> which returns a list (vector in C++) of strings containing names of the current vehicles. For example, with the above settings for 2 Cars -</p>
+<pre><code class="language-python">&gt;&gt;&gt; client.listVehicles()
+['Car1', 'Car2']
+</code></pre>
 <h3 id="demo">Demo</h3>
 <p><a href="https://youtu.be/35dgcuLuF5M"><img alt="AirSimMultiple Vehicles Demo Video" src="../images/demo_multi_vehicles.png" /></a></p>
+<h3 id="creating-vehicles-at-runtime-through-api">Creating vehicles at runtime through API</h3>
+<p>In the latest main branch of AirSim, the <code>simAddVehicle</code> API can be used to create vehicles at runtime. This is useful to create many such vehicles without needing to specify them in the settings. There are some limitations of this currently, described below -</p>
+<p><code>simAddVehicle</code> takes in the following arguments:</p>
+<ul>
+<li><code>vehicle_name</code>: Name of the vehicle to be created, this should be unique for each vehicle including any exisiting ones defined in the settings.json</li>
+<li><code>vehicle_type</code>: Type of vehicle, e.g. "simpleflight". Currently only SimpleFlight, PhysXCar, ComputerVision are supported, in their respective SimModes.
+                  Other vehicle types including PX4 and ArduPilot-related aren't supported</li>
+<li><code>pose</code>: Initial pose of the vehicle</li>
+<li><code>pawn_path</code>: Vehicle blueprint path, default empty wbich uses the default blueprint for the vehicle type</li>
+</ul>
+<p>Returns: <code>bool</code> Whether vehicle was created</p>
+<p>The usual APIs can be used to control and interact with the vehicle once created, with the <code>vehicle_name</code> parameter. Specifying other settings such as additional cameras, etc. isn't possible currently, a future enhancement could be passing JSON string of settings for the vehicle. It also works with the <code>listVehicles()</code> API described above, so the vehicles spawned would be included in the list.</p>
+<p>For some examples, check out <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/HelloSpawnedDrones/HelloSpawnedDrones.cpp">HelloSpawnedDrones.cpp</a> -</p>
+<p><img alt="HelloSpawnedDrones" src="../images/HelloSpawnedDrones.gif" /></p>
+<p>And <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/PythonClient/car/runtime_car.py">runtime_car.py</a> -</p>
+<p><img alt="runtime_car" src="../images/simAddVehicle_Car.gif" /></p>
               
             </div>
           </div><footer>

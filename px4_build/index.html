@@ -42,7 +42,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Home</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                  <li class="toctree-l1"><a class="" href="../README.md">Home</a>
                   </li>
               </ul>
               <ul>
@@ -51,9 +51,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_windows/">Build on Windows</a>
+                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_linux/">Build on Linux</a>
+                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../dev_workflow/">Development Workflow</a>
+                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -100,9 +100,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../ros/">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
                 </li>
     </ul>
                   </li>
@@ -113,11 +113,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
+                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
+                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../flight_controller/">Flight Controller</a>
                   </li>
@@ -177,7 +177,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../reinforcement_learning/">Reinforcement Learning</a>
+                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
@@ -200,7 +200,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hard_drive/">Tips for Busy HDD</a>
+                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
@@ -208,7 +208,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../who_is_using/">Who is Using AirSim</a>
+                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
@@ -217,7 +217,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Support</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -249,27 +249,36 @@
                 <h1 id="building-px4">Building PX4</h1>
 <h2 id="source-code">Source code</h2>
 <p>Getting the PX4 source code is easy:</p>
-<pre><code>git clone https://github.com/PX4/Firmware.git
-cd Firmware
-</code></pre>
-<p>Oh, and if you don't have git yet just run this:</p>
 <pre><code>sudo apt-get install git
+git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+bash ./PX4-Autopilot/Tools/setup/ubuntu.sh --no-sim-tools
+cd PX4-Autopilot
 </code></pre>
-<p>We are currently testing using the 1.6.0rc1 version, but the latest master branch should be ok too.
-Now to build it you will need the right tools.</p>
+<p>Now to build it you will need the right tools.</p>
 <h2 id="px4-build-tools">PX4 Build tools</h2>
-<p>The full instructions are available on the <a href="http://dev.px4.io/starting-installing-linux.html">dev.px4.io</a> website,
+<p>The full instructions are available on the <a href="https://docs.px4.io/master/en/dev_setup/building_px4.html">dev.px4.io</a> website,
 but we've copied the relevant subset of those instructions here for your convenience.</p>
 <p>(Note that <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">BashOnWindows</a>) can be used to build
-the PX4 firmware, just follow the BashOnWindows instructions at the bottom of this page).</p>
+the PX4 firmware, just follow the BashOnWindows instructions at the bottom of this page) then proceed with the 
+Ubuntu setup for PX4.</p>
 <h2 id="build-sitl-version">Build SITL version</h2>
 <p>Now you can make the SITL version that runs in posix, from the Firmware folder you created above:</p>
-<pre><code>make posix_sitl_ekf2
+<pre><code>make px4_sitl_default none_iris
 </code></pre>
-<p>Note: this build system is quite special, it knows how to update git submodules (and there's a lot of them),
-then it runs cmake (if necessary), then it runs the build itself.  So in a way the root Makefile is a meta-meta makefile :-) </p>
-<p>It shouldn't take long, about 2 minutes.  If all succeeds, the last line will link the <code>px4</code> app, which you can then run using the following:</p>
-<pre><code>make posix_sitl_ekf2  none_iris
+<p>Note: this build system is quite special, it knows how to update git submodules (and there's a lot
+of them), then it runs cmake (if necessary), then it runs the build itself. So in a way the root
+Makefile is a meta-meta makefile :-)   You might see prompts like this:</p>
+<pre><code class="language-shell"> *******************************************************************************
+ *   IF YOU DID NOT CHANGE THIS FILE (OR YOU DON'T KNOW WHAT A SUBMODULE IS):  *
+ *   Hit 'u' and &lt;ENTER&gt; to update ALL submodules and resolve this.            *
+ *   (performs git submodule sync --recursive                                  *
+ *    and git submodule update --init --recursive )                            *
+ *******************************************************************************
+</code></pre>
+<p>Every time you see this prompt type 'u' on your keyboard.</p>
+<p>It shouldn't take long, about 2 minutes. If all succeeds, the last line will link the <code>px4</code> app,
+which you can then run using the following:</p>
+<pre><code>make px4_sitl_default none_iris
 </code></pre>
 <p>And you should see output that looks like this:</p>
 <pre><code>creating new parameters file
@@ -297,13 +306,14 @@ INFO  [dataman] Unkown restart, data manager file 'rootfs/fs/microsd/dataman' si
   CAL_MAG0_ID: curr: 0 -&gt; new: 196616
 
 </code></pre>
-<p>so this is good, first run sets up the px4 parameters for SITL mode.  Second run has less output.
-This app is also an interactive console where you can type commands.  Type 'help' to see what they are
-and just type ctrl-C to kill it.  You can do that and restart it any time, that's a great way to reset
-any wonky state if you need to (it's equivalent to a Pixhawk hardware reboot).</p>
+<p>so this is good, first run sets up the px4 parameters for SITL mode. Second run has less output.
+This app is also an interactive console where you can type commands. Type 'help' to see what they
+are and just type ctrl-C to kill it. You can do that and restart it any time, that's a great way to
+reset any wonky state if you need to (it's equivalent to a Pixhawk hardware reboot).</p>
 <h2 id="arm-embedded-tools">ARM embedded tools</h2>
-<p>If you plan to build the PX4 firmware for real Pixhawk hardware then you will need the gcc cross-compiler
-for ARM Cortex-M4 chipset.  You can get this compiler by PX4 DevGuide, specifically this is in their <code>ubuntu_sim_nuttx.sh</code> setup script.</p>
+<p>If you plan to build the PX4 firmware for real Pixhawk hardware then you will need the gcc
+cross-compiler for ARM Cortex-M4 chipset. You can get this compiler by PX4 DevGuide, specifically
+this is in their <code>ubuntu_sim_nuttx.sh</code> setup script.</p>
 <p>After following those setup instructions you can verify the install by entering this command <code>arm-none-eabi-gcc --version</code>.  You should see the following output:</p>
 <pre><code>arm-none-eabi-gcc (GNU Tools for Arm Embedded Processors 7-2017-q4-major) 7.2.1 20170904 (release) [ARM/embedded-7-branch revision 255204]
 Copyright (C) 2017 Free Software Foundation, Inc.
@@ -312,7 +322,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 </code></pre>
 <h2 id="build-px4-for-arm-hardware">Build PX4 for ARM hardware</h2>
 <p>Now  you  can build the PX4 firmware for running on real pixhawk hardware:</p>
-<pre><code>make px4fmu-v2_default
+<pre><code>make px4_fmu-v4
 </code></pre>
 <p>This build will take a little longer because it is building a lot more including the NuttX real time OS,
 all the drivers for the sensors in the Pixhawk flight controller, and more.  It is also running the compiler
@@ -320,7 +330,7 @@ in super size-squeezing mode so it can fit all that in a 1 megabyte ROM !!</p>
 <p>One nice tid bit is you can plug in your pixhawk USB, and type <code>make px4fmu-v2_default upload</code> to flash the
 hardware with these brand new bits, so you don't need to use QGroundControl for that.</p>
 <h2 id="some-useful-parameters">Some Useful Parameters</h2>
-<p>PX4 has many customizable parameters (over 700 of them, in fact) and to get best results with AirSim we have
+<p>PX4 has many customizable parameters (over 700 of them, in fact) and to get best results with Cosys-AirSim we have
 found the following parameters are handy:</p>
 <pre><code>// be sure to enable the new position estimator module:
 param set SYS_MC_EST_GROUP 2

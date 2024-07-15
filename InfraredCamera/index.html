@@ -42,7 +42,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Home</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                  <li class="toctree-l1"><a class="" href="../README.md">Home</a>
                   </li>
               </ul>
               <ul>
@@ -51,9 +51,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_windows/">Build on Windows</a>
+                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_linux/">Build on Linux</a>
+                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../dev_workflow/">Development Workflow</a>
+                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -100,9 +100,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../ros/">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
                 </li>
     </ul>
                   </li>
@@ -113,11 +113,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
+                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
+                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../flight_controller/">Flight Controller</a>
                   </li>
@@ -161,7 +161,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../reinforcement_learning/">Reinforcement Learning</a>
+                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
@@ -184,7 +184,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hard_drive/">Tips for Busy HDD</a>
+                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
@@ -192,7 +192,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../who_is_using/">Who is Using AirSim</a>
+                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
@@ -201,7 +201,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Support</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -230,13 +230,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>This is a tutorial for generating simulated thermal infrared (IR) images using AirSim and the AirSim Africa environment. </p>
-<p>Pre-compiled Africa Environment can be downloaded from the Releases tab of this Github repo: 
-<a href="https://github.com/Microsoft/AirSim/releases/tag/v1.2.1">Windows Pre-compiled binary</a></p>
-<p>To generate your own data, you may use two python files: <a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient//computer_vision/create_ir_segmentation_map.py">create_ir_segmentation_map.py</a> and 
-<a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient//computer_vision/capture_ir_segmentation.py">capture_ir_segmentation.py</a>.</p>
-<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient//computer_vision/create_ir_segmentation_map.py">create_ir_segmentation_map.py</a> uses temperature, emissivity, and camera response information to estimate the thermal digital count that could be expected for the objects in the environment, and then reassigns the segmentation IDs in AirSim to match these digital counts. It should be run before starting to capture thermal IR data. Otherwise, digital counts in the IR images will be incorrect. The camera response, temperature, and emissivity data are all included for the Africa environment.</p>
-<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/tree/main/PythonClient//computer_vision/capture_ir_segmentation.py">capture_ir_segmentation.py</a> is run after the segmentation IDs have been reassigned. It tracks objects of interest and records the infrared and scene images from the multirotor. It uses Computer Vision mode.</p>
+                <p>This is a tutorial for generating simulated thermal infrared (IR) images using Cosys-AirSim. </p>
+<p>To generate your own data, you may use two python files: <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/PythonClient/computer_vision/create_ir_segmentation_map.py">create_ir_segmentation_map.py</a> and 
+<a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/PythonClient/computer_vision/capture_ir_segmentation.py">capture_ir_segmentation.py</a>.</p>
+<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/PythonClient/computer_vision/create_ir_segmentation_map.py">create_ir_segmentation_map.py</a> uses temperature, emissivity, and camera response information to estimate the thermal digital count that could be expected for the objects in the environment, and then reassigns the segmentation IDs in Cosys-AirSim to match these digital counts. It should be run before starting to capture thermal IR data. Otherwise, digital counts in the IR images will be incorrect. The camera response, temperature, and emissivity data are all included for the Africa environment.</p>
+<p><a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/PythonClient/computer_vision/capture_ir_segmentation.py">capture_ir_segmentation.py</a> is run after the segmentation IDs have been reassigned. It tracks objects of interest and records the infrared and scene images from the multirotor. It uses Computer Vision mode.</p>
 <p>Finally, the details about how temperatures were estimated for plants and animals in the Africa environment, etc. can be found in this paper:</p>
 <pre><code>@inproceedings{bondi2018airsim,
   title={AirSim-W: A Simulation Environment for Wildlife Conservation with UAVs},
@@ -253,7 +251,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../echo/" class="btn btn-neutral float-left" title="Pulse Echo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ros/" class="btn btn-neutral float-right" title="ROS: AirSim ROS Wrapper">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../matlab/" class="btn btn-neutral float-right" title="Matlab">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -283,7 +281,7 @@
       <span><a href="../echo/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../ros/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../matlab/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

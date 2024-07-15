@@ -42,7 +42,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Home</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                  <li class="toctree-l1"><a class="" href="../README.md">Home</a>
                   </li>
               </ul>
               <ul>
@@ -51,9 +51,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Building AirSim</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_windows/">Build on Windows</a>
+                  <li class="toctree-l1"><a class="" href="../build_windows.md">Build on Windows</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../build_linux/">Build on Linux</a>
+                  <li class="toctree-l1"><a class="" href="../build_linux.md">Build on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -66,7 +66,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../instance_segmentation/">Instance Segmentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../dev_workflow/">Development Workflow</a>
+                  <li class="toctree-l1"><a class="" href="../dev_workflow.md">Development Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a>
                   </li>
@@ -100,9 +100,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">ROS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../ros/">ROS: AirSim ROS Wrapper</a>
+                <li class="toctree-l2"><a class="" href="../ros.md">ROS: AirSim ROS Wrapper</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ROS_on_Windows_with_WSL/">Using ROS on Windows with WSL</a>
+                <li class="toctree-l2"><a class="" href="../ROS_on_Windows_with_WSL.md">Using ROS on Windows with WSL</a>
                 </li>
     </ul>
                   </li>
@@ -113,11 +113,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Design</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../code_structure/">Code Structure</a>
+                  <li class="toctree-l1"><a class="" href="../code_structure.md">Code Structure</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../modify_recording_data.md">Modifying Recording Data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../modify_recording_data/">Modifying Recording Data</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../coding_guidelines/">Coding Guidelines</a>
+                  <li class="toctree-l1"><a class="" href="../coding_guidelines.md">Coding Guidelines</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Flight Controller</a>
     <ul class="current">
@@ -128,6 +128,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#what-is-hardware-and-software-in-loop">What is Hardware- and Software-in-Loop?</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#what-flight-controllers-are-supported">What Flight Controllers are Supported?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-airsim-without-flight-controller">Using AirSim Without Flight Controller</a>
     </li>
     </ul>
                   </li>
@@ -171,7 +173,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Contributed Tutorials</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../reinforcement_learning/">Reinforcement Learning</a>
+                  <li class="toctree-l1"><a class="" href="../reinforcement_learning.md">Reinforcement Learning</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://www.youtube.com/watch?v=y09VbdQWvQY">Using Environments from Marketplace</a>
                   </li>
@@ -194,7 +196,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hard_drive/">Tips for Busy HDD</a>
+                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
@@ -202,7 +204,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../who_is_using/">Who is Using AirSim</a>
+                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
@@ -211,7 +213,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Support</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -248,14 +250,14 @@
 <p>Hardware-in-Loop (HITL or HIL) means flight controller runs in actual hardware such as Naze32 or Pixhawk chip. You then connect this hardware to PC using USB port. Simulator talks to the device to retrieve actuator signals and send it simulated sensor data. This is obviously as close as you can get to real thing. However, it typically requires more steps to set up and usually hard to debug. One big issue is that simulator clock and device clock runs on their own speed and accuracy. Also, USB connection (which is usually only USB 2.0) may not be enough for real-time communication.</p>
 <p>In "software-in-loop" simulation (SITL or SIL) mode the firmware runs in your computer as opposed to separate board. This is generally fine except that now you are not touching any code paths that are specific to your device. Also, none of your code now runs with real-time clock usually provided by specialized hardware board. For well-designed flight controllers with software clock, these are usually not concerning issues.</p>
 <h2 id="what-flight-controllers-are-supported">What Flight Controllers are Supported?</h2>
-<p>AirSim has built-in flight controller called <a href="../simple_flight/">simple_flight</a> and it is used by default. You don't need to do anything to use or configure it. AirSim also supports <a href="../px4_setup/">PX4</a> as another flight controller for advanced users. In the future, we also plan to support <a href="https://rosflight.org/">ROSFlight</a> and <a href="https://github.com/simondlevy/hackflight">Hackflight</a>.</p>
-<p>## Using AirSim Without Flight Controller
-Yes, now it's possible to use AirSim without flight controller. Please see the <a href="../image_apis/">instructions here</a> for how to use so-called "Computer Vision" mode. If you don't need vehicle dynamics, we highly recommend using this mode.</p>
+<p>AirSim has built-in flight controller called <a href="../simple_flight/">simple_flight</a> and it is used by default. You don't need to do anything to use or configure it. AirSim also supports <a href="../px4_setup/">PX4</a> &amp; <a href="https://ardupilot.org/dev/docs/sitl-with-airsim.html">ArduPilot</a> as external flight controllers for advanced users.</p>
+<h2 id="using-airsim-without-flight-controller">Using AirSim Without Flight Controller</h2>
+<p>Yes, now it's possible to use AirSim without flight controller. Please see the <a href="../image_apis/">instructions here</a> for how to use so-called "Computer Vision" mode. If you don't need vehicle dynamics, we highly recommend using this mode.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../coding_guidelines/" class="btn btn-neutral float-left" title="Coding Guidelines"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../modify_recording_data/" class="btn btn-neutral float-left" title="Modifying Recording Data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../simple_flight/" class="btn btn-neutral float-right" title="Simple Flight">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -283,7 +285,7 @@ Yes, now it's possible to use AirSim without flight controller. Please see the <
         </span>
     
     
-      <span><a href="../coding_guidelines/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../modify_recording_data/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../simple_flight/" style="color: #fcfcfc">Next &raquo;</a></span>
