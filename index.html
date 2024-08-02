@@ -44,13 +44,9 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#associated-publications">Associated publications</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#cosys-lab-modifications">Cosys-Lab Modifications</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#associated-publications">Associated publications</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#cosys-lab-modifications_1">Cosys-Lab Modifications</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#how-to-get-it">How to Get It</a>
         <ul>
@@ -68,11 +64,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#participate">Participate</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#original-airsim-paper">Original AirSim Paper</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#original-airsim-paper">Original AirSim Paper</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#license">License</a>
     </li>
@@ -289,15 +281,14 @@
               
                 <h1 id="cosys-airsim">Cosys-AirSim</h1>
 <p>Cosys-AirSim is a simulator for drones, cars and more, with extensive API support, built on <a href="https://www.unrealengine.com/">Unreal Engine</a>. It is open-source, cross platform, and supports hardware-in-loop with popular flight controllers such as PX4 for physically and visually realistic simulations. It is developed as an Unreal plugin that can simply be dropped into any Unreal environment. </p>
-<p>This fork is based on last public AirSim release from Microsoft's GitHub.</p>
-<h2 id="cosys-lab-modifications">Cosys-Lab Modifications</h2>
-<p>Cosys-Lab made extensive modifications to the AirSim platform to support multiple projects and research goals. 
+<p>This fork is based on last public AirSim release from Microsoft's GitHub.
+Cosys-Lab made extensive modifications to the AirSim platform to support multiple projects and research goals. 
 Please contact a Cosys-Lab researcher to get more in depth information on our work or if you wish to collaborate. 
 The <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/LICENSE">original AirSim MIT license</a> applies to all native AirSim source files. 
 Please note that we use that same <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/LICENSE">MIT license</a> as which applies to all changes made by Cosys-Lab in case you plan to do anything within this repository.
 Do note that this repository is provided as is, will not be actively updated and comes without warranty or support. 
 Please contact a Cosys-Lab researcher to get more in depth information on which branch or version is best for your work.</p>
-<h3 id="associated-publications">Associated publications</h3>
+<h2 id="associated-publications">Associated publications</h2>
 <ul>
 <li><a href="https://arxiv.org/abs/2303.13381">Cosys-AirSim: A Real-Time Simulation Framework Expanded for Complex Industrial Applications</a></li>
 </ul>
@@ -340,7 +331,7 @@ Please contact a Cosys-Lab researcher to get more in depth information on which 
   doi={10.3390/s21020523}
 }
 </code></pre>
-<h2 id="cosys-lab-modifications_1">Cosys-Lab Modifications</h2>
+<h2 id="cosys-lab-modifications">Cosys-Lab Modifications</h2>
 <ul>
 <li>Added support for Unreal up to 5.4 (<a href="https://cosys-lab.github.io/unreal_custenv#unreal-5354-scene-camera-bug">Note that Unreal 5.3/5.4 breaks camera scene rendering by default in custom environments</a>)</li>
 <li>Added <a href="https://cosys-lab.github.io/annotation">multi-layer annotation</a> for groundtruth label generation with RGB, greyscale and texture options. Extensive API integration and available for camera and GPU-LiDAR sensors.</li>
@@ -377,8 +368,7 @@ Please contact a Cosys-Lab researcher to get more in depth information on which 
 <h2 id="how-to-use-it">How to Use It</h2>
 <h3 id="documentation">Documentation</h3>
 <p>View our <a href="https://cosys-lab.github.io/">detailed documentation</a> on all aspects of Cosys-AirSim.</p>
-<h2 id="participate">Participate</h2>
-<h3 id="original-airsim-paper">Original AirSim Paper</h3>
+<h2 id="original-airsim-paper">Original AirSim Paper</h2>
 <p>More technical details are available in <a href="https://arxiv.org/abs/1705.05065">AirSim paper (FSR 2017 Conference)</a>. Please cite this as:</p>
 <pre><code>@inproceedings{airsim2017fsr,
   author = {Shital Shah and Debadeepta Dey and Chris Lovett and Ashish Kapoor},

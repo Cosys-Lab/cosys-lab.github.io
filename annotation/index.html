@@ -359,18 +359,22 @@ Or for index mode, <code>RGBTest_5</code> to give it the fifth color in the colo
 <p>The instance segmentation API function to get the colormap also applies to the RGB index mode. For example in Python you can use:</p>
 <pre><code class="language-python">colorMap = client.simGetSegmentationColorMap()
 </code></pre>
-<p>Several RPC API functions are available to influence or retrieve the RGB annotation layer.  Currently, it is not possible to use the RPC API to add new actors or components to the annotation system, you can only update their values. For example in Python:
- * <code>simSetAnnotationObjectID(annotation_name, mesh_name, object_id, is_name_regex=False/True)</code> to update the color of an object in index mode (regex allows to set multiple with wildcards for example) when it already exists in the annotation system
- * <code>simSetAnnotationObjectColor(annotation_name, mesh_name, r, g, b, is_name_regex=False/True)</code> to update the color of an object in direct mode  (regex allows to set multiple with wildcards for example) when it already exists in the annotation system
- * <code>simGetAnnotationObjectID(annotation_name, mesh_name)</code> to get the ID of an object in index mode
- * <code>simGetAnnotationObjectColor(annotation_name, mesh_name)</code> to get the color of an object in direct mode
- * <code>simIsValidColor(r,g,b)</code> You can check if a color is valid using this function</p>
-<p>The same is available in Unreal Blueprint and Unreal c++. You can find  the functions in the <code>Annotation</code> category.
- * <code>Add RGBDirect Annotation Tag to Component/Actor(annotation_name, component/actor, color, update_annotation=true/false)</code> to set the color of an object in direct mode
- * <code>Update RGBDirect Annotation Tag to Component/Actor(annotation_name, component/actor, color, update_annotation=true/false)</code> to update the color of an object in direct mode already in the system
- * <code>Add RGBIndex Annotation Tag to Component/Actor(annotation_name, component/actor, object_id, update_annotation=true/false)</code> to set the index of an object in index mode
- * <code>Update RGBIndex Annotation Tag to Component/Actor(annotation_name, component/actor, object_id, update_annotation=true/false)</code> to update the index of an object in index mode already in the system 
- * <code>Is Annotation RGB Valid(color)</code>You can check if a color is valid using this function</p>
+<p>Several RPC API functions are available to influence or retrieve the RGB annotation layer.  Currently, it is not possible to use the RPC API to add new actors or components to the annotation system, you can only update their values. For example in Python:</p>
+<ul>
+<li><code>simSetAnnotationObjectID(annotation_name, mesh_name, object_id, is_name_regex=False/True)</code> to update the color of an object in index mode (regex allows to set multiple with wildcards for example) when it already exists in the annotation system</li>
+<li><code>simSetAnnotationObjectColor(annotation_name, mesh_name, r, g, b, is_name_regex=False/True)</code> to update the color of an object in direct mode  (regex allows to set multiple with wildcards for example) when it already exists in the annotation system</li>
+<li><code>simGetAnnotationObjectID(annotation_name, mesh_name)</code> to get the ID of an object in index mode</li>
+<li><code>simGetAnnotationObjectColor(annotation_name, mesh_name)</code> to get the color of an object in direct mode</li>
+<li><code>simIsValidColor(r,g,b)</code> You can check if a color is valid using this function</li>
+</ul>
+<p>The same is available in Unreal Blueprint and Unreal c++. You can find  the functions in the <code>Annotation</code> category.</p>
+<ul>
+<li><code>Add RGBDirect Annotation Tag to Component/Actor(annotation_name, component/actor, color, update_annotation=true/false)</code> to set the color of an object in direct mode</li>
+<li><code>Update RGBDirect Annotation Tag to Component/Actor(annotation_name, component/actor, color, update_annotation=true/false)</code> to update the color of an object in direct mode already in the system</li>
+<li><code>Add RGBIndex Annotation Tag to Component/Actor(annotation_name, component/actor, object_id, update_annotation=true/false)</code> to set the index of an object in index mode</li>
+<li><code>Update RGBIndex Annotation Tag to Component/Actor(annotation_name, component/actor, object_id, update_annotation=true/false)</code> to update the index of an object in index mode already in the system </li>
+<li><code>Is Annotation RGB Valid(color)</code>You can check if a color is valid using this function</li>
+</ul>
 <p>Note that enabling <em>update_annotation</em> is a relatively slow process, specially on actors with lots of annotated components. 
 Ideally set <em>update_annotation</em> to false during the process of adding tags to the actor and only turn on update_annotation for the last component or actor you want to update.
 Alternatively, you can use the <code>Add New Actor To Annotation()</code> blueprint function to update the annotation layer for this actor after you have added all tags.</p>
@@ -379,12 +383,16 @@ Alternatively, you can use the <code>Add New Actor To Annotation()</code> bluepr
 Actor/component tags have the following format: <code>annotationName_value</code>.
 So if for example your RGB annotation layer is called <code>GreyscaleTest</code>, you can tag an actor with the tag <code>GreyscaleTest_0.76</code> to give it a value of 0.76 which would result in a color of (194, 194, 194).</p>
 <p>When <code>Default</code> is set to 1, all objects without a tag for this layer will be rendered in black.</p>
-<p>Several RPC API functions are available to influence or retrieve the RGB annotation layer. Currently, it is not possible to use the RPC API to add new actors or components to the annotation system, you can only update their values. For example in Python:
- * <code>simSetAnnotationObjectValue(annotation_name, mesh_name, greyscale_value, is_name_regex=False/True)</code> to update the value of an object (regex allows to set multiple with wildcards for example) when it already exists in the annotation system
- * <code>simGetAnnotationObjectValue(annotation_name, mesh_name)</code> to get the value of an object</p>
-<p>The same is available in Unreal Blueprint and Unreal c++. You can find  the functions in the <code>Annotation</code> category.
- * <code>Add Greyscale Annotation Tag to Component/Actor(annotation_name, component/actor, value, update_annotation=true/false)</code> to update the value of an object when it already exists in the annotation system
- * <code>Update Greyscale Annotation Tag to Component/Actor(annotation_name, component/actor, value, update_annotation=true/false)</code> to update the value of an object</p>
+<p>Several RPC API functions are available to influence or retrieve the RGB annotation layer. Currently, it is not possible to use the RPC API to add new actors or components to the annotation system, you can only update their values. For example in Python:</p>
+<ul>
+<li><code>simSetAnnotationObjectValue(annotation_name, mesh_name, greyscale_value, is_name_regex=False/True)</code> to update the value of an object (regex allows to set multiple with wildcards for example) when it already exists in the annotation system</li>
+<li><code>simGetAnnotationObjectValue(annotation_name, mesh_name)</code> to get the value of an object</li>
+</ul>
+<p>The same is available in Unreal Blueprint and Unreal c++. You can find  the functions in the <code>Annotation</code> category.</p>
+<ul>
+<li><code>Add Greyscale Annotation Tag to Component/Actor(annotation_name, component/actor, value, update_annotation=true/false)</code> to update the value of an object when it already exists in the annotation system</li>
+<li><code>Update Greyscale Annotation Tag to Component/Actor(annotation_name, component/actor, value, update_annotation=true/false)</code> to update the value of an object</li>
+</ul>
 <p>Note that enabling <em>update_annotation</em> is a relatively slow process, specially on actors with lots of annotated components. 
 Ideally set <em>update_annotation</em> to false during the process of adding tags to the actor and only turn on update_annotation for the last component or actor you want to update.
 Alternatively, you can use the <code>Add New Actor To Annotation()</code> blueprint function to update the annotation layer for this actor after you have added all tags.</p>
@@ -403,16 +411,20 @@ What is important is in reference mode is that you have a texture in the content
 You must place your textures in the folder defined by the <code>TexturePath</code> setting in the settings.json file for this layer. And the texture must have the same name as the mesh and start with the prefix set by the <code>TexturePrefix</code> setting in the settings.json file for this layer followed by a hyphen.
 So for example if you have a static mesh called <em>Cylinder</em> and your texture layer is called <code>TextureTestDirect</code> with the settings <code>TexturePath</code> set to <code>/Game/AnnotationTest</code> and <code>TexturePrefix</code> set to <code>Test1</code>, you must have a texture called <code>Test1-Cylinder</code> in the folder <code>/Game/AnnotationTest</code>.</p>
 <p>When <code>Default</code> is set to 1, all objects without a tag for this layer will be rendered in black.</p>
-<p>Several RPC API functions are available to influence or retrieve the RGB annotation layer.  Currently, it is not possible to use the RPC API to add new actors or components to the annotation system, you can only update their values. For example in Python:
- * <code>simSetAnnotationObjectTextureByPath(annotation_name, mesh_name, texture_path, is_name_regex=False/True)</code> to set the texture of an object in direct mode, the texture path should be same format as described above, for example <code>/Game/MyTextures/TestTexture1</code> (regex allows to set multiple with wildcards for example)
- * <code>simEnableAnnotationObjectTextureByPath(annotation_name, mesh_name, r, g, b, is_name_regex=False/True)</code> to enable the texture of an object in relative path mode, this does require a texture in the relative path as described above!  (regex allows to set multiple with wildcards for example)
- * <code>simGetAnnotationObjectTexturePath(annotation_name, mesh_name)</code> to get the texture path of an object</p>
-<p>The same is available in Unreal Blueprint and Unreal c++. You can find  the functions in the <code>Annotation</code> category.
- * <code>Add Texture Direct Annotation Tag to Component/Actor By Path(annotation_name, component/actor, texture_path, update_annotation=true/false)</code> to set the texture of an object in direct mode, the texture path should be same format as described above, for example <code>/Game/MyTextures/TestTexture1</code>
- * <code>Update Texture Direct Annotation Tag to Component/Actor By Path(annotation_name, component/actor, texture_path, update_annotation=true/false)</code> to update texture of an object in direct mode that is already in the system, the texture path should be same format as described above, for example <code>/Game/MyTextures/TestTexture1</code>
- * <code>Add Texture Direct Annotation Tag to Component/Actor(annotation_name, component/actor, texture, update_annotation=true/false)</code> to set the texture of an object in direct mode, the texture can be directly referenced as UTexture<em> Object
- * <code>Update Texture Direct Annotation Tag to Component/Actor(annotation_name, component/actor, texture, update_annotation=true/false)</code> to update texture of an object in direct mode that is already in the system, the texture can be directly referenced as UTexture</em> Object
- * <code>Enable Texture By Path Annotation Tag to Component/Actor(annotation_name, component/actor, update_annotation=true/false)</code> to enable the texture of an object in relative path mode, this does require a texture in the relative path as described above! </p>
+<p>Several RPC API functions are available to influence or retrieve the RGB annotation layer.  Currently, it is not possible to use the RPC API to add new actors or components to the annotation system, you can only update their values. For example in Python:</p>
+<ul>
+<li><code>simSetAnnotationObjectTextureByPath(annotation_name, mesh_name, texture_path, is_name_regex=False/True)</code> to set the texture of an object in direct mode, the texture path should be same format as described above, for example <code>/Game/MyTextures/TestTexture1</code> (regex allows to set multiple with wildcards for example)</li>
+<li><code>simEnableAnnotationObjectTextureByPath(annotation_name, mesh_name, r, g, b, is_name_regex=False/True)</code> to enable the texture of an object in relative path mode, this does require a texture in the relative path as described above!  (regex allows to set multiple with wildcards for example)</li>
+<li><code>simGetAnnotationObjectTexturePath(annotation_name, mesh_name)</code> to get the texture path of an object</li>
+</ul>
+<p>The same is available in Unreal Blueprint and Unreal c++. You can find  the functions in the <code>Annotation</code> category.</p>
+<ul>
+<li><code>Add Texture Direct Annotation Tag to Component/Actor By Path(annotation_name, component/actor, texture_path, update_annotation=true/false)</code> to set the texture of an object in direct mode, the texture path should be same format as described above, for example <code>/Game/MyTextures/TestTexture1</code></li>
+<li><code>Update Texture Direct Annotation Tag to Component/Actor By Path(annotation_name, component/actor, texture_path, update_annotation=true/false)</code> to update texture of an object in direct mode that is already in the system, the texture path should be same format as described above, for example <code>/Game/MyTextures/TestTexture1</code></li>
+<li><code>Add Texture Direct Annotation Tag to Component/Actor(annotation_name, component/actor, texture, update_annotation=true/false)</code> to set the texture of an object in direct mode, the texture can be directly referenced as UTexture* Object</li>
+<li><code>Update Texture Direct Annotation Tag to Component/Actor(annotation_name, component/actor, texture, update_annotation=true/false)</code> to update texture of an object in direct mode that is already in the system, the texture can be directly referenced as UTexture* Object</li>
+<li><code>Enable Texture By Path Annotation Tag to Component/Actor(annotation_name, component/actor, update_annotation=true/false)</code> to enable the texture of an object in relative path mode, this does require a texture in the relative path as described above! </li>
+</ul>
 <p>Note that enabling <em>update_annotation</em> is a relatively slow process, specially on actors with lots of annotated components. 
 Ideally set <em>update_annotation</em> to false during the process of adding tags to the actor and only turn on update_annotation for the last component or actor you want to update.
 Alternatively, you can use the <code>Add New Actor To Annotation()</code> blueprint function to update the annotation layer for this actor after you have added all tags.</p>
@@ -420,14 +432,18 @@ Alternatively, you can use the <code>Add New Actor To Annotation()</code> bluepr
 <p>By default, when the world loads, all meshes are checked for tags and the annotation layers are updated accordingly. 
 With the unreal blueprint and c++ functions however, you can also decide to update the annotation layer only when you want to with the <code>update_annotation</code> argument. 
 If you have many objects to update, this can save a lot of time by doing it only for the last object.</p>
-<p>Some API functions exist for all types, for example in Python:
- * <code>simListAnnotationObjects(annotation_name)</code> to get a list of all objects within this annotation layer. 
- * <code>simListAnnotationPoses(annotation_name, ned=True/False, only_visible=False/True)</code> to get the 3D poses of all objects in this annotation layer. The returned pose is in NED coordinates in SI units with its origin at Player Start by default or in Unreal NED frame if the <code>ned</code> boolean argument is set to <code>talse</code>.</p>
-<p>Similarly, for Unreal Blueprint and Unreal c++. You can find  the functions in the <code>Annotation</code> category.
- * <code>Does Annotation Layer Exist(annotation_name)</code> to figure out if a layer exists or not
- * <code>Add New Actor To Annotation(annotation_name, actor, update_annotation=true/false)</code> if you manually added a tag, and want to update the annotation layer with this actor. This is useful to run after adding multiple tags to the actor and its components with the other api calls, and you want to update the annotation layer only once, otherwise it will be much slower.
- * <code>Delete Actor From Annotation(annotation_name, actor, update_annotation=true/false)</code> if you manually remove all tags from an actor for this layer and remove it from the annotation layer
- * <code>Force Update Annotation(annotation_name)</code> to force an update of the annotation layer.</p>
+<p>Some API functions exist for all types, for example in Python:</p>
+<ul>
+<li><code>simListAnnotationObjects(annotation_name)</code> to get a list of all objects within this annotation layer. </li>
+<li><code>simListAnnotationPoses(annotation_name, ned=True/False, only_visible=False/True)</code> to get the 3D poses of all objects in this annotation layer. The returned pose is in NED coordinates in SI units with its origin at Player Start by default or in Unreal NED frame if the <code>ned</code> boolean argument is set to <code>talse</code>.</li>
+</ul>
+<p>Similarly, for Unreal Blueprint and Unreal c++. You can find  the functions in the <code>Annotation</code> category.</p>
+<ul>
+<li><code>Does Annotation Layer Exist(annotation_name)</code> to figure out if a layer exists or not</li>
+<li><code>Add New Actor To Annotation(annotation_name, actor, update_annotation=true/false)</code> if you manually added a tag, and want to update the annotation layer with this actor. This is useful to run after adding multiple tags to the actor and its components with the other api calls, and you want to update the annotation layer only once, otherwise it will be much slower.</li>
+<li><code>Delete Actor From Annotation(annotation_name, actor, update_annotation=true/false)</code> if you manually remove all tags from an actor for this layer and remove it from the annotation layer</li>
+<li><code>Force Update Annotation(annotation_name)</code> to force an update of the annotation layer.</li>
+</ul>
 <h3 id="getting-annotation-data-from-sensors">Getting annotation data from sensors</h3>
 <p>The easiest way to get the images from annotation cameras, is through the image API. See the <a href="../image_apis/#annotation">Image API documentation</a> for more information.
 GPU LiDAR is also supported, but each GPU Lidar can only render one annotation layer. See the <a href="../gpulidar/">GPU LiDAR documentation</a> for more information.</p>

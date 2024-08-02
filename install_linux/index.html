@@ -59,11 +59,11 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#install-unreal-engine">Install Unreal Engine</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#build-airsim">Build Airsim</a>
+    <li class="toctree-l2"><a class="reference internal" href="#build-cosys-airsim">Build Cosys-Airsim</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#build-unreal-environment">Build Unreal Environment</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-use-airsim">How to Use AirSim</a>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-use-cosys-airsim">How to Use Cosys-AirSim</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#optional-setup-remote-control-multirotor-only">[Optional] Setup Remote Control (Multirotor Only)</a>
     </li>
@@ -267,7 +267,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="intall-or-build-airsim-on-linux">Intall or Build AirSim on Linux</h1>
+                <h1 id="intall-or-build-cosys-airsim-on-linux">Intall or Build Cosys-AirSim on Linux</h1>
 <p>The current recommended and tested environment is <strong>Ubuntu 22.04 LTS</strong>. Theoretically, you can build on other distros as well, but we haven't tested it.</p>
 <h2 id="install-unreal-engine">Install Unreal Engine</h2>
 <p>Download the latest version of Unreal Engine 5.4 from the [official download page]](https://www.unrealengine.com/en-US/linux). 
@@ -281,28 +281,28 @@ sudo chown -r yourusername /opt/UnrealEngine
 <p>From where you install Unreal Engine, you can run <code>Engine/Binaries/Linux/UnrealEditor</code> from the terminal to launch Unreal Engine.
 For more information you can read the <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/linux-development-quickstart-for-unreal-engine?application_version=5.4">quick start guide</a>.</p>
 <p>You can alternatively install Unreal Engine from source if you do not use a Ubuntu distribution, see the documentation linked above for more information. </p>
-<h2 id="build-airsim">Build Airsim</h2>
+<h2 id="build-cosys-airsim">Build Cosys-Airsim</h2>
 <ul>
-<li>Clone AirSim and build it:
+<li>Clone Cosys-AirSim and build it:
    <code>bash
    # go to the folder where you clone GitHub projects
    git clone https://github.com/Cosys-Lab/Cosys-AirSim.git
-   cd AirSim
+   cd Cosys-AirSim
    ./setup.sh
    ./build.sh</code></li>
 </ul>
 <h2 id="build-unreal-environment">Build Unreal Environment</h2>
-<p>Finally, you will need an Unreal project that hosts the environment for your vehicles. AirSim comes with a built-in "Blocks Environment" which you can use, or you can create your own. Please see <a href="../unreal_proj/">setting up Unreal Environment</a> if you'd like to setup your own environment.</p>
+<p>Finally, you will need an Unreal project that hosts the environment for your vehicles. Cosys-AirSim comes with a built-in "Blocks Environment" which you can use, or you can create your own. Please see <a href="../unreal_proj/">setting up Unreal Environment</a> if you'd like to setup your own environment.</p>
 <p>The other environments available often need additional asset packs to be downloaded first, read <a href="environments.md">here</a> for more information.</p>
-<h2 id="how-to-use-airsim">How to Use AirSim</h2>
-<p>Once AirSim is setup:
+<h2 id="how-to-use-cosys-airsim">How to Use Cosys-AirSim</h2>
+<p>Once Cosys-AirSim is setup:
 - Navigate to the environment folder (for example for BLocks it is <code>Unreal\Environments\Blocks</code>), and run <code>update_from_git.sh</code>.
 - Go to <code>UnrealEngine</code> installation folder and start Unreal by running <code>./Engine/Binaries/Linux/UnrealEditor</code>.
-- When Unreal Engine prompts for opening or creating project, select Browse and choose <code>AirSim/Unreal/Environments/Blocks</code> (or your <a href="../unreal_custenv/">custom</a> Unreal project).
-- Alternatively, the project file can be passed as a commandline argument. For Blocks: <code>./Engine/Binaries/Linux/UnrealEditor &lt;AirSim_path&gt;/Unreal/Environments/Blocks/Blocks.uproject</code>
-- If you get prompts to convert project, look for More Options or Convert-In-Place option. If you get prompted to build, choose Yes. If you get prompted to disable AirSim plugin, choose No.
+- When Unreal Engine prompts for opening or creating project, select Browse and choose <code>Cosys-AirSim/Unreal/Environments/Blocks</code> (or your <a href="../unreal_custenv/">custom</a> Unreal project).
+- Alternatively, the project file can be passed as a commandline argument. For Blocks: <code>./Engine/Binaries/Linux/UnrealEditor &lt;Cosys-AirSim_path&gt;/Unreal/Environments/Blocks/Blocks.uproject</code>
+- If you get prompts to convert project, look for More Options or Convert-In-Place option. If you get prompted to build, choose Yes. If you get prompted to disable Cosys-AirSim plugin, choose No.
 - After Unreal Editor loads, press Play button.</p>
-<p>See <a href="../apis/">Using APIs</a> and <a href="../settings/">settings.json</a> for various options available for AirSim usage.</p>
+<p>See <a href="../apis/">Using APIs</a> and <a href="../settings/">settings.json</a> for various options available for Cosys-AirSim usage.</p>
 <p>!!! tip
 Go to 'Edit-&gt;Editor Preferences', in the 'Search' box type 'CPU' and ensure that the 'Use Less CPU when in Background' is unchecked.</p>
 <h3 id="optional-setup-remote-control-multirotor-only">[Optional] Setup Remote Control (Multirotor Only)</h3>

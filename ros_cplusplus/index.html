@@ -277,7 +277,7 @@ The following was tested on Ubuntu 22.04 with ROS2 Iron.</p>
 <p>Build Cosys-AirSim as per the instructions.</p>
 </li>
 <li>
-<p>Make sure that you have set up the environment variables for ROS as mentioned in the installation pages above. Add the <code>source</code> command to your <code>.bashrc</code> for convenience (replace <code>iron</code> with specific version name) -</p>
+<p>Make sure that you have set up the environment variables for ROS. Add the <code>source</code> command to your <code>.bashrc</code> for convenience (replace <code>iron</code> with specific version name) -</p>
 </li>
 </ul>
 <pre><code class="language-shell">echo &quot;source /opt/ros/iron/setup.bash&quot; &gt;&gt; ~/.bashrc
@@ -287,12 +287,12 @@ source ~/.bashrc
 <pre><code class="language-shell">apt-get install python3-rosdep
 sudo rosdep init
 rosdep update
-rosdep install --from-paths src -y --ignore-src
+rosdep install --from-paths src -y --ignore-src --skip-keys pcl --skip-keys message_runtime --skip-keys message_generation
 </code></pre>
 <ul>
 <li>Build ROS package</li>
 </ul>
-<pre><code class="language-shell">colcon build DCMAKE_BUILD_TYPE=Release
+<pre><code class="language-shell">colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 </code></pre>
 <h2 id="running">Running</h2>
 <pre><code class="language-shell">source install/setup.bash
@@ -322,7 +322,7 @@ Let's look at the ROS API for both nodes:</p>
   This the current GPS coordinates of the drone in airsim.</p>
 </li>
 <li>
-<p><code>/airsim_node/VEHICLE-NAME/environment</code> <a href="https://docs.ros.org/api/sensor_msgs/html/msg/Environment.html">sensor_msgs::Environment</a></p>
+<p><code>/airsim_node/VEHICLE-NAME/environment</code> <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/ros2/src/airsim_interfaces/msg/Environment.msg">airsim_interfaces::Environment</a></p>
 </li>
 <li>
 <p><code>/airsim_node/VEHICLE-NAME/odom_local</code> <a href="https://docs.ros.org/api/nav_msgs/html/msg/Odometry.html">nav_msgs::Odometry</a>
