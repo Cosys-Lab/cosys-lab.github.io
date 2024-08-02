@@ -59,6 +59,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dynamic_objects/">Dynamic Objects</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Using AirSim</span></p>
               <ul class="current">
@@ -230,24 +232,15 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_proj/">Setting up Unreal Environment</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://github.com/Microsoft/AirSim/wiki/technion">Formula Student Technion Self-drive</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Support</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -290,7 +283,7 @@ The annotation system uses actor and/or component tags to set these values for t
 <li>Landscape objects aren't supported. This is the special object type in Unreal to make terrain with. As a work-around, StaticMesh terrain must be used.</li>
 <li>Foliage objects aren't supported. This is the special object type in Unreal to place trees, grass and other plants that move with the wind. As a work-around, StaticMesh objects must be used.</li>
 <li>Brush objects aren't supported. This is a special object type in Unreal to create your own meshes with. As a work-around, you can convert them to a StaticMesh.</li>
-<li>These and other unsupported object types that are less common that either will not be rendered (decals, text, foliage, ...) or will by default be given the RGB color value of [149,149,149] or <a href="brush objects, landscape,...">0,0,0</a>.</li>
+<li>These and other unsupported object types that are less common that either will not be rendered (decals, text, foliage, ...) or will by default be given the RGB color value of [149,149,149] or [0,0,0]. (brush objects, landscape,...).</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <h3 id="settings-json-definition-of-layers">Settings JSON definition of layers</h3>

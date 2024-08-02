@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Setup Dynamic Objects for Scenario Environments for AirSim - Cosys-AirSim</title>
+    <title>Dynamic Objects - Cosys-AirSim</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Setup Dynamic Objects for Scenario Environments for AirSim";
+        var mkdocs_page_name = "Dynamic Objects";
         var mkdocs_page_input_path = "dynamic_objects.md";
         var mkdocs_page_url = null;
       </script>
@@ -50,7 +50,7 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Installing AirSim</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../install_precompiled/">Download and install from precompiled plugin</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install from Source on Windows</a>
@@ -58,6 +58,32 @@
                   <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install from Source on Linux</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Dynamic Objects</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#location">Location</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#seed-world-dynamics-configuration">Seed &amp; World Dynamics Configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start-point">Start Point</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dynamic-marked-objects">Dynamic Marked Objects</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#launchfile">LaunchFile</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dynamic-static-spawners">Dynamic Static Spawners</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#grouped-ai">Grouped AI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#spline-animations">Spline Animations</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Using AirSim</span></p>
@@ -208,24 +234,15 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../hard_drive.md">Tips for Busy HDD</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_proj/">Setting up Unreal Environment</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../who_is_using.md">Who is Using AirSim</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../working_with_plugin_contents/">Working with UE Plugin Contents</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://github.com/Microsoft/AirSim/wiki/technion">Formula Student Technion Self-drive</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Support</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="../faq.md">FAQ</a>
                   </li>
               </ul>
       </div>
@@ -242,7 +259,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Setup Dynamic Objects for Scenario Environments for AirSim</li>
+          <li>Installing AirSim &raquo;</li>
+      <li>Dynamic Objects</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/dynamic_objects.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
@@ -252,7 +270,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="setup-dynamic-objects-for-scenario-environments-for-airsim">Setup Dynamic Objects for Scenario Environments for AirSim</h1>
+                <h1 id="setup-dynamic-objects-for-scenario-environments-for-cosys-airsim">Setup Dynamic Objects for Scenario Environments for Cosys-AirSim</h1>
 <p>The available environments often feature some custom-made dynamic blueprints that can be used to create random but deterministic change in your environment. </p>
 <h2 id="location">Location</h2>
 <p>While these can be found in the environments available, they are also separately saved in <em>Unreal/Environments/DynamicObjects</em>.
@@ -532,6 +550,10 @@ They also use the Seed randomisation so that they can be spawned at the same way
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../unreal_custenv/" class="btn btn-neutral float-left" title="Custom Unreal Environment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../apis/" class="btn btn-neutral float-right" title="Core APIs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -557,6 +579,10 @@ They also use the Seed randomisation so that they can be spawned at the same way
         </span>
     
     
+      <span><a href="../unreal_custenv/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../apis/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
