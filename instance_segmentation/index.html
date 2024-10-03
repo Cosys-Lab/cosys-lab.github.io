@@ -51,11 +51,15 @@
               </ul>
               <p class="caption"><span class="caption-text">Installing AirSim</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_packaged/">Download and run</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_precompiled/">Download and install from precompiled plugin</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install from Source on Windows</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install from Source on Linux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../docker_ubuntu/">Using Docker on Ubuntu</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -266,7 +270,7 @@
 <li>These and other unsupported object types that are less common that either will not be rendered (decals, text, foliage, ...) or will by default be given the RGB color value of [149,149,149] or [0,0,0]. (brush objects, landscape,...).</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>By default, at the start of the simulation, it will give a random color to each object. 
+<p>By default, at the start of the simulation, it will give a random color to each object. You can disable this by setting the main parameter <code>InitialInstanceSegmentation</code> to false in the settings.json file.
 Please see the <a href="../image_apis/#segmentation">Image API documentation</a> on how to manually set or get the color information.</p>
 <p>For an example of the Instance Segmentation API, please see the script <em>segmentation_test.py</em> (Cosys-Airsim/PythonClient/segmentation/segmentation_test.py).</p>
 <p>For a script that generates a full list of objects and their associated color, please see the script <em>segmentation_generate_list.py</em> (Cosys-Airsim/PythonClient/segmentation/segmentation_generate_list.py).</p>

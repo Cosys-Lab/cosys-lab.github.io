@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>AirSim on Real Drones - Cosys-AirSim</title>
+    <title>Using Docker on Ubuntu - Cosys-AirSim</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "AirSim on Real Drones";
-        var mkdocs_page_input_path = "custom_drone.md";
+        var mkdocs_page_name = "Using Docker on Ubuntu";
+        var mkdocs_page_input_path = "docker_ubuntu.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -50,7 +50,7 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Installing AirSim</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../run_packaged/">Download and run</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_precompiled/">Download and install from precompiled plugin</a>
@@ -59,7 +59,39 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install from Source on Linux</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../docker_ubuntu/">Using Docker on Ubuntu</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Using Docker on Ubuntu</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#runtime-binaries">Runtime Binaries</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-the-docker-image">Build the docker image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-an-unreal-binary-inside-a-docker-container">Running an unreal binary inside a docker container</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#source">Source</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requirements_1">Requirements:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-cosys-airsim-inside-ue5-dev-docker-container">Building Cosys-AirSim inside UE5 dev docker container:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-cosys-airsim-container">Running Cosys-AirSim container</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#packaging-unreal-environments-in-airsim_source-containers">Packaging Unreal Environments in airsim_source containers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#specifying-settingsjson">Specifying settings.json</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#airsim_binary-docker-image">airsim_binary docker image:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#airsim_source-docker-image">airsim_source docker image:</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -209,10 +241,8 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Misc</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">AirSim on Real Drones</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../custom_drone/">AirSim on Real Drones</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
                   </li>
@@ -241,10 +271,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Misc &raquo;</li>
-      <li>AirSim on Real Drones</li>
+          <li>Installing AirSim &raquo;</li>
+      <li>Using Docker on Ubuntu</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/custom_drone.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/docker_ubuntu.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -252,57 +282,136 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="airlib-on-a-real-drone">AirLib on a Real Drone</h1>
-<p>The AirLib library can be compiled and deployed on the companion computer on a real drone. For our testing, we mounted a Gigabyte Brix BXi7-5500 ultra compact PC on the drone connected to the Pixhawk flight controller over USB. The Gigabyte PC is running Ubuntu, so we are able to SSH into it over Wi-Fi: </p>
-<p><img alt="Flamewheel" src="../images/Flamewheel.png" /></p>
-<p>Once connected you can run MavLinkTest with this command line:</p>
-<pre><code>MavLinkTest -serial:/dev/ttyACM0,115200 -logdir:. 
+                <h1 id="cosys-airsim-on-docker-in-linux">Cosys-AirSim on Docker in Linux</h1>
+<p>We've two options for docker. You can either build an image for running <a href="#runtime-binaries">Cosys-AirSim binaries</a>, or for compiling Cosys-AirSim <a href="#source">from source</a>.</p>
+<h2 id="runtime-binaries">Runtime Binaries</h2>
+<h4 id="requirements">Requirements:</h4>
+<ul>
+<li><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/quick-start-guide-for-using-container-images-in-unreal-engine">Follow this guide for preparing setting up your GitHub access, installing Docker and authenticating with the GitHub Container Registry.</a>.</li>
+<li><a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">And this guide for installing Nvidia Container Toolkit</a>.</li>
+</ul>
+<h4 id="build-the-docker-image">Build the docker image</h4>
+<ul>
+<li>Below are the default arguments.
+  <code>--base_image</code>: This is image over which we'll run a runtime packaged binary. We've tested only the official Unreal Engine runtime container, more info can be found <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-containers-in-unreal-engine">here</a>. Change the base image at your own risk.
+   <code>--target_image</code> is the desired name of your docker image.
+   Defaults to <code>airsim_binary</code> with same tag as the base image.</li>
+</ul>
+<pre><code class="language-bash">cd Airsim/docker;
+python build_airsim_image.py \
+   --base_image=ghcr.io/epicgames/unreal-engine:runtime \
+   --target_image=airsim_binary:runtime
 </code></pre>
-<p>And this will produce a log file of the flight which can then be used for <a href="../playback/">playback in the simulator</a>.</p>
-<p>You can also add <code>-proxy:192.168.1.100:14550</code> to connect MavLinkTest to a remote computer where you can run QGroundControl or our 
-<a href="../log_viewer/">PX4 Log Viewer</a> which is another handy way to see what is going on with your drone.</p>
-<p>MavLinkTest then has some simple commands for testing your drone, here's a simple example of some commands:</p>
-<pre><code>arm
-takeoff 5
-orbit 10 2
+<ul>
+<li>Verify you have an image by:
+ <code>docker images | grep airsim</code></li>
+</ul>
+<h4 id="running-an-unreal-binary-inside-a-docker-container">Running an unreal binary inside a docker container</h4>
+<ul>
+<li>Get a Linux packaged Unreal project binary like the Blocks packaged binary example <a href="https://github.com/Cosys-Lab/Cosys-AirSim/releases">found in the releases of Cosys-AirSim</a> or package your own project in Ubuntu.
+Let's take the Blocks project binary as an example.
+You can download it by running</li>
+</ul>
+<pre><code class="language-bash">cd Airsim/docker;
+./download_blocks_env_binary.sh
 </code></pre>
-<p>This will arm the drone, takeoff of 5 meters, then do an orbit pattern radius 10 meters, at 2 m/s.
-Type '?' to find all available commands.</p>
-<p><strong>Note:</strong> Some commands (for example, <code>orbit</code>) are named differently and have different syntax in MavLinkTest and DroneShell (for example, <code>circlebypath -radius 10 -velocity 21</code>).</p>
-<p>When you land the drone you can stop MavLinkTest and copy the *.mavlink log file that was generated.</p>
-<h1 id="droneserver-and-droneshell">DroneServer and DroneShell</h1>
-<p>Once you are happy that the MavLinkTest is working, you can also run DroneServer and DroneShell as follows. First, run MavLinkTest with a local proxy to send everything to DroneServer:</p>
-<pre><code>MavLinkTest -serial:/dev/ttyACM0,115200 -logdir:. -proxy:127.0.0.1:14560
+<p>Modify it to fetch the specific binary required.</p>
+<ul>
+<li>Running an unreal binary inside a docker container with display output:
+  The syntax is:</li>
+</ul>
+<pre><code class="language-bash">xhost +local:docker
+./run_airsim_image_binary.sh DOCKER_IMAGE_NAME UNREAL_BINARY_SHELL_SCRIPT UNREAL_BINARY_ARGUMENTS
 </code></pre>
-<p>Change ~/Documents/AirSim/settings.json to say "serial":false, because we want DroneServer to look for this UDP connection.</p>
-<pre><code>DroneServer 0
+<p>Do not forget to run the xhost command first to bind the X11 to docker.
+   For Blocks, you can do a <code>./run_airsim_image_binary.sh airsim_binary:runtime LinuxBlocks/Linux/Blocks.sh -windowed -ResX=1080 -ResY=720</code>
+`</p>
+<ul>
+<li><code>DOCKER_IMAGE_NAME</code>: Same as <code>target_image</code> parameter in previous step. By default, enter <code>airsim_binary:runtime</code></li>
+<li><code>UNREAL_BINARY_SHELL_SCRIPT</code>: for Blocks enviroment, it will be <code>LinuxBlocks/Linux/Blocks.sh</code></li>
+<li><a href="https://docs.unrealengine.com/en-us/Programming/Basics/CommandLineArguments"><code>UNREAL_BINARY_ARGUMENTS</code></a>:
+      For airsim, most relevant would be <code>-windowed</code>, <code>-ResX</code>, <code>-ResY</code>. Click on link to see all options.</li>
+</ul>
+<p><a href="#specifying-settingsjson">Click here for info on specifying a <code>settings.json</code></a></p>
+<h2 id="source">Source</h2>
+<h4 id="requirements_1">Requirements:</h4>
+<ul>
+<li><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/quick-start-guide-for-using-container-images-in-unreal-engine">Follow this guide for preparing setting up your GitHub access, installing Docker and authenticating with the GitHub Container Registry.</a>.</li>
+<li><a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">And this guide for installing Nvidia Container Toolkit</a>.</li>
+</ul>
+<h4 id="building-cosys-airsim-inside-ue5-dev-docker-container">Building Cosys-AirSim inside UE5 dev docker container:</h4>
+<ul>
+<li>Below are the default arguments.
+  <code>--base_image</code>: This is image over which we'll install Cosys-AirSim. We've tested only the official Unreal Engine dev container, more info can be found <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-containers-in-unreal-engine">here</a>. Change the base image at your own risk. This image includes everything needed and includes a pre-installed Unreal Engine and editor. 
+   <code>--target_image</code> is the desired name of your docker image.
+   Defaults to <code>airsim_source</code> with same tag as the base image</li>
+</ul>
+<pre><code class="language-bash">$ cd Airsim/docker;
+$ python build_airsim_image.py \
+   --source \
+   ----base_image ghcr.io/epicgames/unreal-engine:dev-5.4.3 \
+   --target_image=airsim_source:dev-5.4.3
 </code></pre>
-<p>Lastly, you can now connect DroneShell to this instance of DroneServer and use the DroneShell commands to fly your drone:</p>
-<pre><code>DroneShell
-==||=&gt;
-        Welcome to DroneShell 1.0.
-        Type ? for help.
-        Microsoft Research (c) 2016.
-
-Waiting for drone to report a valid GPS location...
-==||=&gt; requestcontrol
-==||=&gt; arm
-==||=&gt; takeoff
-==||=&gt; circlebypath -radius 10 -velocity 2
+<h4 id="running-cosys-airsim-container">Running Cosys-AirSim container</h4>
+<ul>
+<li>Run the airsim source image we built by:</li>
+</ul>
+<pre><code class="language-bash">xhost +local:docker
+./run_airsim_image_source.sh airsim_source:dev-5.4.3 
 </code></pre>
-<h2 id="px4-specific-tools">PX4 Specific Tools</h2>
-<p>You can run the MavlinkCom library and MavLinkTest app to test the connection
-between your companion computer and flight controller.  </p>
-<h2 id="how-does-this-work">How Does This Work?</h2>
-<p>AirSim uses MavLinkCom component developed by @lovettchris. The MavLinkCom has a proxy architecture where you can open a connection to PX4 either using serial or UDP and then other components share this connection. When PX4 sends MavLink message, all components receive that message. If any component sends a message then it's received by PX4 only. This allows you to connect any number of components to PX4 <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/AirLib/include/vehicles/multirotor/firmwares/mavlink/MavLinkMultirotorApi.hpp#L600">This code</a> opens a connection for LogViewer and QGC. You can add something more if you like.</p>
-<p>If you want to use QGC + AirSim together than you will need QGC to let own the serial port. QGC opens up TCP connection that acts as a proxy so any other component can connect to QGC and send MavLinkMessage to QGC and then QGC forwards that message to PX4. So you tell AirSim to connect to QGC and let QGC own serial port.</p>
-<p>For companion board, the way we did it earlier was to have Gigabyte Brix on the drone. This x86 full-fledged computer that will connect to PX4 through USB. We had Ubuntu on Brix and ran <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/DroneServer">DroneServer</a>. The DroneServer created an API endpoint that we can talk to via C++ client code (or Python code) and it translated API calls to MavLink messages. That way you can write your code against the same API, test it in the simulator and then run the same code on an actual vehicle. So the companion computer has DroneServer running along with client code. </p>
+<p>Syntax is <code>./run_airsim_image_source.sh DOCKER_IMAGE_NAME</code>
+   Do not forget to run the xhost command first to bind the X11 to docker.</p>
+<ul>
+<li>Inside the container, you can see <code>UnrealEngine</code> and <code>Cosys-AirSim</code> under <code>/home/ue4</code>.</li>
+<li>Start unreal engine inside the container:
+   <code>/home/ue4/UnrealEngine/Engine/Binaries/Linux/UnrealEditor</code></li>
+<li><a href="#specifying-settingsjson">Specifying an airsim settings.json</a></li>
+<li>Continue with <a href="build_linux.md#build-unreal-environment">Cosys-AirSims's Linux docs</a>.
+  For example start the Blocks environment in the container run (This will first copy the plugin and afterwards start open the project with the Unreal Editor):</li>
+</ul>
+<pre><code class="language-bash">/home/ue4/Cosys-AirSim/Unreal/Environments/Blocks/update_from_git.sh
+/home/ue4/UnrealEngine/Engine/Binaries/Linux/UnrealEditor /home/ue4/Cosys-AirSim/Unreal/Environments/Blocks/Blocks.uproject
+</code></pre>
+<h4 id="packaging-unreal-environments-in-airsim_source-containers">Packaging Unreal Environments in <code>airsim_source</code> containers</h4>
+<ul>
+<li>Let's take the Blocks environment as an example.
+    In the following script, specify the full path to your unreal uproject file by <code>project</code> and the directory where you want the binaries to be placed by <code>archivedirectory</code></li>
+</ul>
+<pre><code class="language-bash">/home/ue4/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh BuildCookRun -platform=Linux -clientconfig=Development -serverconfig=Development -noP4 -cook -allmaps -build -stage -prereqs -pak -archive \
+-archivedirectory=/home/ue4/Binaries/Blocks/ \
+-project=/home/ue4/Cosys-AirSim/Unreal/Environments/Blocks/Blocks.uproject
+</code></pre>
+<p>This would create a Blocks binary in <code>/home/ue4/Binaries/Blocks/</code>.
+You can test it by running <code>/home/ue4/Binaries/Blocks/LinuxNoEditor/Blocks.sh -windowed</code></p>
+<h2 id="specifying-settingsjson">Specifying settings.json</h2>
+<h4 id="airsim_binary-docker-image"><code>airsim_binary</code> docker image:</h4>
+<ul>
+<li>We're mapping the host machine's <code>PATH/TO/Airsim/settings.json</code> to the docker container's <code>/home/airsim_user/Documents/airsim/settings.json</code>.</li>
+<li>Hence, we can load any settings file by simply modifying <code>PATH_TO_YOUR/settings.json</code> by modifying the following snippets in <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/docker/run_airsim_image_binary.sh"><code>run_airsim_image_binary.sh</code></a> to link <code>$PATH_TO_YOUR</code> to the correct folder. </li>
+</ul>
+<pre><code class="language-sh">$DOCKER_CMD -it \
+-v $PATH_TO_YOUR/settings.json:/home/airsim_user/Documents/AirSim/settings.json \
+-v $UNREAL_BINARY_PATH:$UNREAL_BINARY_PATH \
+--rm \
+$DOCKER_IMAGE_NAME \
+/bin/bash -c &quot;$UNREAL_BINARY_COMMAND&quot;
+</code></pre>
+<h4 id="airsim_source-docker-image"><code>airsim_source</code> docker image:</h4>
+<ul>
+<li>We're mapping the host machine's <code>PATH/TO/Cosys-AirSim/settings.json</code> to the docker container's <code>/home/ue4/Documents/airsim/settings.json</code>.</li>
+<li>Hence, we can load any settings file by simply modifying <code>PATH_TO_YOUR/settings.json</code> by modifying the following snippets in <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/docker/run_airsim_image_source.sh"><code>run_airsim_image_source.sh</code></a>:</li>
+</ul>
+<pre><code class="language-sh">$DOCKER_CMD -it \
+-v $PATH_TO_YOUR/settings.json:/home/ue4/Documents/AirSim/settings.json \   
+--rm \
+$DOCKER_IMAGE_NAME
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../object_detection/" class="btn btn-neutral float-left" title="Object Detection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../cmake_linux/" class="btn btn-neutral float-right" title="Installing cmake on Linux">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../install_linux/" class="btn btn-neutral float-left" title="Install from Source on Linux"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../unreal_custenv/" class="btn btn-neutral float-right" title="Custom Unreal Environment">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -329,10 +438,10 @@ between your companion computer and flight controller.  </p>
         </span>
     
     
-      <span><a href="../object_detection/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../install_linux/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../cmake_linux/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../unreal_custenv/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

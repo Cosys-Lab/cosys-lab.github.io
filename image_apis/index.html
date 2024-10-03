@@ -51,11 +51,15 @@
               </ul>
               <p class="caption"><span class="caption-text">Installing AirSim</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_packaged/">Download and run</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_precompiled/">Download and install from precompiled plugin</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install from Source on Windows</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install from Source on Linux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../docker_ubuntu/">Using Docker on Ubuntu</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -537,7 +541,7 @@ client.simSetCameraPose(0, camera_pose);
 <h3 id="disparitynormalized">DisparityNormalized</h3>
 <p>You normally want to retrieve disparity image as float (i.e. set <code>pixels_as_float = true</code> and specify <code>ImageType = DisparityNormalized</code> in <code>ImageRequest</code>) in which case each pixel is <code>(Xl - Xr)/Xmax</code>, which is thereby normalized to values between 0 to 1.</p>
 <h3 id="segmentation">Segmentation</h3>
-<p>When you specify <code>ImageType = Segmentation</code> in <code>ImageRequest</code>, you get an image that gives you ground truth instance segmentation of the scene. At the startup, AirSim assigns a random color index to each mesh available in environment. The RGB values for each color index ID can be retrieved from the API.</p>
+<p>When you specify <code>ImageType = Segmentation</code> in <code>ImageRequest</code>, you get an image that gives you ground truth instance segmentation of the scene. At the startup, AirSim assigns a random color index to each mesh available in environment. You can disable this by setting the main parameter <code>InitialInstanceSegmentation</code> to false in the settings.json file. The RGB values for each color index ID can be retrieved from the API.</p>
 <p>You can assign a specific value to a specific mesh using APIs. For example, below Python code sets the object ID for the mesh called "Ground" to 20 in Blocks environment and hence changes its color in Segmentation view to the 20th color of the instance segmentation colormap:
 Note that this will not do a check if this color is already assigned to a different object! </p>
 <pre><code class="language-python">success = client.simSetSegmentationObjectID(&quot;Ground&quot;, 20)

@@ -51,11 +51,15 @@
               </ul>
               <p class="caption"><span class="caption-text">Installing AirSim</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_packaged/">Download and run</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_precompiled/">Download and install from precompiled plugin</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_windows/">Install from Source on Windows</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install_linux/">Install from Source on Linux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../docker_ubuntu/">Using Docker on Ubuntu</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_custenv/">Custom Unreal Environment</a>
                   </li>
@@ -292,7 +296,7 @@ Do note that at this point not all functions have been tested and most function 
 <h3 id="initial-setup"><strong>Initial setup</strong></h3>
 <p>When starting with this wrapper, first try to make a connection to the Cosys-AirSim simulation. </p>
 <pre><code class="language-matlab">vehicle_name = &quot;airsimvehicle&quot;;
-airSimClient = AirSimClient(IsDrone=false, ApiControl=false, IP=&quot;127.0.0.1&quot;, port=41451, vehicleName=vehicle_name);
+airSimClient = AirSimClient(IsDrone=false, IP=&quot;127.0.0.1&quot;, port=41451);
 </code></pre>
 <p>Now the client object can be used to run API methods from. All functions have some help text written for more information on them. </p>
 <h3 id="example">Example</h3>
@@ -317,7 +321,7 @@ airSimClient = AirSimClient(IsDrone=false, ApiControl=false, IP=&quot;127.0.0.1&
 <pre><code class="language-matlab">
 %Define client
 vehicle_name = &quot;airsimvehicle&quot;;
-airSimClient = AirSimClient(IsDrone=false, ApiControl=false, IP=&quot;127.0.0.1&quot;, port=41451, vehicleName=vehicle_name);
+airSimClient = AirSimClient(IsDrone=false, ApiControl=false, IP=&quot;127.0.0.1&quot;, port=41451);
 
 </code></pre>
 <h3 id="groundtruth-labels">Groundtruth labels</h3>
@@ -335,23 +339,15 @@ groundtruthLUT = airSimClient.getInstanceSegmentationLUT();
 poses = airSimClient.getAllObjectPoses(false, false);
 
 % Get vehicle pose
-vehiclePoseLocal = airSimClient.getVehiclePose();
+vehiclePoseLocal = airSimClient.getVehiclePose(vehicle_name);
 vehiclePoseWorld = airSimClient.getObjectPose(vehicle_name, false);
 
-% Get an random object pose or choose if you know the name of one
-useChosenObject = false;
+% Choose the object to get the pose from (this one is in the Blocks env)
 chosenObject = &quot;Cylinder3&quot;;
 
-if useChosenObject
-    finalName = chosenObject;
-else
-    randomIndex = randi(size(groundtruthLUT, 1), 1);
-    randomName = groundtruthLUT.name(randomIndex);
-    finalName = randomName;
-end
-
-objectPoseLocal = airSimClient.getObjectPose(finalName, true);
-objectPoseWorld = airSimClient.getObjectPose(finalName, false);
+% Get its pose
+objectPoseLocal = airSimClient.getObjectPose(chosenObject, true);
+objectPoseWorld = airSimClient.getObjectPose(chosenObject, false);
 
 figure;
 subplot(1, 2, 1);
@@ -369,22 +365,20 @@ plotTransforms([vehiclePoseWorld.position; objectPoseWorld.position], [vehiclePo
 axis equal;
 grid on;
 xlabel(&quot;X (m)&quot;)
+%% Set vehicle pose
+airSimClient.setVehiclePose(airSimClient.getVehiclePose().position + [1 1 0], airSimClient.getVehiclePose().orientation)
 ylabel(&quot;Y (m)&quot;)
 zlabel(&quot;Z (m)&quot;)
 title(&quot;World Plot&quot;)
+drawnow
 </code></pre>
 <p><img alt="figure_0.png" src="../images/matlab/figure_0.png" /></p>
-<pre><code class="language-matlab">drawnow
-
-%% Set vehicle pose
-airSimClient.setVehiclePose(airSimClient.getVehiclePose().position + [1 1 0], airSimClient.getVehiclePose().orientation)
-
+<pre><code class="language-matlab">%% Set vehicle pose
+airSimClient.setVehiclePose(airSimClient.getVehiclePose(vehicle_name).position + [1 1 0], airSimClient.getVehiclePose(vehicle_name).orientation, false, vehicle_name)
 </code></pre>
 <h3 id="imu-sensor-data">IMU sensor Data</h3>
-<pre><code class="language-matlab">
-imuSensorName = &quot;imu&quot;;
-[imuData, imuTimestamp] = airSimClient.getIMUData(imuSensorName);
-
+<pre><code class="language-matlab">imuSensorName = &quot;imu&quot;;
+[imuData, imuTimestamp] = airSimClient.getIMUData(imuSensorName, vehicle_name)
 </code></pre>
 <h3 id="echo-sensor-data">Echo sensor data</h3>
 <pre><code class="language-matlab">% Example plots passive echo pointcloud
@@ -392,7 +386,7 @@ imuSensorName = &quot;imu&quot;;
 
 echoSensorName = &quot;echo&quot;;
 enablePassive = true;
-[activePointCloud, activeData, passivePointCloud, passiveData , echoTimestamp, echoSensorPose] = airSimClient.getEchoData(echoSensorName, enablePassive);
+[activePointCloud, activeData, passivePointCloud, passiveData , echoTimestamp, echoSensorPose] = airSimClient.getEchoData(echoSensorName, enablePassive, vehicle_name);
 
 figure;
 subplot(1, 2, 1);
@@ -426,17 +420,15 @@ zlabel(&quot;Z (m)&quot;)
 xlim([0 10])
 ylim([-10 10])
 zlim([-10 10])
+drawnow
 </code></pre>
 <p><img alt="figure_1.png" src="../images/matlab/figure_1.png" /></p>
-<pre><code class="language-matlab">drawnow
-
-</code></pre>
 <h3 id="lidar-sensor-data">LiDAR sensor data</h3>
 <pre><code class="language-matlab">% Example plots lidar pointcloud and getting the groundtruth labels
 
 lidarSensorName = &quot;lidar&quot;;
 enableLabels = true;
-[lidarPointCloud, lidarLabels, LidarTimestamp, LidarSensorPose] = airSimClient.getLidarData(lidarSensorName, enableLabels);
+[lidarPointCloud, lidarLabels, LidarTimestamp, LidarSensorPose] = airSimClient.getLidarData(lidarSensorName, enableLabels, vehicle_name);
 
 figure;
 if ~isempty(lidarPointCloud)
@@ -451,17 +443,15 @@ zlabel(&quot;Z (m)&quot;)
 xlim([0 10])
 ylim([-10 10])
 zlim([-10 10])
+drawnow
 </code></pre>
 <p><img alt="figure_2.png" src="../images/matlab/figure_2.png" /></p>
-<pre><code class="language-matlab">drawnow
-
-</code></pre>
 <h3 id="gpu-lidar-sensor-data">GPU LiDAR sensor data</h3>
-<pre><code class="language-matlab">% Example plots GPU lidar pointcloud with its RGB segmentation colors
+<pre><code class="language-matlab"> Example plots GPU lidar pointcloud with its RGB segmentation colors
 
 gpuLidarSensorName = &quot;gpulidar&quot;;
 enableLabels = true;
-[gpuLidarPointCloud, gpuLidarTimestamp, gpuLidarSensorPose] = airSimClient.getGPULidarData(gpuLidarSensorName);
+[gpuLidarPointCloud, gpuLidarTimestamp, gpuLidarSensorPose] = airSimClient.getGPULidarData(gpuLidarSensorName, vehicle_name);
 
 figure;
 if ~isempty(gpuLidarPointCloud)
@@ -476,25 +466,22 @@ zlabel(&quot;Z (m)&quot;)
 xlim([0 10])
 ylim([-10 10])
 zlim([-10 10])
+drawnow
 </code></pre>
 <p><img alt="figure_3.png" src="../images/matlab/figure_3.png" /></p>
-<pre><code class="language-matlab">drawnow
-
-</code></pre>
 <h3 id="cameras">Cameras</h3>
-<pre><code class="language-matlab">
-%% Get camera info
+<pre><code class="language-matlab">%% Get camera info
 cameraSensorName = &quot;frontcamera&quot;;
-[intrinsics, cameraSensorPose] = airSimClient.getCameraInfo(cameraSensorName);
+[intrinsics, cameraSensorPose] = airSimClient.getCameraInfo(cameraSensorName, vehicle_name);
 
 %% Get single camera images
 % Get images sequentially 
 
 cameraSensorName = &quot;front_center&quot;;
-[rgbImage, rgbCameraIimestamp] = airSimClient.getCameraImage(cameraSensorName, AirSimCameraTypes.Scene);
-[segmentationImage, segmentationCameraIimestamp] = airSimClient.getCameraImage(cameraSensorName, AirSimCameraTypes.Segmentation);
-[depthImage, depthCameraIimestamp] = airSimClient.getCameraImage(cameraSensorName, AirSimCameraTypes.DepthPlanar);
-[annotationImage, annotationCameraIimestamp] = airSimClient.getCameraImage(cameraSensorName, AirSimCameraTypes.Annotation, &quot;TextureTestDirect&quot;);
+[rgbImage, rgbCameraIimestamp] = airSimClient.getCameraImage(cameraSensorName, AirSimCameraTypes.Scene, vehicle_name);
+[segmentationImage, segmentationCameraIimestamp] = airSimClient.getCameraImage(cameraSensorName, AirSimCameraTypes.Segmentation,vehicle_name);
+[depthImage, depthCameraIimestamp] = airSimClient.getCameraImage(cameraSensorName, AirSimCameraTypes.DepthPlanar,vehicle_name);
+[annotationImage, annotationCameraIimestamp] = airSimClient.getCameraImage(cameraSensorName, AirSimCameraTypes.Annotation, vehicle_name, &quot;TextureTestDirect&quot;);
 figure;
 subplot(4, 1, 1);
 imshow(rgbImage)
@@ -508,16 +495,16 @@ title(&quot;Depth Camera Image&quot;)
 subplot(4, 1, 4);
 imshow(annotationImage)
 title(&quot;Annotation Camera Image&quot;)
+drawnow
 </code></pre>
 <p><img alt="figure_4.png" src="../images/matlab/figure_4.png" /></p>
 <pre><code class="language-matlab">%% Get synced camera images
-% By combining the image requests they will be synced 
-% and taken in the same frame
+% By combining the image requests they will be synced and taken in the same frame
 
 cameraSensorName = &quot;front_center&quot;;
 [images, cameraIimestamp] = airSimClient.getCameraImages(cameraSensorName, ...
                                                          [AirSimCameraTypes.Scene, AirSimCameraTypes.Segmentation, AirSimCameraTypes.DepthPlanar, AirSimCameraTypes.Annotation], ...
-                                                         [&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;GreyscaleTest&quot;]);
+                                                         vehicle_name, [&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;TextureTestDirect&quot;]);
 figure;
 subplot(4, 1, 1);
 imshow(images{1})
@@ -531,6 +518,7 @@ title(&quot;Synced Depth Camera Image&quot;)
 subplot(4, 1, 4);
 imshow(images{4})
 title(&quot;Synced Annotation Camera Image&quot;)
+drawnow
 </code></pre>
 <p><img alt="figure_5.png" src="../images/matlab/figure_5.png" /></p>
               
