@@ -75,7 +75,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#choosing-your-vehicle-car-or-multirotor">Choosing Your Vehicle: Car or Multirotor</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#unreal-5354-scene-camera-bug">Unreal 5.3/5.4 Scene camera bug</a>
+    <li class="toctree-l2"><a class="reference internal" href="#unreal-scene-camera-bug">Unreal Scene camera bug</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#faq">FAQ</a>
         <ul>
@@ -332,7 +332,7 @@
 <p>Doing this forces Unreal to include all necessary AirSim content in packaged builds of your project.</p>
 </li>
 <li>
-<p>If using Unreal Engine 5.3/5.4 check <a href="#unreal-5354-scene-camera-bug">here</a> for a fix to the camera scene rendering bug in these engine versions!</p>
+<p>If using Unreal Engine 5.3 or higher check <a href="#unreal-scene-camera-bug">here</a> for a fix to the camera scene rendering bug in these engine versions!</p>
 </li>
 <li>
 <p>Close the <code>Unreal Editor</code> and restart it by opening the uproject file again.</p>
@@ -415,7 +415,7 @@
 <p>Doing this forces Unreal to include all necessary AirSim content in packaged builds of your project.</p>
 </li>
 <li>
-<p>If using Unreal Engine 5.3/5.4 check <a href="#unreal-5354-scene-camera-bug">here</a> for a fix to the camera scene rendering bug in these engine versions!</p>
+<p>If using Unreal Engine or higher check <a href="#unreal-scene-camera-bug">here</a> for a fix to the camera scene rendering bug in these engine versions!</p>
 </li>
 <li>
 <p>Close Visual Studio and the  <code>Unreal Editor</code> and right-click the LandscapeMountains.uproject in Windows Explorer and select <code>Generate Visual Studio Project Files</code>.  This step detects all plugins and source files in your Unreal project and generates <code>.sln</code> file for Visual Studio.</p>
@@ -454,8 +454,8 @@
 </ol>
 <h2 id="choosing-your-vehicle-car-or-multirotor">Choosing Your Vehicle: Car or Multirotor</h2>
 <p>By default, AirSim prompts user for which vehicle to use. You can easily change this by setting <a href="../settings/#SimMode">SimMode</a>. Please see <a href="../using_car/">using car</a> guide.</p>
-<h2 id="unreal-5354-scene-camera-bug">Unreal 5.3/5.4 Scene camera bug</h2>
-<p>Note that Unreal 5.3 and 5.4 breaks camera scene rendering when Effects is not set to the Epic scalability preset. You can use the console command r.DetailMode 2 to fix this at runtime!
+<h2 id="unreal-scene-camera-bug">Unreal Scene camera bug</h2>
+<p>Note that Unreal 5.3 and higher breaks camera scene rendering when Effects is not set to the Epic scalability preset. You can use the console command r.DetailMode 2 to fix this at runtime!
 For the Blocks and other available environments we have made a fix for this. By placing a DefaultScalability.ini file in the Config folder of your Unreal project, you can set the scalability settings to custom values for each one (low, medium, high, epic, cine).
 As you can see in the Blocks environment, we have added the following to it to fix this bug automatically.  You can find the DefaultScalability.ini file in the Unreal/Environments/Blocks folder. Copy this file to your Unreal project's Config folder.</p>
 <pre><code class="language-ini">[EffectsQuality@0]

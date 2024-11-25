@@ -334,7 +334,7 @@ Please contact a Cosys-Lab researcher to get more in depth information on which 
 </code></pre>
 <h2 id="cosys-lab-modifications">Cosys-Lab Modifications</h2>
 <ul>
-<li>Added support for Unreal up to 5.4 (<a href="https://cosys-lab.github.io/unreal_custenv#unreal-5354-scene-camera-bug">Note that Unreal 5.3/5.4 breaks camera scene rendering by default in custom environments</a>)</li>
+<li>Added support for Unreal up to 5.5 (<a href="https://cosys-lab.github.io/unreal_custenv#unreal-scene-camera-bug">Note that Unreal 5.3+ breaks camera scene rendering by default in custom environments</a>)</li>
 <li>Added <a href="https://cosys-lab.github.io/annotation">multi-layer annotation</a> for groundtruth label generation with RGB, greyscale and texture options. Extensive API integration and available for camera and GPU-LiDAR sensors.</li>
 <li>Added <a href="https://cosys-lab.github.io/instance_segmentation">Instance Segmentation</a>. </li>
 <li>Added <a href="https://cosys-lab.github.io/echo">Echo sensor type</a> for simulation of sensors like sonar and radar.</li>
@@ -348,8 +348,8 @@ Please contact a Cosys-Lab researcher to get more in depth information on which 
 <li>Updated the camera, Echo and (GPU-)LiDAR sensors to be uncoupled from the vehicle and be placed as external world sensors.</li>
 <li>Updated sensors like cameras, Echo sensor and GPU-LiDAR to ignore certain objects with the <em>MarkedIgnore</em> Unreal tag and enabling the "IgnoreMarked" setting in <a href="https://cosys-lab.github.io/settings">the settings file</a>.</li>
 <li>Updated cameras sensor with more distortion features such as chromatic aberration, motion blur and lens distortion. </li>
-<li>Updated Python <a href="https://cosys-lab.github.io/ros">ROS implementation</a> with completely new implementation and feature set.</li>
-<li>Updated C++ <a href="https://cosys-lab.github.io/ros">ROS2 implementation</a> to support custom Cosys-AirSim features.</li>
+<li>Updated Python <a href="https://cosys-lab.github.io/ros_python">ROS implementation</a> with completely new implementation and feature set.</li>
+<li>Updated C++ <a href="https://cosys-lab.github.io/ros_cplusplus">ROS2 implementation</a> to support custom Cosys-AirSim features.</li>
 <li>Dropped support for Unity Environments.</li>
 </ul>
 <p>Some more details on our changes can be found in the <a href="https://github.com/Cosys-Lab/Cosys-AirSim/blob/main/CHANGELOG.md">changelog</a>.</p>
