@@ -276,45 +276,57 @@ packaging an entire project including the plugin. </p>
 <h2 id="building-the-cosys-airsim-unreal-plugin">Building the Cosys-AirSim Unreal Plugin</h2>
 <h3 id="build-airlib">Build AirLib</h3>
 <p>First you need to build the library. 
-On Windows:
-* Install Visual Studio 2022. Make sure to select Desktop Development with C++ and Windows 10/11 SDK <strong>10.0.X (choose latest)</strong> and select the latest .NET Framework SDK under the 'Individual Components' tab while installing VS 2022. More info <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.2">here</a>.
-* Start <code>Developer Command Prompt for VS 2022</code>. 
-* Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. 
-* Run <code>build.cmd</code> from the command line. This will create ready to use plugin bits in the <code>Unreal\Plugins</code> folder.</p>
-<p>On Linux:
-* Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. 
-* Run <code>./setup.sh</code> and <code>./build.sh</code> from the command line. This will create ready to use plugin bits in the <code>Unreal/Plugins</code> folder.</p>
+On Windows:</p>
+<ul>
+<li>Install Visual Studio 2022. Make sure to select Desktop Development with C++ and Windows 10/11 SDK <strong>10.0.X (choose latest)</strong> and select the latest .NET Framework SDK under the 'Individual Components' tab while installing VS 2022. More info <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.2">here</a>.</li>
+<li>Start <code>Developer Command Prompt for VS 2022</code>. </li>
+<li>Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. </li>
+<li>Run <code>build.cmd</code> from the command line. This will create ready to use plugin bits in the <code>Unreal\Plugins</code> folder.</li>
+</ul>
+<p>On Linux:</p>
+<ul>
+<li>Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. </li>
+<li>Run <code>./setup.sh</code> and <code>./build.sh</code> from the command line. This will create ready to use plugin bits in the <code>Unreal/Plugins</code> folder.</li>
+</ul>
 <h3 id="build-and-package-unreal-plugin">Build and package Unreal plugin</h3>
 <p>Then you can package the plugin as a standalone plugin from a Unreal Project like the provided sample Blocks environment.
-On Windows:
-* Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.bat</code>.
-* Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project:
- <code>./RunUAT.bat BuildPlugin -Plugin=....\Cosys-AirSim\Unreal\Environments\Blocks\Plugins\AirSim\AirSim.uplugin -Package=...\airsimpluginpackagewin -Rocket -TargetPlatforms=Win64</code></p>
-<p>On Linux:
-* Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.sh</code>.
-* Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project:
- <code>sudo ./RunUAT.sh BuildPlugin -Plugin=.../Cosys-AirSim/Unreal/Environments/Blocks/Plugins/AirSim/AirSim.uplugin -Package=.../airsimpluginpackagelinux -Rocket -TargetPlatforms=Linux</code></p>
+On Windows:</p>
+<ul>
+<li>Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.bat</code>.</li>
+<li>Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project: <code>./RunUAT.bat BuildPlugin -Plugin=....\Cosys-AirSim\Unreal\Environments\Blocks\Plugins\AirSim\AirSim.uplugin -Package=...\airsimpluginpackagewin -Rocket -TargetPlatforms=Win64</code></li>
+</ul>
+<p>On Linux:</p>
+<ul>
+<li>Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.sh</code>.</li>
+<li>Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project: <code>sudo ./RunUAT.sh BuildPlugin -Plugin=.../Cosys-AirSim/Unreal/Environments/Blocks/Plugins/AirSim/AirSim.uplugin -Package=.../airsimpluginpackagelinux -Rocket -TargetPlatforms=Linux</code></li>
+</ul>
 <h2 id="building-an-unreal-project-with-cosys-airsim-plugin">Building an Unreal Project with Cosys-AirSim Plugin</h2>
 <h3 id="build-airlib_1">Build AirLib</h3>
 <p>First you need to build the library. 
-On Windows:
-* Install Visual Studio 2022. Make sure to select Desktop Development with C++ and Windows 10/11 SDK <strong>10.0.X (choose latest)</strong> and select the latest .NET Framework SDK under the 'Individual Components' tab while installing VS 2022. More info <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.2">here</a>.
-* Start <code>Developer Command Prompt for VS 2022</code>. 
-* Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. 
-* Run <code>build.cmd</code> from the command line. This will create ready to use plugin bits in the <code>Unreal\Plugins</code> folder.</p>
-<p>On Linux:
-* Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. 
-* Run <code>./setup.sh</code> and <code>./build.sh</code> from the command line. This will create ready to use plugin bits in the <code>Unreal/Plugins</code> folder.</p>
+On Windows:</p>
+<ul>
+<li>Install Visual Studio 2022. Make sure to select Desktop Development with C++ and Windows 10/11 SDK <strong>10.0.X (choose latest)</strong> and select the latest .NET Framework SDK under the 'Individual Components' tab while installing VS 2022. More info <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.2">here</a>.</li>
+<li>Start <code>Developer Command Prompt for VS 2022</code>. </li>
+<li>Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. </li>
+<li>Run <code>build.cmd</code> from the command line. This will create ready to use plugin bits in the <code>Unreal\Plugins</code> folder.</li>
+</ul>
+<p>On Linux:</p>
+<ul>
+<li>Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. </li>
+<li>Run <code>./setup.sh</code> and <code>./build.sh</code> from the command line. This will create ready to use plugin bits in the <code>Unreal/Plugins</code> folder.</li>
+</ul>
 <h3 id="build-and-package-unreal-project">Build and package Unreal Project</h3>
 <p>Then you can package the plugin as a standalone plugin from a Unreal Project like the provided sample Blocks environment.
-On Windows:
-* Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.bat</code>.
-* Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project:
- <code>./RunUAT.bat BuildCookRun -cook -noP4 -build -stage -noiterate -archive -project=....\Cosys-AirSim\Unreal\Environments\Blocks\Blocks.uproject -archivedirectory=....\blockswin -Rocket -TargetPlatforms=Win64 -configuration=Development</code></p>
-<p>On Linux:
-* Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.sh</code>.
-* Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project:
- <code>sudo ./RunUAT.sh BuildCookRun -cook -noP4 -build -stage -noiterate -archive -project=.../Cosys-AirSim/Unreal/Environments/Blocks/Plugins/AirSim/AirSim.uplugin -archivedirectory=.../blockslinux -Rocket -TargetPlatforms=Linux -configuration=Development</code></p>
+On Windows:</p>
+<ul>
+<li>Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.bat</code>.</li>
+<li>Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project: <code>./RunUAT.bat BuildCookRun -cook -noP4 -build -stage -noiterate -archive -project=....\Cosys-AirSim\Unreal\Environments\Blocks\Blocks.uproject -archivedirectory=....\blockswin -Rocket -TargetPlatforms=Win64 -configuration=Development</code></li>
+</ul>
+<p>On Linux:</p>
+<ul>
+<li>Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.sh</code>.</li>
+<li>Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project: <code>sudo ./RunUAT.sh BuildCookRun -cook -noP4 -build -stage -noiterate -archive -project=.../Cosys-AirSim/Unreal/Environments/Blocks/Plugins/AirSim/AirSim.uplugin -archivedirectory=.../blockslinux -Rocket -TargetPlatforms=Linux -configuration=Development</code></li>
+</ul>
               
             </div>
           </div><footer>
