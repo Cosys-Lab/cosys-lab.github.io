@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>PX4 SITL with WSL 2 - Cosys-AirSim</title>
+    <title>Building and Packaging Cosys-AirSim Plugin and/or Unreal Projects - Cosys-AirSim</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "PX4 SITL with WSL 2";
-        var mkdocs_page_input_path = "px4_sitl_wsl2.md";
+        var mkdocs_page_name = "Building and Packaging Cosys-AirSim Plugin and/or Unreal Projects";
+        var mkdocs_page_input_path = "packaging.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -145,16 +145,14 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">External Flight Controllers</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">MavLink and PX4</a>
-    <ul class="current">
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">MavLink and PX4</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../px4_setup/">PX4 Setup for AirSim</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../px4_sitl/">PX4 in SITL</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">PX4 SITL with WSL 2</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../px4_sitl_wsl2/">PX4 SITL with WSL 2</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../px4_lockstep/">PX4 Lockstep</a>
                 </li>
@@ -211,7 +209,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Misc</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../custom_drone/">AirSim on Real Drones</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
@@ -220,7 +218,25 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_proj/">Setting up Unreal Environment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../packaging/">Building and Packaging Cosys-AirSim Plugin and/or Unreal Projects</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Building and Packaging Cosys-AirSim Plugin and/or Unreal Projects</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#building-the-cosys-airsim-unreal-plugin">Building the Cosys-AirSim Unreal Plugin</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#build-airlib">Build AirLib</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-and-package-unreal-plugin">Build and package Unreal plugin</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-an-unreal-project-with-cosys-airsim-plugin">Building an Unreal Project with Cosys-AirSim Plugin</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#build-airlib_1">Build AirLib</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-and-package-unreal-project">Build and package Unreal Project</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_blocks/">Blocks Environment</a>
                   </li>
@@ -243,11 +259,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>External Flight Controllers &raquo;</li>
-          <li>MavLink and PX4 &raquo;</li>
-      <li>PX4 SITL with WSL 2</li>
+          <li>Misc &raquo;</li>
+      <li>Building and Packaging Cosys-AirSim Plugin and/or Unreal Projects</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/px4_sitl_wsl2.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/Cosys-Lab/Cosys-AirSim/edit/main/docs/packaging.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -255,101 +270,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="px4-software-in-loop-with-wsl-2">PX4 Software-in-Loop with WSL 2</h1>
-<p>The <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows subsystem for Linux version
-2</a> uses a Virtual Machine which has a
-separate IP address from your Windows host machine. This means PX4 cannot find AirSim using
-"localhost" which is the default behavior for PX4.</p>
-<p>You will notice that on Windows <code>ipconfig</code> returns a new ethernet adapter for WSL like this (notice
-the vEthernet has <code>(WSL)</code> in the name:</p>
-<pre><code class="language-plain">Ethernet adapter vEthernet (WSL):
-
-   Connection-specific DNS Suffix  . :
-   Link-local IPv6 Address . . . . . : fe80::1192:f9a5:df88:53ba%44
-   IPv4 Address. . . . . . . . . . . : 172.31.64.1
-   Subnet Mask . . . . . . . . . . . : 255.255.240.0
-   Default Gateway . . . . . . . . . :
-</code></pre>
-<p>This address <code>172.31.64.1</code> is the address that WSL 2 can use to reach your Windows host machine.</p>
-<p>Starting with this <a href="https://github.com/PX4/PX4-Autopilot/commit/1719ff9892f3c3d034f2b44e94d15527ab09cec6">PX4 Change
-Request</a>
-(which correlates to version v1.12.0-beta1 or newer) PX4 in SITL mode can now connect to AirSim on a
-different (remote) IP address.  To enable this make sure you have a version of PX4 containing this
-fix and set the following environment variable in linux:</p>
-<pre><code class="language-shell">export PX4_SIM_HOST_ADDR=172.31.64.1
-</code></pre>
-<p><strong>Note:</strong> Be sure to update the above address <code>172.31.64.1</code> to match what you see from your
-<code>ipconfig</code> command.</p>
-<p>Open incoming TCP port 4560 and incoming UDP port 14540 using your firewall configuration.</p>
-<p>Now on the linux side run <code>ip address show</code> and copy the <code>eth0 inet</code> address, it should be something
-like <code>172.31.66.156</code>.  This is the address Windows needs to know in order to find PX4.</p>
-<p>Edit your <a href="../settings/">AirSim settings</a> file and add <code>LocalHostIp</code> to tell AirSim to use the WSL
-ethernet adapter address instead of the default <code>localhost</code>.  This will cause AirSim to open the TCP
-port on that adapter which is the address that the PX4 app will be looking for.  Also tell AirSim
-to connect the <code>ControlIp</code> UDP channel by setting <code>ControlIp</code> to the magic string <code>remote</code>.
-This resolves to the WSL 2 remote ip address found in the TCP socket.</p>
-<pre><code class="language-json">{
-    &quot;SettingsVersion&quot;: 2.0,
-    &quot;SimMode&quot;: &quot;Multirotor&quot;,
-    &quot;ClockType&quot;: &quot;SteppableClock&quot;,
-    &quot;Vehicles&quot;: {
-        &quot;PX4&quot;: {
-            &quot;VehicleType&quot;: &quot;PX4Multirotor&quot;,
-            &quot;UseSerial&quot;: false,
-            &quot;LockStep&quot;: true,
-            &quot;UseTcp&quot;: true,
-            &quot;TcpPort&quot;: 4560,
-            &quot;ControlIp&quot;: &quot;remote&quot;,
-            &quot;ControlPortLocal&quot;: 14540,
-            &quot;ControlPortRemote&quot;: 14580,
-            &quot;LocalHostIp&quot;: &quot;172.31.64.1&quot;,
-            &quot;Sensors&quot;:{
-                &quot;Barometer&quot;:{
-                    &quot;SensorType&quot;: 1,
-                    &quot;Enabled&quot;: true,
-                    &quot;PressureFactorSigma&quot;: 0.0001825
-                }
-            },
-            &quot;Parameters&quot;: {
-                &quot;NAV_RCL_ACT&quot;: 0,
-                &quot;NAV_DLL_ACT&quot;: 0,
-                &quot;COM_OBL_ACT&quot;: 1,
-                &quot;LPE_LAT&quot;: 47.641468,
-                &quot;LPE_LON&quot;: -122.140165
-            }
-        }
-    }
-}
-</code></pre>
-<p>See <a href="../px4_lockstep/">PX4 LockStep</a> for more information.
-The "Barometer" setting keeps PX4 happy because the default AirSim barometer has a bit too much
-noise generation.  This setting clamps that down a bit.</p>
-<p>If your local repo does not include <a href="https://github.com/PX4/PX4-Autopilot/commit/292a66ce417c9769e1a7845fbc9b8d5e68e1cf0b">this PX4 
-commit</a>, 
-please edit the Linux file in <code>ROMFS/px4fmu_common/init.d-posix/rcS</code> and make sure it is looking
-for the <code>PX4_SIM_HOST_ADDR</code> environment variable and is passing that through to the PX4 
-simulator like this:</p>
-<pre><code class="language-shell"># If PX4_SIM_HOST_ADDR environment variable is empty use localhost.
-if [ -z &quot;${PX4_SIM_HOST_ADDR}&quot; ]; then
-    echo &quot;PX4 SIM HOST: localhost&quot;
-    simulator start -c $simulator_tcp_port
-else
-    echo &quot;PX4 SIM HOST: $PX4_SIM_HOST_ADDR&quot;
-    simulator start -t $PX4_SIM_HOST_ADDR $simulator_tcp_port
-fi
-</code></pre>
-<p><strong>Note:</strong> this code might already be there depending on the version of PX4 you are using.</p>
-<p><strong>Note:</strong> please be patient when waiting for the message:</p>
-<pre><code>INFO  [simulator] Simulator connected on TCP port 4560.
-</code></pre>
-<p>It can take a little longer to establish the remote connection than it does with <code>localhost</code>.</p>
-<p>Now you can proceed with the steps shown in <a href="../px4_sitl/">Setting up PX4 Software-in-Loop</a>.</p>
+                <h1 id="building-and-packaging-cosys-airsim-plugin-andor-unreal-projects">Building and Packaging Cosys-AirSim Plugin and/or Unreal Projects</h1>
+<p>This document describes how to build and package the Cosys-AirSim plugin as a standalone plugin as well as
+packaging an entire project including the plugin. </p>
+<h2 id="building-the-cosys-airsim-unreal-plugin">Building the Cosys-AirSim Unreal Plugin</h2>
+<h3 id="build-airlib">Build AirLib</h3>
+<p>First you need to build the library. 
+On Windows:
+* Install Visual Studio 2022. Make sure to select Desktop Development with C++ and Windows 10/11 SDK <strong>10.0.X (choose latest)</strong> and select the latest .NET Framework SDK under the 'Individual Components' tab while installing VS 2022. More info <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.2">here</a>.
+* Start <code>Developer Command Prompt for VS 2022</code>. 
+* Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. 
+* Run <code>build.cmd</code> from the command line. This will create ready to use plugin bits in the <code>Unreal\Plugins</code> folder.</p>
+<p>On Linux:
+* Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. 
+* Run <code>./setup.sh</code> and <code>./build.sh</code> from the command line. This will create ready to use plugin bits in the <code>Unreal/Plugins</code> folder.</p>
+<h3 id="build-and-package-unreal-plugin">Build and package Unreal plugin</h3>
+<p>Then you can package the plugin as a standalone plugin from a Unreal Project like the provided sample Blocks environment.
+On Windows:
+* Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.bat</code>.
+* Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project:
+ <code>./RunUAT.bat BuildPlugin -Plugin=....\Cosys-AirSim\Unreal\Environments\Blocks\Plugins\AirSim\AirSim.uplugin -Package=...\airsimpluginpackagewin -Rocket -TargetPlatforms=Win64</code></p>
+<p>On Linux:
+* Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.sh</code>.
+* Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project:
+ <code>sudo ./RunUAT.sh BuildPlugin -Plugin=.../Cosys-AirSim/Unreal/Environments/Blocks/Plugins/AirSim/AirSim.uplugin -Package=.../airsimpluginpackagelinux -Rocket -TargetPlatforms=Linux</code></p>
+<h2 id="building-an-unreal-project-with-cosys-airsim-plugin">Building an Unreal Project with Cosys-AirSim Plugin</h2>
+<h3 id="build-airlib_1">Build AirLib</h3>
+<p>First you need to build the library. 
+On Windows:
+* Install Visual Studio 2022. Make sure to select Desktop Development with C++ and Windows 10/11 SDK <strong>10.0.X (choose latest)</strong> and select the latest .NET Framework SDK under the 'Individual Components' tab while installing VS 2022. More info <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.2">here</a>.
+* Start <code>Developer Command Prompt for VS 2022</code>. 
+* Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. 
+* Run <code>build.cmd</code> from the command line. This will create ready to use plugin bits in the <code>Unreal\Plugins</code> folder.</p>
+<p>On Linux:
+* Clone the repo: <code>git clone https://github.com/Cosys-Lab/Cosys-AirSim.git</code>, and go the AirSim directory by <code>cd Cosys-AirSim</code>. 
+* Run <code>./setup.sh</code> and <code>./build.sh</code> from the command line. This will create ready to use plugin bits in the <code>Unreal/Plugins</code> folder.</p>
+<h3 id="build-and-package-unreal-project">Build and package Unreal Project</h3>
+<p>Then you can package the plugin as a standalone plugin from a Unreal Project like the provided sample Blocks environment.
+On Windows:
+* Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.bat</code>.
+* Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project:
+ <code>./RunUAT.bat BuildCookRun -cook -noP4 -build -stage -noiterate -archive -project=....\Cosys-AirSim\Unreal\Environments\Blocks\Blocks.uproject -archivedirectory=....\blockswin -Rocket -TargetPlatforms=Win64 -configuration=Development</code></p>
+<p>On Linux:
+* Open the Blocks project in Unreal Engine <code>cd Cosys-AirSim/Unreal/Environments/Blocks</code> and pull the latest plugin files by running <code>update_from_git.sh</code>.
+* Go to your Unreal Engine installation folder and run the build script while pointing at the Blocks project:
+ <code>sudo ./RunUAT.sh BuildCookRun -cook -noP4 -build -stage -noiterate -archive -project=.../Cosys-AirSim/Unreal/Environments/Blocks/Plugins/AirSim/AirSim.uplugin -archivedirectory=.../blockslinux -Rocket -TargetPlatforms=Linux -configuration=Development</code></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../px4_sitl/" class="btn btn-neutral float-left" title="PX4 in SITL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../px4_lockstep/" class="btn btn-neutral float-right" title="PX4 Lockstep">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../unreal_proj/" class="btn btn-neutral float-left" title="Setting up Unreal Environment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../unreal_blocks/" class="btn btn-neutral float-right" title="Blocks Environment">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -376,10 +347,10 @@ fi
         </span>
     
     
-      <span><a href="../px4_sitl/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../unreal_proj/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../px4_lockstep/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../unreal_blocks/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
