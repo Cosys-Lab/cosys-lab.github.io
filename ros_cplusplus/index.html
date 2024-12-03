@@ -226,8 +226,6 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../custom_drone/">AirSim on Real Drones</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../cmake_linux/">Installing cmake on Linux</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pfm/">pfm format</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unreal_proj/">Setting up Unreal Environment</a>
@@ -286,6 +284,7 @@ source ~/.bashrc
 <pre><code class="language-shell">apt-get install python3-rosdep
 sudo rosdep init
 rosdep update
+cd &lt;path-to-cosys-airsim&gt;/ros2
 rosdep install --from-paths src -y --ignore-src --skip-keys pcl --skip-keys message_runtime --skip-keys message_generation
 </code></pre>
 <ul>
